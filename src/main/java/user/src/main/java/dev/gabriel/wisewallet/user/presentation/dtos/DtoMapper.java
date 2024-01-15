@@ -2,7 +2,9 @@ package dev.gabriel.wisewallet.user.presentation.dtos;
 
 import dev.gabriel.wisewallet.user.domain.models.User;
 import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjection;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DtoMapper {
     public UserResponseDto toDto(User user) {
         if(user == null) return null;

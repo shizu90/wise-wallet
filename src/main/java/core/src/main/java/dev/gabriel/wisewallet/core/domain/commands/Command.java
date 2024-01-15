@@ -9,6 +9,6 @@ import java.util.UUID;
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Command {
-    protected final String aggregateType;
     protected final UUID aggregateId;
+    protected final String aggregateType;
 }

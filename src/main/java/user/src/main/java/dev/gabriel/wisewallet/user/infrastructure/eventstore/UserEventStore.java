@@ -17,13 +17,13 @@ public class UserEventStore implements UserRepository {
     private final AggregateService aggregateService;
 
     @Override
-    public Optional<User> getById(UUID userId) {
-        User user = (User) aggregateService.get(AggregateType.USER.toString(), userId, null);
+    public Optional<User> load(UUID userId) {
+        User user = (User) aggregateService.load(AggregateType.USER.toString(), userId, null);
         return Optional.of(user);
     }
 
     @Override
-    public void save(User user) {
+    public void saveChanges(User user) {
         aggregateService.save(user);
     }
 }

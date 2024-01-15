@@ -1,7 +1,6 @@
 package dev.gabriel.wisewallet.user.domain.models;
 
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
-import dev.gabriel.wisewallet.user.domain.commands.*;
 import dev.gabriel.wisewallet.user.domain.events.*;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyDeletedException;
 import lombok.Getter;
@@ -16,76 +15,96 @@ public class User extends Aggregate {
     private UserConfiguration configuration;
     private Boolean isDeleted;
 
-    private User(UUID id) {
+    private User(UUID id,
+                 String name,
+                 String email,
+                 String password,
+                 String defaultCurrencyCode,
+                 String defaultLanguage
+    ) {
         super(UserId.create(id), 0L);
+        this.name = Username.create(name);
+        this.email = Email.create(email);
+        this.password = Password.create(password);
+        this.configuration = UserConfiguration.create(defaultCurrencyCode, defaultLanguage);
     }
 
-    public void process(CreateUserCommand command) {
-        Username.validate(command.getName());
-        Email.validate(command.getEmail());
-        Password.validate(command.getPassword());
+    public static User create(UUID id,
+                              String name,
+                              String email,
+                              String password,
+                              String defaultCurrencyCode,
+                              String defaultLanguage
+    ) {
+        Username.validate(name);
+        Email.validate(email);
+        Password.validate(password);
 
-        applyChange(new UserCreatedEvent(
-                id.getValue(),
-                getNextVersion(),
-                command.getName(),
-                command.getEmail(),
-                command.getPassword(),
-                command.getDefaultCurrencyCode(),
-                command.getDefaultLanguage()
+        User user = new User(id, name, email, password, defaultCurrencyCode, defaultLanguage);
+
+        user.applyChange(new UserCreatedEvent(
+                id,
+                user.getNextVersion(),
+                name,
+                email,
+                password,
+                defaultCurrencyCode,
+                defaultLanguage
         ));
+
+        return user;
     }
 
-    public void process(RenameUserCommand command) {
-        Username.validate(command.getName());
+    public void rename(String name) {
+        Username.validate(name);
 
         applyChange(new UserRenamedEvent(
-           command.getAggregateId(),
+           id.getValue(),
            getNextVersion(),
-           command.getName()
+           name
         ));
     }
 
-    public void process(ChangeUserEmailCommand command) {
-        Email.validate(command.getEmail());
+    public void changeEmail(String email) {
+        Email.validate(email);
 
         applyChange(new UserEmailChangedEvent(
-                command.getAggregateId(),
+                id.getValue(),
                 getNextVersion(),
-                command.getEmail()
+                email
         ));
     }
 
-    public void process(ChangeUserPasswordCommand command) {
-        Password.validate(command.getPassword());
+    public void changePassword(String password) {
+        Password.validate(password);
 
         applyChange(new UserPasswordChangedEvent(
-                command.getAggregateId(),
+                id.getValue(),
                 getNextVersion(),
-                command.getPassword()
+                password
         ));
     }
 
-    public void process(ChangeUserConfigurationCommand command) {
-        boolean defaultCurrencyCodeIsEmpty = command.getDefaultCurrencyCode() == null ||
-                command.getDefaultCurrencyCode().isEmpty() || command.getDefaultCurrencyCode().isBlank();
-        boolean defaultLanguageIsEmpty = command.getDefaultLanguage() == null ||
-                command.getDefaultLanguage().isEmpty() || command.getDefaultLanguage().isBlank();
+    public void changeConfiguration(String defaultCurrencyCode, String defaultLanguage) {
+        boolean defaultCurrencyCodeIsEmpty = defaultCurrencyCode == null ||
+                defaultCurrencyCode.isEmpty() || defaultCurrencyCode.isBlank();
+        boolean defaultLanguageIsEmpty = defaultLanguage == null ||
+                defaultLanguage.isEmpty() || defaultLanguage.isBlank();
 
         applyChange(new UserConfigurationChangedEvent(
-                command.getAggregateId(),
+                id.getValue(),
                 getNextVersion(),
-                defaultCurrencyCodeIsEmpty ? configuration.getDefaultCurrencyCode() : command.getDefaultCurrencyCode(),
-                defaultLanguageIsEmpty ? configuration.getDefaultLanguage() : command.getDefaultLanguage()
+                defaultCurrencyCodeIsEmpty ? configuration.getDefaultCurrencyCode() : defaultCurrencyCode,
+                defaultLanguageIsEmpty ? configuration.getDefaultLanguage() : defaultLanguage
         ));
     }
 
-    public void process(DeleteUserCommand command) {
+    public void delete() {
         if(isDeleted)
             throw new UserAlreadyDeletedException("User %s is already deleted.".formatted(id.getValue().toString()));
 
         applyChange(new UserDeletedEvent(
-                command.getAggregateId(),
+                id.getValue(),
                 getNextVersion()
         ));
     }

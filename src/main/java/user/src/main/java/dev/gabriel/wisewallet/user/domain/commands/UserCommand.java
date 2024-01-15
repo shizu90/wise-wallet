@@ -7,6 +7,6 @@ import java.util.UUID;
 
 public abstract class UserCommand extends Command {
     protected UserCommand(UUID aggregateId) {
-        super(AggregateType.USER.toString(), aggregateId);
+        super(aggregateId, AggregateType.USER.toString());
     }
 }

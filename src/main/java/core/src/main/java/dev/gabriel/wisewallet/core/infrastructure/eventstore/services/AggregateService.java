@@ -46,6 +46,7 @@ public class AggregateService {
                             .formatted(aggregateType, aggregateId, expectedVersion));
 
         SnapshottingConfiguration snapshottingConfiguration = eventStoreConfiguration.getSnapshotting(aggregateType);
+
         List<DomainEvent> changes = aggregate.getChanges();
         List<DomainEventWithId<DomainEvent>> newEvents = new ArrayList<>();
 
@@ -67,19 +68,22 @@ public class AggregateService {
         }
     }
 
-    private Aggregate getFromSnapshot(@NonNull UUID aggregateId, @Nullable Long version) {
+    private Aggregate loadFromSnapshot(@NonNull UUID aggregateId, @Nullable Long version) {
         Optional<Aggregate> aggregate = aggregateRepository.getSnapshot(aggregateId, version);
-        return aggregate.orElseThrow(() ->
-                new SnapshotNotFoundException("Snapshot of %s with version %s was nott found.".formatted(aggregateId, version))
-        );
+
+        return aggregate.orElseThrow(() -> new SnapshotNotFoundException(
+                "Snapshot was not found."
+        ));
     }
 
-    private Aggregate getFromEventStream(String aggregateType, UUID aggregateId, @Nullable Long version) {
+    private Aggregate loadFromEventStream(String aggregateType, UUID aggregateId, @Nullable Long version) {
         List<DomainEvent> events = eventRepository
                 .getEvents(aggregateId, null, version)
                 .stream()
                 .map(DomainEventWithId::event)
                 .toList();
+
+        if(events.isEmpty()) return null;
 
         Aggregate aggregate = aggregateFactory.create(aggregateType, aggregateId);
         aggregate.loadFromHistory(events);
@@ -87,18 +91,18 @@ public class AggregateService {
         return aggregate;
     }
 
-    public Aggregate get(@NonNull String aggregateType, @NonNull UUID aggregateId, @Nullable Long version) {
+    public Aggregate load(@NonNull String aggregateType, @NonNull UUID aggregateId, @Nullable Long version) {
         SnapshottingConfiguration snapshottingConfiguration = eventStoreConfiguration.getSnapshotting(aggregateType);
-        Aggregate aggregate;
+        Aggregate aggregate = null;
 
         if(snapshottingConfiguration.enabled()) {
             try {
-                aggregate = getFromSnapshot(aggregateId, version);
+                aggregate = loadFromSnapshot(aggregateId, version);
             }catch(SnapshotNotFoundException e) {
-                return getFromEventStream(aggregateType, aggregateId, version);
+                return loadFromEventStream(aggregateType, aggregateId, version);
             }
         }else {
-            aggregate = getFromEventStream(aggregateType, aggregateId, version);
+            aggregate = loadFromEventStream(aggregateType, aggregateId, version);
         }
 
         return aggregate;

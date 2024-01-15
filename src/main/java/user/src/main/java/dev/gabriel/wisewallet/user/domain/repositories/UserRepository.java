@@ -7,6 +7,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserRepository extends DomainRepository {
-    Optional<User> getById(UUID userId);
-    void save(User user);
+    Optional<User> load(UUID userId);
+    void saveChanges(User user);
 }

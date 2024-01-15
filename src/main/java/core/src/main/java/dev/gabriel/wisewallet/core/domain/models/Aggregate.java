@@ -1,16 +1,12 @@
 package dev.gabriel.wisewallet.core.domain.models;
 
-import dev.gabriel.wisewallet.core.domain.commands.Command;
 import dev.gabriel.wisewallet.core.domain.events.DomainEvent;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.SneakyThrows;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Getter
@@ -46,31 +42,19 @@ public abstract class Aggregate extends Entity {
             throw new IllegalStateException("Event version %s doesn't match expected version %s.".formatted(
                     event.getVersion(), getNextVersion()
             ));
+
         apply(event);
         changes.add(event);
         version = event.getVersion();
     }
 
     private void apply(DomainEvent event) {
-        invoke("apply", event);
-    }
-
-    public void process(Command command) {
-        invoke("process", command);
-    }
-
-    @SneakyThrows(InvocationTargetException.class)
-    public void invoke(String methodName, Object object) {
         try {
-            for (Method method : this.getClass().getMethods()) {
-                if (method.getName().equals(methodName) && method.getParameterTypes()[0].equals(object.getClass())) {
-                    if (Modifier.isPrivate(method.getModifiers())) method.setAccessible(true);
-                    method.invoke(this, object);
-                }
-            }
-        }catch(IllegalAccessException e) {
-            throw new UnsupportedOperationException("Aggregate %s doesn't supports %s(%s).".formatted(
-                    this.getClass().getSimpleName(), methodName, object.getClass().getSimpleName()
+            Method method = this.getClass().getDeclaredMethod("apply", event.getClass());
+            method.invoke(this, event);
+        }catch(IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new UnsupportedOperationException("Aggregate %s doesn't supports apply(%s).".formatted(
+                    this.getClass().getSimpleName(), event.getClass().getSimpleName()
             ));
         }
     }

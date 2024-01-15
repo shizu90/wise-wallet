@@ -2,6 +2,7 @@ package dev.gabriel.wisewallet.user.infrastructure.services;
 
 import dev.gabriel.wisewallet.core.application.CommandBus;
 import dev.gabriel.wisewallet.user.domain.commands.*;
+import dev.gabriel.wisewallet.user.domain.exceptions.UserNotFoundException;
 import dev.gabriel.wisewallet.user.domain.models.User;
 import dev.gabriel.wisewallet.user.domain.models.UserConfiguration;
 import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjectionRepository;
