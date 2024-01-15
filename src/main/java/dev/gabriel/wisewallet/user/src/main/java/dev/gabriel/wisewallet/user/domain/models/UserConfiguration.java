@@ -2,7 +2,6 @@ package dev.gabriel.wisewallet.user.domain.models;
 
 import dev.gabriel.wisewallet.core.domain.models.ValueObject;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

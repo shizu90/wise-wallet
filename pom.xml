@@ -16,14 +16,14 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>src/main/java/core</module>
-        <module>src/main/java/user</module>
-        <module>src/main/java/wallet</module>
-        <module>src/main/java/bill</module>
-        <module>src/main/java/budget</module>
-        <module>src/main/java/recurringbill</module>
-        <module>src/main/java/reminder</module>
-        <module>src/main/java/category</module>
+        <module>src/main/java/dev/gabriel/wisewallet/core</module>
+        <module>src/main/java/dev/gabriel/wisewallet/user</module>
+        <module>src/main/java/dev/gabriel/wisewallet/wallet</module>
+        <module>src/main/java/dev/gabriel/wisewallet/bill</module>
+        <module>src/main/java/dev/gabriel/wisewallet/budget</module>
+        <module>src/main/java/dev/gabriel/wisewallet/recurringbill</module>
+        <module>src/main/java/dev/gabriel/wisewallet/reminder</module>
+        <module>src/main/java/dev/gabriel/wisewallet/category</module>
     </modules>
 
     <properties>
