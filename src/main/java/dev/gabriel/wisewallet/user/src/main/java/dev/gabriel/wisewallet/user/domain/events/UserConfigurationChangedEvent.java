@@ -1,5 +1,6 @@
 package dev.gabriel.wisewallet.user.domain.events;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
 import lombok.NonNull;
 
@@ -10,6 +11,7 @@ public class UserConfigurationChangedEvent extends UserEvent {
     private final String defaultCurrencyCode;
     private final String defaultLanguage;
 
+    @JsonCreator
     public UserConfigurationChangedEvent(UUID aggregateId,
                                          Long version,
                                          String defaultCurrencyCode,

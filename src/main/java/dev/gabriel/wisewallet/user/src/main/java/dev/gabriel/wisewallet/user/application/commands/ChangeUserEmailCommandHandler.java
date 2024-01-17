@@ -20,6 +20,8 @@ public class ChangeUserEmailCommandHandler implements CommandHandler<ChangeUserE
         User user = userEventStore.load(command.getAggregateId()).orElseThrow(() ->
                 new UserNotFoundException("User %s was not found.".formatted(command.getAggregateId())));
 
+        if(command.getEmail().equals(user.getEmail().getValue())) return user;
+
         user.changeEmail(command.getEmail());
 
         userEventStore.saveChanges(user);

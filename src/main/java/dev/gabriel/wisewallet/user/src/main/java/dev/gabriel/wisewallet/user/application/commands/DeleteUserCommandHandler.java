@@ -24,7 +24,7 @@ public class DeleteUserCommandHandler implements CommandHandler<DeleteUserComman
 
         userEventStore.saveChanges(user);
 
-        return null;
+        return user;
     }
 
     @Override

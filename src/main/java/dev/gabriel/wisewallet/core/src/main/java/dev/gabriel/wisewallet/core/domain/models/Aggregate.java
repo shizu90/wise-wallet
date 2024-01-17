@@ -6,6 +6,7 @@ import lombok.NonNull;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +52,7 @@ public abstract class Aggregate extends Entity {
     private void apply(DomainEvent event) {
         try {
             Method method = this.getClass().getDeclaredMethod("apply", event.getClass());
+            if(Modifier.isPrivate(method.getModifiers())) method.setAccessible(true);
             method.invoke(this, event);
         }catch(IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             throw new UnsupportedOperationException("Aggregate %s doesn't supports apply(%s).".formatted(

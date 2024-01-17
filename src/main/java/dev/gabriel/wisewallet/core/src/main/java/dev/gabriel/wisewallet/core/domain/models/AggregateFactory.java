@@ -17,8 +17,8 @@ public class AggregateFactory {
     @SuppressWarnings("unchecked")
     public <T extends Aggregate> T create(String aggregateType, UUID aggregateId) {
         Class<? extends Aggregate> aggregateClass = aggregateTypeMapper.getClassByAggregateType(aggregateType);
-        Constructor<?> constructor = aggregateClass.getDeclaredConstructor(UUID.class);
+        Constructor<?> constructor = aggregateClass.getDeclaredConstructor(UUID.class, Long.class);
         constructor.setAccessible(true);
-        return (T) constructor.newInstance(aggregateId);
+        return (T) constructor.newInstance(aggregateId, 0L);
     }
 }

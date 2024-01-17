@@ -1,9 +1,11 @@
 package dev.gabriel.wisewallet.user.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
 import dev.gabriel.wisewallet.user.domain.events.*;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyDeletedException;
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.util.UUID;
 
@@ -15,6 +17,11 @@ public class User extends Aggregate {
     private UserConfiguration configuration;
     private Boolean isDeleted;
 
+    @JsonCreator
+    private User(@NonNull UUID id, Long version) {
+        super(UserId.create(id), version);
+    }
+
     private User(UUID id,
                  String name,
                  String email,
@@ -22,11 +29,16 @@ public class User extends Aggregate {
                  String defaultCurrencyCode,
                  String defaultLanguage
     ) {
-        super(UserId.create(id), 0L);
-        this.name = Username.create(name);
-        this.email = Email.create(email);
-        this.password = Password.create(password);
-        this.configuration = UserConfiguration.create(defaultCurrencyCode, defaultLanguage);
+        this(id, 0L);
+        applyChange(new UserCreatedEvent(
+                id,
+                this.getNextVersion(),
+                name,
+                email,
+                password,
+                defaultCurrencyCode,
+                defaultLanguage
+        ));
     }
 
     public static User create(UUID id,
@@ -40,19 +52,7 @@ public class User extends Aggregate {
         Email.validate(email);
         Password.validate(password);
 
-        User user = new User(id, name, email, password, defaultCurrencyCode, defaultLanguage);
-
-        user.applyChange(new UserCreatedEvent(
-                id,
-                user.getNextVersion(),
-                name,
-                email,
-                password,
-                defaultCurrencyCode,
-                defaultLanguage
-        ));
-
-        return user;
+        return new User(id, name, email, password, defaultCurrencyCode, defaultLanguage);
     }
 
     public void rename(String name) {
@@ -110,7 +110,7 @@ public class User extends Aggregate {
     }
 
     @SuppressWarnings("unused")
-    public void apply(UserCreatedEvent event) {
+    private void apply(UserCreatedEvent event) {
         this.id = UserId.create(event.getAggregateId());
         this.name = Username.create(event.getName());
         this.email = Email.create(event.getEmail());
@@ -120,27 +120,27 @@ public class User extends Aggregate {
     }
 
     @SuppressWarnings("unused")
-    public void apply(UserRenamedEvent event) {
+    private void apply(UserRenamedEvent event) {
         this.name = Username.create(event.getName());
     }
 
     @SuppressWarnings("unused")
-    public void apply(UserEmailChangedEvent event) {
+    private void apply(UserEmailChangedEvent event) {
         this.email = Email.create(event.getEmail());
     }
 
     @SuppressWarnings("unused")
-    public void apply(UserPasswordChangedEvent event) {
+    private void apply(UserPasswordChangedEvent event) {
         this.password = Password.create(event.getPassword());
     }
 
     @SuppressWarnings("unused")
-    public void apply(UserConfigurationChangedEvent event) {
+    private void apply(UserConfigurationChangedEvent event) {
         this.configuration = UserConfiguration.create(event.getDefaultCurrencyCode(), event.getDefaultLanguage());
     }
 
     @SuppressWarnings("unused")
-    public void apply(UserDeletedEvent event) {
+    private void apply(UserDeletedEvent event) {
         this.isDeleted = true;
     }
 

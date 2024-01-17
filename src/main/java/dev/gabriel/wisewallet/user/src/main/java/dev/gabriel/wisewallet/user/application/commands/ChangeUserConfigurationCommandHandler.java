@@ -20,6 +20,11 @@ public class ChangeUserConfigurationCommandHandler implements CommandHandler<Cha
         User user = userEventStore.load(command.getAggregateId()).orElseThrow(() ->
             new UserNotFoundException("User %s was not found".formatted(command.getAggregateId())));
 
+        if(command.getDefaultLanguage() != null &&
+           command.getDefaultLanguage().equals(user.getConfiguration().getDefaultLanguage()) &&
+           command.getDefaultCurrencyCode() != null &&
+           command.getDefaultCurrencyCode().equals(user.getConfiguration().getDefaultCurrencyCode())) return user;
+
         user.changeConfiguration(command.getDefaultCurrencyCode(), command.getDefaultLanguage());
 
         userEventStore.saveChanges(user);

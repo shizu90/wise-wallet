@@ -20,6 +20,8 @@ public class RenameUserCommandHandler implements CommandHandler<RenameUserComman
         User user = userEventStore.load(command.getAggregateId()).orElseThrow(() ->
                 new UserNotFoundException("User %s was not found.".formatted(command.getAggregateId())));
 
+        if(command.getName().equals(user.getName().getValue())) return user;
+
         user.rename(command.getName());
 
         userEventStore.saveChanges(user);

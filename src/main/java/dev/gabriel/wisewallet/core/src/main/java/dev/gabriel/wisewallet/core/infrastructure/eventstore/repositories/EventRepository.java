@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.postgresql.util.PGobject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigInteger;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -49,6 +51,11 @@ public class EventRepository {
     }
 
     public List<DomainEventWithId<DomainEvent>> getEvents(@NonNull UUID aggregateId, @Nullable Long fromVersion, @Nullable Long toVersion) {
+        MapSqlParameterSource parameters = new MapSqlParameterSource();
+        parameters.addValue("aggregateId", aggregateId);
+        parameters.addValue("fromVersion", fromVersion, Types.INTEGER);
+        parameters.addValue("toVersion", toVersion, Types.INTEGER);
+
         return jdbcTemplate.query("""
                     SELECT id, transaction_id::text, type, payload
                     FROM events WHERE aggregate_id = :aggregateId
@@ -56,7 +63,7 @@ public class EventRepository {
                     AND (:toVersion IS NULL OR version <= :toVersion)
                     ORDER BY version ASC
                 """,
-                Map.of("aggregateId", aggregateId, "fromVersion", fromVersion, "toVersion", toVersion),
+                parameters,
                 this::toEvent);
     }
 

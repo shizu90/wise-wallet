@@ -2,17 +2,16 @@ package dev.gabriel.wisewallet.user.infrastructure.mappers;
 
 import dev.gabriel.wisewallet.user.domain.models.User;
 import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjection;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserProjectionMapper {
-    public UserProjection toProjection(User user) {
-        return UserProjection.create(
-                user.getId().getValue(),
-                user.getName().getValue(),
-                user.getEmail().getValue(),
-                user.getPassword().getValue(),
-                user.getConfiguration()
-        );
-    }
+@Mapper(componentModel = "spring")
+public interface UserProjectionMapper {
+
+    @Mapping(source = "name.value", target = "name")
+    @Mapping(source = "email.value", target = "email")
+    @Mapping(source = "password.value", target = "password")
+    UserProjection userToUserProjection(User user);
 }
