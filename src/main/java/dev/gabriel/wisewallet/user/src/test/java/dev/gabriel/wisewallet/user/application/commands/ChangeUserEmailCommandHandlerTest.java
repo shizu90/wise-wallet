@@ -52,7 +52,7 @@ public class ChangeUserEmailCommandHandlerTest {
         );
 
         Mockito.when(userRepository.load(command.getAggregateId())).thenReturn(Optional.of(user));
-        Mockito.when(checkUniqueEmailService.exists(command.getEmail())).thenReturn(false);
+        Mockito.when(checkUniqueEmailService.exists(command.getEmail())).thenReturn(0L);
 
         User returnedUser = changeUserEmailCommandHandler.handle(command);
 

@@ -1,9 +1,11 @@
 package dev.gabriel.wisewallet.domain.events;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public enum EventType {
     WALLET_CREATED(WalletCreatedEvent.class),
     WALLET_RENAMED(WalletRenamedEvent.class),
@@ -14,5 +16,5 @@ public enum EventType {
     WALLET_MAIN_TOGGLED(WalletMainToggledEvent.class),
     WALLET_DELETED(WalletDeletedEvent.class);
 
-    private final Class<? extends WalletEvent> event;
+    private final Class<? extends WalletEvent> type;
 }

@@ -1,10 +1,10 @@
 package dev.gabriel.wisewallet.user.presentation.controllers;
 
+import dev.gabriel.wisewallet.core.presentation.exceptions.ControllerException;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyDeletedException;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyExistsException;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserNotFoundException;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserValidationException;
-import dev.gabriel.wisewallet.user.presentation.exceptions.ControllerException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.Instant;
 
+@SuppressWarnings("unused")
 @RestControllerAdvice
 public class UserControllerExceptionHandler {
     @ExceptionHandler(UserValidationException.class)

@@ -32,6 +32,7 @@
         <java.version>21</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.plugin.version>3.12.1</maven.compiler.plugin.version>
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
         <spring.version>3.2.0</spring.version>
         <spring.mongodb.version>4.2.0</spring.mongodb.version>

@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+@SuppressWarnings("unused")
 @RestController
-@RequestMapping("/users")
+@RequestMapping(value = "/api/users")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserController {
     private final UserService userService;

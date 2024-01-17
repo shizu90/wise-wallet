@@ -108,20 +108,12 @@ public class Wallet extends Aggregate {
         ));
     }
 
-    public void toggleMain() {
-        if(main) {
-            applyChange(new WalletMainToggledEvent(
-                    id.getValue(),
-                    getNextVersion(),
-                    false
-            ));
-        }else {
-            applyChange(new WalletMainToggledEvent(
-                    id.getValue(),
-                    getNextVersion(),
-                    true
-            ));
-        }
+    public void toggleMain(Boolean main) {
+        applyChange(new WalletMainToggledEvent(
+                id.getValue(),
+                getNextVersion(),
+                main
+        ));
     }
 
     public void delete() {

@@ -19,13 +19,15 @@ public class UserProjection {
     private String email;
     private String password;
     private UserConfiguration configuration;
+    private Boolean isDeleted;
 
     public static UserProjection create(UUID id,
                                         String name,
                                         String email,
                                         String password,
-                                        UserConfiguration configuration
+                                        UserConfiguration configuration,
+                                        Boolean isDeleted
     ) {
-        return new UserProjection(id, name, email, password, configuration);
+        return new UserProjection(id, name, email, password, configuration, isDeleted);
     }
 }

@@ -19,7 +19,7 @@ public class UserEventStore implements UserRepository {
     @Override
     public Optional<User> load(UUID userId) {
         User user = (User) aggregateService.load(AggregateType.USER.toString(), userId, null);
-        return Optional.of(user);
+        return user != null ? Optional.of(user) : Optional.empty();
     }
 
     @Override

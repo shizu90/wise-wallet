@@ -42,7 +42,7 @@ public class CreateUserCommandHandlerTest {
                 "PT_BR"
         );
 
-        Mockito.when(checkUniqueEmailService.exists(command.getEmail())).thenReturn(false);
+        Mockito.when(checkUniqueEmailService.exists(command.getEmail())).thenReturn(0L);
 
         User user = createUserCommandHandler.handle(command);
 

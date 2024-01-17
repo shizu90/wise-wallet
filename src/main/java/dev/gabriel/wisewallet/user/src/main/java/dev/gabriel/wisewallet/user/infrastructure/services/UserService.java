@@ -5,7 +5,7 @@ import dev.gabriel.wisewallet.user.domain.commands.*;
 import dev.gabriel.wisewallet.user.domain.models.User;
 import dev.gabriel.wisewallet.user.domain.models.UserConfiguration;
 import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjectionRepository;
-import dev.gabriel.wisewallet.user.presentation.dtos.mappers.DtoMapper;
+import dev.gabriel.wisewallet.user.presentation.dtos.mappers.UserDtoMapper;
 import dev.gabriel.wisewallet.user.presentation.dtos.UserRequestDto;
 import dev.gabriel.wisewallet.user.presentation.dtos.UserResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -21,10 +21,10 @@ import java.util.UUID;
 public class UserService {
     private final CommandBus<UserCommand> commandBus;
     private final UserProjectionRepository userProjectionRepository;
-    private final DtoMapper dtoMapper;
+    private final UserDtoMapper dtoMapper;
 
     public UserResponseDto getById(UUID id) {
-        return dtoMapper.userProjectionToUserResponseDto(userProjectionRepository.findById(id).orElse(null));
+        return dtoMapper.toResponseDto(userProjectionRepository.findById(id).orElse(null));
     }
 
     public UserResponseDto create(UserRequestDto request) {
@@ -37,7 +37,7 @@ public class UserService {
                         request.defaultLanguage()
                 ));
 
-        return dtoMapper.userToUserResponseDto(user);
+        return dtoMapper.toResponseDto(user);
     }
 
     public UserResponseDto update(UserRequestDto request) {
@@ -74,7 +74,7 @@ public class UserService {
                     )
             );
         }
-        return dtoMapper.userToUserResponseDto(user);
+        return dtoMapper.toResponseDto(user);
     }
 
     public void delete(UUID id) {

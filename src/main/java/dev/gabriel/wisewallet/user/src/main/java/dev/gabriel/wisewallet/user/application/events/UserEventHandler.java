@@ -26,7 +26,8 @@ public class UserEventHandler implements SyncEventHandler {
                 user.getName().getValue(),
                 user.getEmail().getValue(),
                 user.getPassword().getValue(),
-                user.getConfiguration()
+                user.getConfiguration(),
+                user.getIsDeleted()
         );
         projectionRepository.save(userProjection);
     }
