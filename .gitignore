@@ -1,9 +1,13 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
+!src/main/java/dev/gabriel/wisewallet/**/target/**
 !**/src/test/**/target/
+.env
+application.properties
 
 ### IntelliJ IDEA ###
+.idea/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml

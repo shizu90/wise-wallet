@@ -2,7 +2,7 @@ package dev.gabriel.wisewallet.domain.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
-import dev.gabriel.wisewallet.core.domain.models.Currency;
+import dev.gabriel.wisewallet.currency.domain.models.Currency;
 import dev.gabriel.wisewallet.domain.events.*;
 import dev.gabriel.wisewallet.domain.exceptions.WalletAlreadyDeletedException;
 import lombok.Getter;
