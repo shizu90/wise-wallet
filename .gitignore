@@ -1,8 +1,8 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!src/main/java/dev/gabriel/wisewallet/**/target/**
-!**/src/test/**/target/
+**/src/main/**/target/
+src/main/java/dev/gabriel/wisewallet/**/target/
+**/src/test/**/target/
 .env
 application.properties
 
