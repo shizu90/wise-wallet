@@ -1,11 +1,11 @@
 package dev.gabriel.wisewallet.user.application.events;
 
+import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjection;
+import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjectionRepository;
 import dev.gabriel.wisewallet.core.application.SyncEventHandler;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
 import dev.gabriel.wisewallet.user.domain.models.AggregateType;
 import dev.gabriel.wisewallet.user.domain.models.User;
-import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjection;
-import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjectionRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

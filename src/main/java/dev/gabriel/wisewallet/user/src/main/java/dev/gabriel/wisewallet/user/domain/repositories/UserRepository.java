@@ -1,7 +1,7 @@
 package dev.gabriel.wisewallet.user.domain.repositories;
 
-import dev.gabriel.wisewallet.core.domain.repositories.DomainRepository;
 import dev.gabriel.wisewallet.user.domain.models.User;
+import dev.gabriel.wisewallet.core.domain.repositories.DomainRepository;
 
 import java.util.Optional;
 import java.util.UUID;

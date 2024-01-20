@@ -1,7 +1,7 @@
 package dev.gabriel.wisewallet.user.presentation.controllers;
 
-import dev.gabriel.wisewallet.core.presentation.exceptions.ControllerException;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyDeletedException;
+import dev.gabriel.wisewallet.core.presentation.exceptions.ControllerException;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyExistsException;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserNotFoundException;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserValidationException;
@@ -26,7 +26,7 @@ public class UserControllerExceptionHandler {
 
     @ExceptionHandler(UserAlreadyDeletedException.class)
     public ResponseEntity<ControllerException> alreadyDeleted(UserAlreadyDeletedException e, HttpServletRequest request) {
-        String error = "User already deleted.";
+        String error = "Already deleted.";
         HttpStatus status = HttpStatus.CONFLICT;
         ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(exception);
@@ -34,7 +34,7 @@ public class UserControllerExceptionHandler {
 
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<ControllerException> alreadyExists(UserAlreadyExistsException e, HttpServletRequest request) {
-        String error = "User already exists.";
+        String error = "Already exists.";
         HttpStatus status = HttpStatus.CONFLICT;
         ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(exception);
@@ -42,7 +42,7 @@ public class UserControllerExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ControllerException> notFound(UserNotFoundException e, HttpServletRequest request) {
-        String error = "User not found.";
+        String error = "Not found.";
         HttpStatus status = HttpStatus.NOT_FOUND;
         ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(exception);

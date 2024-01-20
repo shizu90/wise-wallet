@@ -1,9 +1,9 @@
 package dev.gabriel.wisewallet.user.domain.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyDeletedException;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
 import dev.gabriel.wisewallet.user.domain.events.*;
-import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyDeletedException;
 import lombok.Getter;
 import lombok.NonNull;
 

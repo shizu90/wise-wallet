@@ -1,11 +1,11 @@
 package dev.gabriel.wisewallet.user.application.commands;
 
-import dev.gabriel.wisewallet.core.application.CommandHandler;
 import dev.gabriel.wisewallet.user.domain.commands.CreateUserCommand;
+import dev.gabriel.wisewallet.user.infrastructure.services.CheckUniqueEmailService;
+import dev.gabriel.wisewallet.core.application.CommandHandler;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyExistsException;
 import dev.gabriel.wisewallet.user.domain.models.User;
 import dev.gabriel.wisewallet.user.domain.repositories.UserRepository;
-import dev.gabriel.wisewallet.user.infrastructure.services.CheckUniqueEmailService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

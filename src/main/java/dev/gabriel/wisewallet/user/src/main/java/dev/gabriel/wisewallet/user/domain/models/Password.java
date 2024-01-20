@@ -1,7 +1,7 @@
 package dev.gabriel.wisewallet.user.domain.models;
 
-import dev.gabriel.wisewallet.core.domain.models.ValueObject;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserValidationException;
+import dev.gabriel.wisewallet.core.domain.models.ValueObject;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

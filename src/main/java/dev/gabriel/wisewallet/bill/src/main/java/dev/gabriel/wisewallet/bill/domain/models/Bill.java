@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import dev.gabriel.wisewallet.bill.domain.events.*;
 import dev.gabriel.wisewallet.bill.domain.exceptions.BillAlreadyDeletedException;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
-import dev.gabriel.wisewallet.currency.domain.models.Currency;
+import dev.gabriel.wisewallet.wallet.currency.domain.models.Currency;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -122,7 +122,7 @@ public class Bill extends Aggregate {
 
     public void delete() {
         if(isDeleted)
-            throw new BillAlreadyDeletedException("Bill %s is already deleted.".formatted(id.getValue()));
+            throw new BillAlreadyDeletedException("Bill %s already deleted.".formatted(id.getValue()));
 
         applyChange(new BillDeletedEvent(
                 id.getValue(),

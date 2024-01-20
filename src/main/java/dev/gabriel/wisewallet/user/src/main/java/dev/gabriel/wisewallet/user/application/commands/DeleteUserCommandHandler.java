@@ -1,7 +1,7 @@
 package dev.gabriel.wisewallet.user.application.commands;
 
-import dev.gabriel.wisewallet.core.application.CommandHandler;
 import dev.gabriel.wisewallet.user.domain.commands.DeleteUserCommand;
+import dev.gabriel.wisewallet.core.application.CommandHandler;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserNotFoundException;
 import dev.gabriel.wisewallet.user.domain.models.User;
 import dev.gabriel.wisewallet.user.domain.repositories.UserRepository;

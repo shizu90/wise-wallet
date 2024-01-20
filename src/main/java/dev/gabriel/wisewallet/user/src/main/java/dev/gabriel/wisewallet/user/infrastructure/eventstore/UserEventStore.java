@@ -1,8 +1,8 @@
 package dev.gabriel.wisewallet.user.infrastructure.eventstore;
 
-import dev.gabriel.wisewallet.core.infrastructure.eventstore.services.AggregateService;
 import dev.gabriel.wisewallet.user.domain.models.AggregateType;
 import dev.gabriel.wisewallet.user.domain.models.User;
+import dev.gabriel.wisewallet.core.infrastructure.eventstore.services.AggregateService;
 import dev.gabriel.wisewallet.user.domain.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

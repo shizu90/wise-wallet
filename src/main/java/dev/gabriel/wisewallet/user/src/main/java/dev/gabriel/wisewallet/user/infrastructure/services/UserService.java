@@ -1,13 +1,13 @@
 package dev.gabriel.wisewallet.user.infrastructure.services;
 
+import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjectionRepository;
+import dev.gabriel.wisewallet.user.presentation.dtos.UserRequestDto;
+import dev.gabriel.wisewallet.user.presentation.dtos.UserResponseDto;
 import dev.gabriel.wisewallet.core.application.CommandBus;
 import dev.gabriel.wisewallet.user.domain.commands.*;
 import dev.gabriel.wisewallet.user.domain.models.User;
 import dev.gabriel.wisewallet.user.domain.models.UserConfiguration;
-import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjectionRepository;
 import dev.gabriel.wisewallet.user.presentation.dtos.mappers.UserDtoMapper;
-import dev.gabriel.wisewallet.user.presentation.dtos.UserRequestDto;
-import dev.gabriel.wisewallet.user.presentation.dtos.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class UserService {
     private final UserDtoMapper dtoMapper;
 
     public UserResponseDto getById(UUID id) {
-        return dtoMapper.toResponseDto(userProjectionRepository.findById(id).orElse(null));
+        return dtoMapper.toResponseDto(userProjectionRepository.find(id).orElse(null));
     }
 
     public UserResponseDto create(UserRequestDto request) {

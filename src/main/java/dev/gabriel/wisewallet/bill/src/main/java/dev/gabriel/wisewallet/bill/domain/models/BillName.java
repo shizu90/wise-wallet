@@ -19,8 +19,8 @@ public class BillName extends ValueObject {
     }
 
     public static void validate(String value) {
-        if(value == null || value.isEmpty() || value.length() > 255) {
-            throw new BillValidationException("Bill validation failed on name field: name must have between 3 and 255 characters.");
+        if(value == null || value.isEmpty() || value.length() > 256) {
+            throw new BillValidationException("Bill validation failed on name field: name must have between 1 and 256 characters.");
         }
     }
 
