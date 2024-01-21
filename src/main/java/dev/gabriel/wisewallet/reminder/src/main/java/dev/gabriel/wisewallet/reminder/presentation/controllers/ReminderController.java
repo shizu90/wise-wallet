@@ -20,26 +20,26 @@ public class ReminderController {
     private final ReminderService reminderService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ReminderResponseDto> getById(@PathVariable UUID id) {
-        return ResponseEntity.ok().body(reminderService.getById(id));
+    public ResponseEntity<ReminderResponseDto> getReminder(@PathVariable UUID id) {
+        return ResponseEntity.ok().body(reminderService.getReminder(id));
     }
 
     @GetMapping
-    public ResponseEntity<ReminderListResponseDto> get(@NonNull @RequestParam("userId") UUID userId,
+    public ResponseEntity<ReminderListResponseDto> getReminders(@NonNull @RequestParam("userId") UUID userId,
                                                        @RequestParam(value = "name", required = false) String name,
                                                        @RequestParam(value = "page", required = false) Integer page,
                                                        @RequestParam(value = "limit", required = false) Integer limit
     ) {
-        return ResponseEntity.ok().body(reminderService.get(userId, name, page == null ? 0 : page, limit == null ? 4 : limit));
+        return ResponseEntity.ok().body(reminderService.getReminders(userId, name, page == null ? 0 : page, limit == null ? 4 : limit));
     }
 
     @PostMapping
-    public ResponseEntity<ReminderResponseDto> createReminder(@RequestBody ReminderRequestDto request) {
-        return ResponseEntity.ok().body(reminderService.create(request));
+    public ResponseEntity<ReminderResponseDto> newReminder(@RequestBody ReminderRequestDto request) {
+        return ResponseEntity.ok().body(reminderService.newReminder(request));
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ReminderResponseDto> updateReminder(@PathVariable UUID id, @RequestBody ReminderRequestDto request) {
+    public ResponseEntity<ReminderResponseDto> updateReminderData(@PathVariable UUID id, @RequestBody ReminderRequestDto request) {
         request = new ReminderRequestDto(
                 id,
                 request.name(),
@@ -49,30 +49,30 @@ public class ReminderController {
                 request.userId()
         );
 
-        return ResponseEntity.ok().body(reminderService.update(request));
+        return ResponseEntity.ok().body(reminderService.updateReminderData(request));
     }
 
-    @PutMapping(value = "/start/{id}")
+    @PatchMapping(value = "/start/{id}")
     public ResponseEntity<Void> startReminder(@PathVariable UUID id) {
-        reminderService.start(id);
+        reminderService.startReminder(id);
         return ResponseEntity.ok().body(null);
     }
 
-    @PutMapping(value = "/stop/{id}")
+    @PatchMapping(value = "/stop/{id}")
     public ResponseEntity<Void> stopReminder(@PathVariable UUID id) {
-        reminderService.stop(id);
+        reminderService.stopReminder(id);
         return ResponseEntity.ok().body(null);
     }
 
-    @PutMapping(value = "/reset/{id}")
+    @PatchMapping(value = "/reset/{id}")
     public ResponseEntity<Void> resetReminder(@PathVariable UUID id) {
-        reminderService.reset(id);
+        reminderService.resetReminder(id);
         return ResponseEntity.ok().body(null);
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteReminder(@PathVariable UUID id) {
-        reminderService.delete(id);
+        reminderService.deleteReminder(id);
         return ResponseEntity.ok().body(null);
     }
 }

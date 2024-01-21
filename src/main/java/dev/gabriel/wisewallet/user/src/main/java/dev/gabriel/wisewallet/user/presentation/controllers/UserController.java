@@ -18,17 +18,17 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UserResponseDto> getById(@PathVariable UUID userId) {
-        return ResponseEntity.ok().body(userService.getById(userId));
+    public ResponseEntity<UserResponseDto> getUser(@PathVariable UUID userId) {
+        return ResponseEntity.ok().body(userService.getUser(userId));
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto request) {
-        return ResponseEntity.ok().body(userService.create(request));
+    public ResponseEntity<UserResponseDto> newUser(@RequestBody UserRequestDto request) {
+        return ResponseEntity.ok().body(userService.newUser(request));
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponseDto> updateUser(@PathVariable UUID userId, @RequestBody UserRequestDto request) {
+    public ResponseEntity<UserResponseDto> updateUserData(@PathVariable UUID userId, @RequestBody UserRequestDto request) {
         request = new UserRequestDto(
                 userId,
                 request.name(),
@@ -37,12 +37,12 @@ public class UserController {
                 request.defaultCurrencyCode(),
                 request.defaultLanguage()
         );
-        return ResponseEntity.ok().body(userService.update(request));
+        return ResponseEntity.ok().body(userService.updateUserData(request));
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {
-        userService.delete(userId);
+        userService.deleteUser(userId);
 
         return ResponseEntity.ok().body(null);
     }

@@ -21,8 +21,8 @@ public class WalletController {
     private final WalletService walletService;
 
     @GetMapping(value = "/{walletId}")
-    public ResponseEntity<WalletResponseDto> getById(@PathVariable UUID walletId) {
-        return ResponseEntity.ok().body(walletService.getById(walletId));
+    public ResponseEntity<WalletResponseDto> getWallet(@PathVariable UUID walletId) {
+        return ResponseEntity.ok().body(walletService.getWallet(walletId));
     }
 
     @GetMapping
@@ -34,7 +34,7 @@ public class WalletController {
     ) {
         return ResponseEntity
                 .ok()
-                .body(walletService.get(
+                .body(walletService.getWallets(
                         userId,
                         name,
                         type,
@@ -42,12 +42,12 @@ public class WalletController {
                         limit == null ? 4 : limit));
     }
     @PostMapping
-    public ResponseEntity<WalletResponseDto> createWallet(@RequestBody WalletRequestDto request) {
-        return ResponseEntity.ok().body(walletService.create(request));
+    public ResponseEntity<WalletResponseDto> newWallet(@RequestBody WalletRequestDto request) {
+        return ResponseEntity.ok().body(walletService.newWallet(request));
     }
 
     @PutMapping(value = "/{walletId}")
-    public ResponseEntity<WalletResponseDto> updateWallet(@PathVariable UUID walletId, @RequestBody WalletRequestDto request) {
+    public ResponseEntity<WalletResponseDto> updateWalletData(@PathVariable UUID walletId, @RequestBody WalletRequestDto request) {
         request = new WalletRequestDto(
                 walletId,
                 request.name(),
@@ -58,12 +58,12 @@ public class WalletController {
                 request.type(),
                 request.userId()
         );
-        return ResponseEntity.ok().body(walletService.update(request));
+        return ResponseEntity.ok().body(walletService.updateWalletData(request));
     }
 
     @DeleteMapping(value = "/{walletId}")
     public ResponseEntity<Void> deleteWallet(@PathVariable UUID walletId) {
-        walletService.delete(walletId);
+        walletService.deleteWallet(walletId);
         return ResponseEntity.ok().body(null);
     }
 }

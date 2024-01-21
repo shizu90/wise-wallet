@@ -25,11 +25,11 @@ public class BillService {
     private final BillProjectionRepository billProjectionRepository;
     private final BillDtoMapper dtoMapper;
 
-    public BillResponseDto getById(UUID id) {
+    public BillResponseDto getBill(UUID id) {
         return dtoMapper.toResponseDto(billProjectionRepository.find(id).orElse(null));
     }
 
-    public BillListResponseDto get(UUID walletId, String name, BillType type, int page, int limit) {
+    public BillListResponseDto getBills(UUID walletId, String name, BillType type, int page, int limit) {
         if(name == null && type == null)
             return dtoMapper.toResponseDto(billProjectionRepository.findByWalletId(walletId, PageRequest.of(page, limit)));
         if(name != null && type != null)
@@ -43,7 +43,7 @@ public class BillService {
                                                 PageRequest.of(page, limit)));
     }
 
-    public BillResponseDto create(BillRequestDto request) {
+    public BillResponseDto newBill(BillRequestDto request) {
         Bill bill = (Bill) commandBus.execute(new CreateBillCommand(
                 UUID.randomUUID(),
                 request.name(),
@@ -58,7 +58,7 @@ public class BillService {
         return dtoMapper.toResponseDto(bill);
     }
 
-    public BillResponseDto update(BillRequestDto request) {
+    public BillResponseDto updateBillData(BillRequestDto request) {
         Bill bill = null;
         if(request.name() != null) {
             bill = (Bill) commandBus.execute(new RenameBillCommand(
@@ -108,7 +108,7 @@ public class BillService {
         return dtoMapper.toResponseDto(bill);
     }
 
-    public void delete(UUID id) {
+    public void deleteBill(UUID id) {
         commandBus.execute(new DeleteBillCommand(id));
     }
 }

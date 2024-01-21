@@ -1,7 +1,7 @@
 package dev.gabriel.wisewallet.wallet.application.commands;
 
 import dev.gabriel.wisewallet.core.application.CommandHandler;
-import dev.gabriel.wisewallet.wallet.currency.domain.services.CurrencyConversion;
+import dev.gabriel.wisewallet.currency.domain.services.CurrencyConversion;
 import dev.gabriel.wisewallet.wallet.domain.commands.UpdateWalletBalanceCommand;
 import dev.gabriel.wisewallet.wallet.domain.exceptions.WalletNotFoundException;
 import dev.gabriel.wisewallet.wallet.domain.models.Wallet;

@@ -24,18 +24,18 @@ public class ReminderService {
     private final ReminderProjectionRepository reminderProjectionRepository;
     private final ReminderDtoMapper reminderDtoMapper;
 
-    public ReminderResponseDto getById(UUID id) {
+    public ReminderResponseDto getReminder(UUID id) {
         return reminderDtoMapper.toResponseDto(reminderProjectionRepository.find(id).orElse(null));
     }
 
-    public ReminderListResponseDto get(UUID userId, String name, int page, int limit) {
+    public ReminderListResponseDto getReminders(UUID userId, String name, int page, int limit) {
         if(name == null)
             return reminderDtoMapper.toResponseDto(reminderProjectionRepository.findByUserId(userId, PageRequest.of(page, limit)));
 
         return reminderDtoMapper.toResponseDto(reminderProjectionRepository.findByUserIdAndName(userId, name, PageRequest.of(page, limit)));
     }
 
-    public ReminderResponseDto create(ReminderRequestDto request) {
+    public ReminderResponseDto newReminder(ReminderRequestDto request) {
         Reminder reminder = (Reminder) commandBus.execute(new CreateReminderCommand(
                 request.id(),
                 request.name(),
@@ -48,7 +48,7 @@ public class ReminderService {
         return reminderDtoMapper.toResponseDto(reminder);
     }
 
-    public ReminderResponseDto update(ReminderRequestDto request) {
+    public ReminderResponseDto updateReminderData(ReminderRequestDto request) {
         Reminder reminder = null;
 
         if(!(request.name() == null || request.name().isEmpty() || request.name().isBlank())) {
@@ -67,19 +67,19 @@ public class ReminderService {
         return reminderDtoMapper.toResponseDto(reminder);
     }
 
-    public void start(UUID id) {
+    public void startReminder(UUID id) {
         commandBus.execute(new StartReminderCommand(id));
     }
 
-    public void stop(UUID id) {
+    public void stopReminder(UUID id) {
         commandBus.execute(new StopReminderCommand(id));
     }
 
-    public void reset(UUID id) {
+    public void resetReminder(UUID id) {
         commandBus.execute(new ResetReminderCommand(id));
     }
 
-    public void delete(UUID id) {
+    public void deleteReminder(UUID id) {
         commandBus.execute(new DeleteReminderCommand(id));
     }
 }

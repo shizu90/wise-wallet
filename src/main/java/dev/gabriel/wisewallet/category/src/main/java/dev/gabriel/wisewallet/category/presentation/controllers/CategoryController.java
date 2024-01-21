@@ -20,8 +20,8 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<CategoryResponseDto> getById(@PathVariable UUID id) {
-        return ResponseEntity.ok().body(categoryService.getById(id));
+    public ResponseEntity<CategoryResponseDto> getCategory(@PathVariable UUID id) {
+        return ResponseEntity.ok().body(categoryService.getCategory(id));
     }
 
     @GetMapping
@@ -30,27 +30,27 @@ public class CategoryController {
                                                                  @RequestParam(value = "page", required = false) Integer page,
                                                                  @RequestParam(value = "limit", required = false) Integer limit
     ) {
-        return ResponseEntity.ok().body(categoryService.get(userId, name, page == null ? 0 : page, limit == null ? 4 : limit));
+        return ResponseEntity.ok().body(categoryService.getCategories(userId, name, page == null ? 0 : page, limit == null ? 4 : limit));
     }
 
     @PostMapping
-    public ResponseEntity<CategoryResponseDto> createCategory(@RequestBody CategoryRequestDto request) {
-        return ResponseEntity.ok().body(categoryService.create(request));
+    public ResponseEntity<CategoryResponseDto> newCategory(@RequestBody CategoryRequestDto request) {
+        return ResponseEntity.ok().body(categoryService.newCategory(request));
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<CategoryResponseDto> updateCategory(@PathVariable UUID id, @RequestBody CategoryRequestDto request) {
+    public ResponseEntity<CategoryResponseDto> updateCategoryData(@PathVariable UUID id, @RequestBody CategoryRequestDto request) {
         request = new CategoryRequestDto(
                 id,
                 request.name(),
                 request.userId()
         );
-        return ResponseEntity.ok().body(categoryService.update(request));
+        return ResponseEntity.ok().body(categoryService.updateCategoryData(request));
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable UUID id) {
-        categoryService.delete(id);
+        categoryService.deleteCategory(id);
         return ResponseEntity.ok().body(null);
     }
 }

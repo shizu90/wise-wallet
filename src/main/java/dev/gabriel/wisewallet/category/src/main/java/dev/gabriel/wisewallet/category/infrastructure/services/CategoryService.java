@@ -27,18 +27,18 @@ public class CategoryService {
     private final CategoryProjectionRepository categoryProjectionRepository;
     private final CategoryDtoMapper categoryDtoMapper;
 
-    public CategoryResponseDto getById(UUID id) {
+    public CategoryResponseDto getCategory(UUID id) {
         return categoryDtoMapper.toResponseDto(categoryProjectionRepository.find(id).orElse(null));
     }
 
-    public CategoryListResponseDto get(UUID userId, String name, int page, int limit) {
+    public CategoryListResponseDto getCategories(UUID userId, String name, int page, int limit) {
         if(name == null)
             return categoryDtoMapper.toResponseDto(categoryProjectionRepository.findByUserId(userId, PageRequest.of(page, limit)));
 
         return categoryDtoMapper.toResponseDto(categoryProjectionRepository.findByUserIdAndName(userId, name, PageRequest.of(page, limit)));
     }
 
-    public CategoryResponseDto create(CategoryRequestDto request) {
+    public CategoryResponseDto newCategory(CategoryRequestDto request) {
         Category category = (Category) commandBus.execute(new CreateCategoryCommand(
                 request.id(),
                 request.name(),
@@ -48,7 +48,7 @@ public class CategoryService {
         return categoryDtoMapper.toResponseDto(category);
     }
 
-    public CategoryResponseDto update(CategoryRequestDto request) {
+    public CategoryResponseDto updateCategoryData(CategoryRequestDto request) {
         Category category = null;
         if(!(request.name() == null || request.name().isEmpty() || request.name().isBlank())) {
             category = (Category) commandBus.execute(new RenameCategoryCommand(
@@ -59,7 +59,7 @@ public class CategoryService {
         return categoryDtoMapper.toResponseDto(category);
     }
 
-    public void delete(UUID id) {
+    public void deleteCategory(UUID id) {
         commandBus.execute(new DeleteCategoryCommand(id));
     }
 }

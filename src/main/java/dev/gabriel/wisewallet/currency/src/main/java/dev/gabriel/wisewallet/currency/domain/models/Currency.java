@@ -1,4 +1,4 @@
-package dev.gabriel.wisewallet.wallet.currency.domain.models;
+package dev.gabriel.wisewallet.currency.domain.models;
 
 import dev.gabriel.wisewallet.core.domain.models.ValueObject;
 import lombok.AccessLevel;

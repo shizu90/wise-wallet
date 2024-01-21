@@ -1,7 +1,7 @@
-package dev.gabriel.wisewallet.wallet.currency.infrastructure.services;
+package dev.gabriel.wisewallet.currency.infrastructure.services;
 
-import dev.gabriel.wisewallet.wallet.currency.domain.models.Currency;
-import dev.gabriel.wisewallet.wallet.currency.domain.services.CurrencyConversion;
+import dev.gabriel.wisewallet.currency.domain.services.CurrencyConversion;
+import dev.gabriel.wisewallet.currency.domain.models.Currency;
 import org.springframework.stereotype.Service;
 
 @Service

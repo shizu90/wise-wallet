@@ -21,8 +21,8 @@ public class BillController {
     private final BillService billService;
 
     @GetMapping(value = "/{billId}")
-    public ResponseEntity<BillResponseDto> getById(@PathVariable UUID billId) {
-        return ResponseEntity.ok().body(billService.getById(billId));
+    public ResponseEntity<BillResponseDto> getBill(@PathVariable UUID billId) {
+        return ResponseEntity.ok().body(billService.getBill(billId));
     }
 
     @GetMapping
@@ -34,12 +34,12 @@ public class BillController {
     ) {
         return ResponseEntity
                 .ok()
-                .body(billService.get(walletId, name, type, page == null ? 0 : page, limit == null ? 4 : limit));
+                .body(billService.getBills(walletId, name, type, page == null ? 0 : page, limit == null ? 4 : limit));
     }
 
     @PostMapping
     public ResponseEntity<BillResponseDto> createBill(@RequestBody BillRequestDto request) {
-        return ResponseEntity.ok().body(billService.create(request));
+        return ResponseEntity.ok().body(billService.newBill(request));
     }
 
     @PutMapping(value = "/{id}")
@@ -54,12 +54,12 @@ public class BillController {
                 request.walletId(),
                 request.categoryId()
         );
-        return ResponseEntity.ok().body(billService.update(request));
+        return ResponseEntity.ok().body(billService.updateBillData(request));
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteBill(@PathVariable UUID id) {
-        billService.delete(id);
+        billService.deleteBill(id);
         return ResponseEntity.ok().body(null);
     }
 }

@@ -5,7 +5,7 @@ import dev.gabriel.wisewallet.bill.domain.exceptions.BillNotFoundException;
 import dev.gabriel.wisewallet.bill.domain.models.Bill;
 import dev.gabriel.wisewallet.bill.domain.repositories.BillRepository;
 import dev.gabriel.wisewallet.core.application.CommandHandler;
-import dev.gabriel.wisewallet.wallet.currency.domain.services.CurrencyConversion;
+import dev.gabriel.wisewallet.currency.domain.services.CurrencyConversion;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -25,11 +25,11 @@ public class WalletService {
     private final WalletProjectionRepository walletProjectionRepository;
     private final WalletDtoMapper dtoMapper;
 
-    public WalletResponseDto getById(UUID walletId) {
+    public WalletResponseDto getWallet(UUID walletId) {
         return dtoMapper.toResponseDto(walletProjectionRepository.find(walletId).orElse(null));
     }
 
-    public WalletListResponseDto get(UUID userId, String name, WalletType type, int page, int limit) {
+    public WalletListResponseDto getWallets(UUID userId, String name, WalletType type, int page, int limit) {
         if(name == null && type == null)
             return dtoMapper.toResponseDto(walletProjectionRepository.findByUserId(userId, PageRequest.of(page, limit)));
 
@@ -44,7 +44,7 @@ public class WalletService {
                                             PageRequest.of(page, limit)));
     }
 
-    public WalletResponseDto create(WalletRequestDto walletRequestDto) {
+    public WalletResponseDto newWallet(WalletRequestDto walletRequestDto) {
         Wallet wallet = (Wallet) commandBus.execute(
                 new CreateWalletCommand(
                     UUID.randomUUID(),
@@ -60,7 +60,7 @@ public class WalletService {
         return dtoMapper.toResponseDto(wallet);
     }
 
-    public WalletResponseDto update(WalletRequestDto request) {
+    public WalletResponseDto updateWalletData(WalletRequestDto request) {
         Wallet wallet = null;
         if(!(request.name() == null || request.name().isEmpty() || request.name().isBlank())) {
             wallet = (Wallet) commandBus.execute(
@@ -116,7 +116,7 @@ public class WalletService {
         return dtoMapper.toResponseDto(wallet);
     }
 
-    public void delete(UUID id) {
+    public void deleteWallet(UUID id) {
         commandBus.execute(new DeleteWalletCommand(id));
     }
 }

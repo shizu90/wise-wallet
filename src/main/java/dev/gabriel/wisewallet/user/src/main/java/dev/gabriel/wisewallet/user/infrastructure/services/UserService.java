@@ -23,11 +23,11 @@ public class UserService {
     private final UserProjectionRepository userProjectionRepository;
     private final UserDtoMapper dtoMapper;
 
-    public UserResponseDto getById(UUID id) {
+    public UserResponseDto getUser(UUID id) {
         return dtoMapper.toResponseDto(userProjectionRepository.find(id).orElse(null));
     }
 
-    public UserResponseDto create(UserRequestDto request) {
+    public UserResponseDto newUser(UserRequestDto request) {
         User user = (User) commandBus.execute(
                 new CreateUserCommand(
                         request.name(),
@@ -40,7 +40,7 @@ public class UserService {
         return dtoMapper.toResponseDto(user);
     }
 
-    public UserResponseDto update(UserRequestDto request) {
+    public UserResponseDto updateUserData(UserRequestDto request) {
         User user = null;
 
         if(!(request.name() == null || request.name().isEmpty() || request.name().isBlank())) {
@@ -78,7 +78,7 @@ public class UserService {
         return dtoMapper.toResponseDto(user);
     }
 
-    public void delete(UUID id) {
+    public void deleteUser(UUID id) {
         commandBus.execute(new DeleteUserCommand(id));
     }
 }

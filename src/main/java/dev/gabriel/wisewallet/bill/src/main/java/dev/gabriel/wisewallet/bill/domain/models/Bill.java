@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import dev.gabriel.wisewallet.bill.domain.events.*;
 import dev.gabriel.wisewallet.bill.domain.exceptions.BillAlreadyDeletedException;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
-import dev.gabriel.wisewallet.wallet.currency.domain.models.Currency;
+import dev.gabriel.wisewallet.currency.domain.models.Currency;
 import lombok.Getter;
 
 import java.math.BigDecimal;
