@@ -19,11 +19,12 @@ public class ChangeUserEmailCommandHandler implements CommandHandler<ChangeUserE
     private final CheckUniqueEmail checkUniqueEmail;
 
     @Override
-    public User handle(ChangeUserEmailCommand command) {
+    public User handle(@NonNull ChangeUserEmailCommand command) {
         User user = userEventStore.load(command.getAggregateId()).orElseThrow(() ->
                 new UserNotFoundException("User %s was not found.".formatted(command.getAggregateId())));
 
         if(command.getEmail().equals(user.getEmail().getValue())) return user;
+
         if(checkUniqueEmail.exists(command.getEmail()) >= 1)
             throw new UserAlreadyExistsException("User with %s already exists.".formatted(command.getEmail()));
 

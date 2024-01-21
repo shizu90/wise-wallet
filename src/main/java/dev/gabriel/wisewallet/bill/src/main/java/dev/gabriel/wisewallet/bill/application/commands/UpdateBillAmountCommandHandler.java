@@ -18,7 +18,7 @@ public class UpdateBillAmountCommandHandler implements CommandHandler<UpdateBill
     private final CurrencyConversion currencyConversion;
 
     @Override
-    public Bill handle(UpdateBillAmountCommand command) {
+    public Bill handle(@NonNull UpdateBillAmountCommand command) {
         Bill bill = billRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new BillNotFoundException("Bill %s was not found.".formatted(command.getAggregateId())));
 

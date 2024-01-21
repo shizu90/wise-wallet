@@ -20,7 +20,7 @@ public class CreateCategoryCommandHandler implements CommandHandler<CreateCatego
     private final CheckUniqueCategoryName checkUniqueCategoryName;
 
     @Override
-    public Category handle(CreateCategoryCommand command) {
+    public Category handle(@NonNull CreateCategoryCommand command) {
         if(checkUniqueCategoryName.exists(command.getName(), command.getUserId()))
             throw new CategoryAlreadyExistsException("Category with name %s already exists.".formatted(command.getName()));
 

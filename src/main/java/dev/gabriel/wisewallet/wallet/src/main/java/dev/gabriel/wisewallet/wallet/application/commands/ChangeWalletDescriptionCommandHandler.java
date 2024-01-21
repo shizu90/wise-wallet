@@ -16,14 +16,15 @@ public class ChangeWalletDescriptionCommandHandler implements CommandHandler<Cha
     private final WalletRepository walletRepository;
 
     @Override
-    public Wallet handle(ChangeWalletDescriptionCommand command) {
+    public Wallet handle(@NonNull ChangeWalletDescriptionCommand command) {
         Wallet wallet = walletRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new WalletNotFoundException("Wallet %s was not found.".formatted(command.getAggregateId())));
 
-        if(command.getDescription() != null && !command.getDescription().equals(wallet.getDescription().getValue())) {
-            wallet.changeDescription(command.getDescription());
-            walletRepository.saveChanges(wallet);
-        }
+        if(wallet.getDescription().getValue().equals(command.getDescription())) return wallet;
+
+        wallet.changeDescription(command.getDescription());
+
+        walletRepository.saveChanges(wallet);
 
         return wallet;
     }

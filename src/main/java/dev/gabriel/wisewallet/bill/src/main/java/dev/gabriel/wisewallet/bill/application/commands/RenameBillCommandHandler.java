@@ -16,7 +16,7 @@ public class RenameBillCommandHandler implements CommandHandler<RenameBillComman
     private final BillRepository billRepository;
 
     @Override
-    public Bill handle(RenameBillCommand command) {
+    public Bill handle(@NonNull RenameBillCommand command) {
         Bill bill = billRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new BillNotFoundException("Bill %s was not found.".formatted(command.getAggregateId())));
 

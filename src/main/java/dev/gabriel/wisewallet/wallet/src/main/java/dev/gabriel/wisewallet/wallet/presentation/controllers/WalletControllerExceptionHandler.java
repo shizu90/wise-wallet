@@ -1,10 +1,7 @@
 package dev.gabriel.wisewallet.wallet.presentation.controllers;
 
 import dev.gabriel.wisewallet.core.presentation.exceptions.ControllerException;
-import dev.gabriel.wisewallet.wallet.domain.exceptions.WalletAlreadyDeletedException;
-import dev.gabriel.wisewallet.wallet.domain.exceptions.WalletAlreadyExistsException;
-import dev.gabriel.wisewallet.wallet.domain.exceptions.WalletNotFoundException;
-import dev.gabriel.wisewallet.wallet.domain.exceptions.WalletValidationException;
+import dev.gabriel.wisewallet.wallet.domain.exceptions.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +23,7 @@ public class WalletControllerExceptionHandler {
 
     @ExceptionHandler(WalletAlreadyDeletedException.class)
     public ResponseEntity<ControllerException> alreadyDeleted(WalletAlreadyDeletedException e, HttpServletRequest request) {
-        String error = "Wallet already deleted.";
+        String error = "Already deleted.";
         HttpStatus status = HttpStatus.CONFLICT;
         ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(exception);
@@ -34,7 +31,7 @@ public class WalletControllerExceptionHandler {
 
     @ExceptionHandler(WalletAlreadyExistsException.class)
     public ResponseEntity<ControllerException> alreadyExists(WalletAlreadyExistsException e, HttpServletRequest request) {
-        String error = "Wallet already exists.";
+        String error = "Already exists.";
         HttpStatus status = HttpStatus.CONFLICT;
         ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(exception);
@@ -42,8 +39,16 @@ public class WalletControllerExceptionHandler {
 
     @ExceptionHandler(WalletNotFoundException.class)
     public ResponseEntity<ControllerException> notFound(WalletNotFoundException e, HttpServletRequest request) {
-        String error = "Wallet not found.";
+        String error = "Not found.";
         HttpStatus status = HttpStatus.NOT_FOUND;
+        ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(status).body(exception);
+    }
+
+    @ExceptionHandler(ReachedMaxWalletsException.class)
+    public ResponseEntity<ControllerException> reachedMaxNumber(ReachedMaxWalletsException e, HttpServletRequest request) {
+        String error = "Reached max number.";
+        HttpStatus status = HttpStatus.CONFLICT;
         ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(exception);
     }

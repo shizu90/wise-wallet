@@ -42,6 +42,7 @@ public class UserService {
 
     public UserResponseDto update(UserRequestDto request) {
         User user = null;
+
         if(!(request.name() == null || request.name().isEmpty() || request.name().isBlank())) {
             user = (User) commandBus.execute(
                     new RenameUserCommand(

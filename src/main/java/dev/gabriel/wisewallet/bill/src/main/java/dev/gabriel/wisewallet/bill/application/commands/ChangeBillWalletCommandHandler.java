@@ -16,7 +16,7 @@ public class ChangeBillWalletCommandHandler implements CommandHandler<ChangeBill
     private final BillRepository billRepository;
 
     @Override
-    public Bill handle(ChangeBillWalletCommand command) {
+    public Bill handle(@NonNull ChangeBillWalletCommand command) {
         Bill bill = billRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new BillNotFoundException("Bill %s was not found.".formatted(command.getAggregateId())));
 

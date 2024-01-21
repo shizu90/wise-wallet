@@ -24,6 +24,7 @@ public class Category extends Aggregate {
     private Category(UUID id, String name, UUID userId) {
         this(id, 0L);
 
+        CategoryName.validate(name);
         applyChange(new CategoryCreatedEvent(
                 id,
                 getNextVersion(),

@@ -18,7 +18,7 @@ public class UpdateWalletBalanceCommandHandler implements CommandHandler<UpdateW
     private final CurrencyConversion currencyConversion;
 
     @Override
-    public Wallet handle(UpdateWalletBalanceCommand command) {
+    public Wallet handle(@NonNull UpdateWalletBalanceCommand command) {
         Wallet wallet = walletRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new WalletNotFoundException("Wallet %s was not found.".formatted(command.getAggregateId())));
 

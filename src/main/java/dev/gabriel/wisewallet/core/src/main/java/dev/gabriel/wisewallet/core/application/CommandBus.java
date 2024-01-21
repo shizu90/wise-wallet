@@ -2,6 +2,7 @@ package dev.gabriel.wisewallet.core.application;
 
 import dev.gabriel.wisewallet.core.domain.commands.Command;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
+import jakarta.annotation.Nullable;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,16 +20,19 @@ public class CommandBus<T extends Command> {
     private final List<CommandHandler<T>> commandHandlers;
     private final SyncEventHandler eventHandler;
 
-    public Aggregate execute(@NonNull T command) {
-        CommandHandler<T> commandHandler = commandHandlers
+    private CommandHandler<T> findHandler(Class<? extends Command> commandType) {
+        return commandHandlers
                 .stream()
-                .filter(h -> h.getCommandType().equals(command.getClass()))
+                .filter(h -> h.getCommandType().equals(commandType))
                 .findFirst()
                 .orElseThrow(UnsupportedOperationException::new);
+    }
 
-        Aggregate aggregate = commandHandler.handle(command);
-        eventHandler.handleEvents(aggregate);
+    public Aggregate execute(@NonNull T command) {
+        CommandHandler<T> commandHandler = findHandler(command.getClass());
+        Aggregate response = commandHandler.handle(command);
+        eventHandler.handleEvents(response);
 
-        return aggregate;
+        return response;
     }
 }

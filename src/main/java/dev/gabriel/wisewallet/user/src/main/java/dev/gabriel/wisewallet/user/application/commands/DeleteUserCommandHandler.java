@@ -16,7 +16,7 @@ public class DeleteUserCommandHandler implements CommandHandler<DeleteUserComman
     private final UserRepository userEventStore;
 
     @Override
-    public User handle(DeleteUserCommand command) {
+    public User handle(@NonNull DeleteUserCommand command) {
         User user = userEventStore.load(command.getAggregateId()).orElseThrow(() ->
                 new UserNotFoundException("User %s was not found.".formatted(command.getAggregateId())));
 

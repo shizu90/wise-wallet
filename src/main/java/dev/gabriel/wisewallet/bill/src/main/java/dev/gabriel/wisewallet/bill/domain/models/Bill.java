@@ -35,6 +35,9 @@ public class Bill extends Aggregate {
                  UUID categoryId
     ) {
         this(id, 0L);
+
+        BillName.validate(name);
+        BillDescription.validate(description);
         applyChange(new BillCreatedEvent(
                 id,
                 getNextVersion(),

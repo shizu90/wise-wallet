@@ -20,7 +20,7 @@ public class CreateUserCommandHandler implements CommandHandler<CreateUserComman
     private final CheckUniqueEmailService checkUniqueEmailService;
 
     @Override
-    public User handle(CreateUserCommand command) {
+    public User handle(@NonNull CreateUserCommand command) {
         if(checkUniqueEmailService.exists(command.getEmail()) >= 1)
             throw new UserAlreadyExistsException("User with email %s already exists.".formatted(command.getEmail()));
 

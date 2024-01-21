@@ -16,7 +16,7 @@ public class ToggleWalletMainCommandHandler implements CommandHandler<ToggleWall
     private final WalletRepository walletRepository;
 
     @Override
-    public Wallet handle(ToggleWalletMainCommand command) {
+    public Wallet handle(@NonNull ToggleWalletMainCommand command) {
         Wallet wallet = walletRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new WalletNotFoundException("Wallet %s was not found.".formatted(command.getAggregateId())));
 

@@ -16,7 +16,7 @@ public class DeleteWalletCommandHandler implements CommandHandler<DeleteWalletCo
     private final WalletRepository walletRepository;
 
     @Override
-    public Wallet handle(DeleteWalletCommand command) {
+    public Wallet handle(@NonNull DeleteWalletCommand command) {
         Wallet wallet = walletRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new WalletNotFoundException("Wallet %s was not found.".formatted(command.getAggregateId())));
 

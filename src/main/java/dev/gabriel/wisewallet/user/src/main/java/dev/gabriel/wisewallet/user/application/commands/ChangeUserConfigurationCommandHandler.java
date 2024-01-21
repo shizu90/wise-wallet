@@ -16,9 +16,9 @@ public class ChangeUserConfigurationCommandHandler implements CommandHandler<Cha
     private final UserRepository userEventStore;
 
     @Override
-    public User handle(ChangeUserConfigurationCommand command) {
+    public User handle(@NonNull ChangeUserConfigurationCommand command) {
         User user = userEventStore.load(command.getAggregateId()).orElseThrow(() ->
-            new UserNotFoundException("User %s was not found".formatted(command.getAggregateId())));
+                new UserNotFoundException("User %s was not found".formatted(command.getAggregateId())));
 
         if(command.getDefaultLanguage() != null &&
            command.getDefaultLanguage().equals(user.getConfiguration().getDefaultLanguage()) &&

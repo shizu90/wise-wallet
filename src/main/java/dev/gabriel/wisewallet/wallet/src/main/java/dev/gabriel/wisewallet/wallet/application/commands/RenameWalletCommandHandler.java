@@ -19,11 +19,11 @@ public class RenameWalletCommandHandler implements CommandHandler<RenameWalletCo
     private final CheckUniqueWalletName checkUniqueWalletName;
 
     @Override
-    public Wallet handle(RenameWalletCommand command) {
+    public Wallet handle(@NonNull RenameWalletCommand command) {
         Wallet wallet = walletRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new WalletNotFoundException("Wallet %s was not found.".formatted(command.getAggregateId())));
 
-        if(command.getName() != null && command.getName().equals(wallet.getName().getValue())) return wallet;
+        if(wallet.getName().getValue().equals(command.getName())) return wallet;
 
         if(checkUniqueWalletName.exists(wallet.getUserId(), command.getName()) >= 1)
             throw new WalletAlreadyExistsException("Wallet with name %s already exists.".formatted(command.getName()));

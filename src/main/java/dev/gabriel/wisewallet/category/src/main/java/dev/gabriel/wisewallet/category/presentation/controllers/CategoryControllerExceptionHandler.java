@@ -33,7 +33,7 @@ public class CategoryControllerExceptionHandler {
     }
 
     @ExceptionHandler(CategoryAlreadyExistsException.class)
-    public ResponseEntity<ControllerException> alreadyExists(CategoryAlreadyExistsException E, HttpServletRequest request) {
+    public ResponseEntity<ControllerException> alreadyExists(CategoryAlreadyExistsException e, HttpServletRequest request) {
         String error = "Already exists.";
         HttpStatus status = HttpStatus.CONFLICT;
         ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
