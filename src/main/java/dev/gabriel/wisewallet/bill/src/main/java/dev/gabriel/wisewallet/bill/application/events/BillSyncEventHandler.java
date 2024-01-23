@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class BillEventHandler implements SyncEventHandler {
+public class BillSyncEventHandler implements SyncEventHandler {
     private final BillProjectionRepository projectionRepository;
 
     @Override
     public void handleEvents(Aggregate aggregate) {
         Bill bill = (Bill) aggregate;
         BillProjection billProjection = BillProjection.create(
-                bill.getId().getValue(),
+                bill.getId(),
                 bill.getName().getValue(),
                 bill.getDescription().getValue(),
                 bill.getAmount().getValue(),

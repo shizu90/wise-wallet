@@ -1,5 +1,7 @@
 package dev.gabriel.wisewallet.user.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.gabriel.wisewallet.core.domain.models.ValueObject;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -8,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.Arrays;
 import java.util.List;
 
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@JsonCreator))
 @Getter
 public class UserConfiguration extends ValueObject {
     private final String defaultCurrencyCode;
@@ -18,14 +20,17 @@ public class UserConfiguration extends ValueObject {
         return new UserConfiguration(defaultCurrencyCode, defaultLanguage);
     }
 
+    @JsonIgnore
     public boolean isNull() {
         return defaultLanguage == null && defaultCurrencyCode == null;
     }
 
+    @JsonIgnore
     public boolean isEmpty() {
         return defaultLanguage.isEmpty() && defaultCurrencyCode.isEmpty();
     }
 
+    @JsonIgnore
     public boolean isBlank() {
         return defaultLanguage.isBlank() && defaultCurrencyCode.isBlank();
     }

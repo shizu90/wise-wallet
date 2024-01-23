@@ -1,5 +1,6 @@
 package dev.gabriel.wisewallet.core.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.gabriel.wisewallet.core.domain.events.DomainEvent;
 import lombok.Getter;
 import lombok.NonNull;
@@ -9,14 +10,17 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 public abstract class Aggregate extends Entity {
+    @JsonIgnore
     protected List<DomainEvent> changes;
     protected Long version;
+    @JsonIgnore
     protected Long baseVersion;
 
-    protected Aggregate(@NonNull Identity id, Long version) {
+    protected Aggregate(@NonNull UUID id, Long version) {
         super(id);
         this.baseVersion = this.version = version;
         this.changes = new ArrayList<>();

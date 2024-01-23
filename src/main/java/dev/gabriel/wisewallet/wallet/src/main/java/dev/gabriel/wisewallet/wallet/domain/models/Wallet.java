@@ -6,6 +6,7 @@ import dev.gabriel.wisewallet.currency.domain.models.Currency;
 import dev.gabriel.wisewallet.wallet.domain.events.*;
 import dev.gabriel.wisewallet.wallet.domain.exceptions.WalletAlreadyDeletedException;
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -22,8 +23,8 @@ public class Wallet extends Aggregate {
     private Boolean isDeleted;
 
     @JsonCreator
-    public Wallet(UUID id, Long version) {
-        super(WalletId.create(id), version);
+    private Wallet(@NonNull UUID id, Long version) {
+        super(id, version);
     }
 
     private Wallet(UUID id,
@@ -36,9 +37,10 @@ public class Wallet extends Aggregate {
                    UUID userId
     ) {
         this(id, 0L);
+
         applyChange(new WalletCreatedEvent(
                 id,
-                this.getNextVersion(),
+                getNextVersion(),
                 name,
                 description,
                 balance,
@@ -68,7 +70,7 @@ public class Wallet extends Aggregate {
         WalletName.validate(name);
 
         applyChange(new WalletRenamedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 name
         ));
@@ -78,7 +80,7 @@ public class Wallet extends Aggregate {
         WalletDescription.validate(description);
 
         applyChange(new WalletDescriptionChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 description
         ));
@@ -86,7 +88,7 @@ public class Wallet extends Aggregate {
 
     public void updateBalance(BigDecimal balance) {
         applyChange(new WalletBalanceUpdatedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 balance
         ));
@@ -94,7 +96,7 @@ public class Wallet extends Aggregate {
 
     public void changeCurrencyCode(String currencyCode) {
         applyChange(new WalletCurrencyCodeChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 currencyCode
         ));
@@ -102,7 +104,7 @@ public class Wallet extends Aggregate {
 
     public void changeType(WalletType type) {
         applyChange(new WalletTypeChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 type
         ));
@@ -110,7 +112,7 @@ public class Wallet extends Aggregate {
 
     public void toggleMain(Boolean main) {
         applyChange(new WalletMainToggledEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 main
         ));
@@ -118,10 +120,10 @@ public class Wallet extends Aggregate {
 
     public void delete() {
         if(isDeleted)
-            throw new WalletAlreadyDeletedException("Wallet %s already deleted.".formatted(id.getValue()));
+            throw new WalletAlreadyDeletedException("Wallet %s already deleted.".formatted(id));
 
         applyChange(new WalletDeletedEvent(
-                id.getValue(),
+                id,
                 getNextVersion()
         ));
     }
@@ -176,10 +178,5 @@ public class Wallet extends Aggregate {
     @Override
     public String getAggregateType() {
         return AggregateType.WALLET.toString();
-    }
-
-    @Override
-    public WalletId getId() {
-        return (WalletId) this.id;
     }
 }

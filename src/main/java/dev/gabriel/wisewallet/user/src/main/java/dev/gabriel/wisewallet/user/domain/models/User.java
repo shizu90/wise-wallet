@@ -19,7 +19,7 @@ public class User extends Aggregate {
 
     @JsonCreator
     private User(@NonNull UUID id, Long version) {
-        super(UserId.create(id), version);
+        super(id, version);
     }
 
     private User(UUID id,
@@ -30,9 +30,10 @@ public class User extends Aggregate {
                  String defaultLanguage
     ) {
         this(id, 0L);
+
         applyChange(new UserCreatedEvent(
                 id,
-                this.getNextVersion(),
+                getNextVersion(),
                 name,
                 email,
                 password,
@@ -59,7 +60,7 @@ public class User extends Aggregate {
         Username.validate(name);
 
         applyChange(new UserRenamedEvent(
-           id.getValue(),
+           id,
            getNextVersion(),
            name
         ));
@@ -69,7 +70,7 @@ public class User extends Aggregate {
         Email.validate(email);
 
         applyChange(new UserEmailChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 email
         ));
@@ -79,7 +80,7 @@ public class User extends Aggregate {
         Password.validate(password);
 
         applyChange(new UserPasswordChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 password
         ));
@@ -92,7 +93,7 @@ public class User extends Aggregate {
                 defaultLanguage.isEmpty() || defaultLanguage.isBlank();
 
         applyChange(new UserConfigurationChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 defaultCurrencyCodeIsEmpty ? configuration.getDefaultCurrencyCode() : defaultCurrencyCode,
                 defaultLanguageIsEmpty ? configuration.getDefaultLanguage() : defaultLanguage
@@ -101,17 +102,17 @@ public class User extends Aggregate {
 
     public void delete() {
         if(isDeleted)
-            throw new UserAlreadyDeletedException("User %s is already deleted.".formatted(id.getValue().toString()));
+            throw new UserAlreadyDeletedException("User %s is already deleted.".formatted(id.toString()));
 
         applyChange(new UserDeletedEvent(
-                id.getValue(),
+                id,
                 getNextVersion()
         ));
     }
 
     @SuppressWarnings("unused")
     private void apply(UserCreatedEvent event) {
-        this.id = UserId.create(event.getAggregateId());
+        this.id = event.getAggregateId();
         this.name = Username.create(event.getName());
         this.email = Email.create(event.getEmail());
         this.password = Password.create(event.getPassword());
@@ -147,10 +148,5 @@ public class User extends Aggregate {
     @Override
     public String getAggregateType() {
         return AggregateType.USER.toString();
-    }
-
-    @Override
-    public UserId getId() {
-        return (UserId) this.id;
     }
 }

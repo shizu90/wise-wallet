@@ -2,7 +2,6 @@ package dev.gabriel.wisewallet.core.application;
 
 import dev.gabriel.wisewallet.core.domain.commands.Command;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
-import jakarta.annotation.Nullable;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +29,9 @@ public class CommandBus<T extends Command> {
 
     public Aggregate execute(@NonNull T command) {
         CommandHandler<T> commandHandler = findHandler(command.getClass());
-        Aggregate response = commandHandler.handle(command);
-        eventHandler.handleEvents(response);
+        Aggregate result = commandHandler.handle(command);
+        eventHandler.handleEvents(result);
 
-        return response;
+        return result;
     }
 }

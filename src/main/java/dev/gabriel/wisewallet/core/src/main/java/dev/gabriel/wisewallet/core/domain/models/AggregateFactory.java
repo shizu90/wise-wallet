@@ -15,10 +15,10 @@ public class AggregateFactory {
 
     @SneakyThrows(ReflectiveOperationException.class)
     @SuppressWarnings("unchecked")
-    public <T extends Aggregate> T create(String aggregateType, UUID aggregateId) {
+    public <T extends Aggregate> T create(String aggregateType, UUID aggregateId, Long version) {
         Class<? extends Aggregate> aggregateClass = aggregateTypeMapper.getClassByAggregateType(aggregateType);
         Constructor<?> constructor = aggregateClass.getDeclaredConstructor(UUID.class, Long.class);
         constructor.setAccessible(true);
-        return (T) constructor.newInstance(aggregateId, 0L);
+        return (T) constructor.newInstance(aggregateId, version);
     }
 }

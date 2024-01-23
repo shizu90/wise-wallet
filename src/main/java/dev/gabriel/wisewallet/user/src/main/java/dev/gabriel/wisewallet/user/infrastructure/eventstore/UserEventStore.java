@@ -4,6 +4,7 @@ import dev.gabriel.wisewallet.user.domain.models.AggregateType;
 import dev.gabriel.wisewallet.user.domain.models.User;
 import dev.gabriel.wisewallet.core.infrastructure.eventstore.services.AggregateService;
 import dev.gabriel.wisewallet.user.domain.repositories.UserRepository;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,13 +18,13 @@ public class UserEventStore implements UserRepository {
     private final AggregateService aggregateService;
 
     @Override
-    public Optional<User> load(UUID userId) {
+    public Optional<User> load(@NonNull UUID userId) {
         User user = (User) aggregateService.load(AggregateType.USER.toString(), userId, null);
-        return user != null ? Optional.of(user) : Optional.empty();
+        return Optional.ofNullable(user);
     }
 
     @Override
-    public void saveChanges(User user) {
+    public void saveChanges(@NonNull User user) {
         aggregateService.save(user);
     }
 }

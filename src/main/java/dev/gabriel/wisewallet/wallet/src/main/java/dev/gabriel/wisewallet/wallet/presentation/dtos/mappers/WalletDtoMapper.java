@@ -13,7 +13,7 @@ public class WalletDtoMapper {
     public WalletResponseDto toResponseDto(@Nullable Wallet wallet) {
         if(wallet == null) return null;
         return new WalletResponseDto(
-                wallet.getId().getValue(),
+                wallet.getId(),
                 wallet.getName().getValue(),
                 wallet.getDescription().getValue(),
                 wallet.getBalance().getValue(),

@@ -1,8 +1,11 @@
 package dev.gabriel.wisewallet.core.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 public abstract class ValueObject {
+    @JsonIgnore
     public abstract List<Object> getAtomicValues();
 
     private boolean valuesAreEqual(ValueObject valueObject) {

@@ -1,7 +1,6 @@
 package dev.gabriel.wisewallet.bill.domain.models;
 
 import dev.gabriel.wisewallet.bill.domain.events.*;
-import dev.gabriel.wisewallet.wallet.bill.domain.events.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

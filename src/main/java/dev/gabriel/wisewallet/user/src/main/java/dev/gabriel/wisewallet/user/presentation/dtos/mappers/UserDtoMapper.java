@@ -12,7 +12,7 @@ public class UserDtoMapper {
     public UserResponseDto toResponseDto(@Nullable User user) {
         if(user == null) return null;
         return new UserResponseDto(
-                user.getId().getValue(),
+                user.getId(),
                 user.getName().getValue(),
                 user.getEmail().getValue(),
                 new UserConfigurationDto(

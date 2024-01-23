@@ -1,5 +1,6 @@
 package dev.gabriel.wisewallet.wallet.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import dev.gabriel.wisewallet.core.domain.models.ValueObject;
 import dev.gabriel.wisewallet.wallet.domain.exceptions.WalletValidationException;
 import lombok.AccessLevel;
@@ -10,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@JsonCreator))
 public class WalletName extends ValueObject {
     private final String value;
 

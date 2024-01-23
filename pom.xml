@@ -12,7 +12,7 @@
 
     <groupId>dev.gabriel.wisewallet</groupId>
     <artifactId>wise-wallet</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -37,6 +37,7 @@
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
         <spring.version>3.2.0</spring.version>
         <spring.mongodb.version>4.2.0</spring.mongodb.version>
+        <spring.kafka.version>3.1.1</spring.kafka.version>
         <lombok.version>1.18.30</lombok.version>
         <junit.jupiter.api.version>5.10.0</junit.jupiter.api.version>
         <junit.jupiter.engine.version>5.10.0</junit.jupiter.engine.version>
@@ -48,7 +49,6 @@
         <javax.persistence.version>2.2</javax.persistence.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
         <javax.servlet.version>4.0.1</javax.servlet.version>
-        <mapstruct.version>1.5.5.Final</mapstruct.version>
     </properties>
 
     <dependencies>
@@ -84,9 +84,9 @@
             <version>${mongodb.driver.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>${mapstruct.version}</version>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>${spring.kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -119,4 +119,16 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

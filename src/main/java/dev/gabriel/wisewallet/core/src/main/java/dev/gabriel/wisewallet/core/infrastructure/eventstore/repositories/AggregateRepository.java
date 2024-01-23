@@ -9,15 +9,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.postgresql.util.PGobject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.ResultSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.sql.Types;
+import java.util.*;
 
 @Transactional(propagation = Propagation.MANDATORY)
 @Repository
@@ -55,7 +55,7 @@ public class AggregateRepository {
                 VALUES (:aggregateId, :version, :data::json)
                 """,
                 Map.of(
-                        "aggregateId", aggregate.getId().getValue(),
+                        "aggregateId", aggregate.getId(),
                         "version", aggregate.getVersion(),
                         "data", objectMapper.writeValueAsString(aggregate)
                 ));
@@ -63,6 +63,10 @@ public class AggregateRepository {
 
     @SuppressWarnings("ConstantConditions")
     public Optional<Aggregate> getSnapshot(@NonNull UUID aggregateId, @Nullable Long version) {
+        MapSqlParameterSource parameters = new MapSqlParameterSource();
+        parameters.addValue("aggregateId", aggregateId);
+        parameters.addValue("version", version, Types.INTEGER);
+
         return jdbcTemplate.query("""
                 SELECT aggregate.type, snapshot.data
                 FROM snapshots snapshot
@@ -72,7 +76,7 @@ public class AggregateRepository {
                 ORDER BY snapshot.version DESC
                 LIMIT 1
                 """,
-                Map.of("aggregateId", aggregateId, "version", version),
+                parameters,
                 this::toAggregate
         ).stream().findFirst();
     }

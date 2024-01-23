@@ -1,5 +1,6 @@
 package dev.gabriel.wisewallet.currency.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import dev.gabriel.wisewallet.core.domain.models.ValueObject;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@JsonCreator))
 @Getter
 public class Currency extends ValueObject {
     private final BigDecimal value;

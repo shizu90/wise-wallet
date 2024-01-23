@@ -2,6 +2,8 @@ package dev.gabriel.wisewallet.user.domain.commands;
 
 import lombok.Getter;
 
+import java.util.UUID;
+
 @Getter
 public class CreateUserCommand extends UserCommand {
     private final String name;
@@ -10,8 +12,8 @@ public class CreateUserCommand extends UserCommand {
     private final String defaultCurrencyCode;
     private final String defaultLanguage;
 
-    public CreateUserCommand(String name, String email, String password, String defaultCurrencyCode, String defaultLanguage) {
-        super(null);
+    public CreateUserCommand(UUID id, String name, String email, String password, String defaultCurrencyCode, String defaultLanguage) {
+        super(id);
         this.name = name;
         this.email = email;
         this.password = password;

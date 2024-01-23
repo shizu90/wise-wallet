@@ -13,7 +13,7 @@ public class ReminderDtoMapper {
     public ReminderResponseDto toResponseDto(@Nullable Reminder reminder) {
         if(reminder == null) return null;
         return new ReminderResponseDto(
-                reminder.getId().getValue(),
+                reminder.getId(),
                 reminder.getName().getValue(),
                 reminder.getDescription().getValue(),
                 reminder.getRecurrence().getValue(),

@@ -11,8 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CreateUserCommandHandler implements CommandHandler<CreateUserCommand> {
@@ -25,7 +23,7 @@ public class CreateUserCommandHandler implements CommandHandler<CreateUserComman
             throw new UserAlreadyExistsException("User with email %s already exists.".formatted(command.getEmail()));
 
         User user = User.create(
-                UUID.randomUUID(),
+                command.getAggregateId(),
                 command.getName(),
                 command.getEmail(),
                 command.getPassword(),

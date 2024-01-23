@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class CategoryEventHandler implements SyncEventHandler {
+public class CategorySyncEventHandler implements SyncEventHandler {
     private final CategoryProjectionRepository projectionRepository;
 
     @Override
     public void handleEvents(Aggregate aggregate) {
         Category category = (Category) aggregate;
         CategoryProjection categoryProjection = CategoryProjection.create(
-                        category.getId().getValue(),
+                        category.getId(),
                         category.getName().getValue(),
                         category.getUserId(),
                         category.getIsDeleted()

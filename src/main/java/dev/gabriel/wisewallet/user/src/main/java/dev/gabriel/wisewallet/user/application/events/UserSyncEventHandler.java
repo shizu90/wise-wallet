@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class UserEventHandler implements SyncEventHandler {
+public class UserSyncEventHandler implements SyncEventHandler {
     private final UserProjectionRepository projectionRepository;
 
     @Override
     public void handleEvents(Aggregate aggregate) {
         User user = (User) aggregate;
         UserProjection userProjection = UserProjection.create(
-                user.getId().getValue(),
+                user.getId(),
                 user.getName().getValue(),
                 user.getEmail().getValue(),
                 user.getPassword().getValue(),

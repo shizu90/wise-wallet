@@ -18,8 +18,8 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UserResponseDto> getUser(@PathVariable UUID userId) {
-        return ResponseEntity.ok().body(userService.getUser(userId));
+    public ResponseEntity<UserResponseDto> getUser(@PathVariable UUID id) {
+        return ResponseEntity.ok().body(userService.getUser(id));
     }
 
     @PostMapping
@@ -28,9 +28,9 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponseDto> updateUserData(@PathVariable UUID userId, @RequestBody UserRequestDto request) {
+    public ResponseEntity<UserResponseDto> updateUserData(@PathVariable UUID id, @RequestBody UserRequestDto request) {
         request = new UserRequestDto(
-                userId,
+                id,
                 request.name(),
                 request.email(),
                 request.password(),
@@ -41,8 +41,8 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {
-        userService.deleteUser(userId);
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
+        userService.deleteUser(id);
 
         return ResponseEntity.ok().body(null);
     }

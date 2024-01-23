@@ -8,3 +8,13 @@ spring:
       host: localhost
       port: 27017
       database: wise_wallet
+
+event-store:
+  snapshotting:
+    WALLET:
+      enabled: true
+      nth-event: 8
+
+kafka:
+  topics:
+    name: wallet-events

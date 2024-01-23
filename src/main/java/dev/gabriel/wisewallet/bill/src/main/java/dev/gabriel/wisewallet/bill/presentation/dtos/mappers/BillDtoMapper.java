@@ -13,7 +13,7 @@ public class BillDtoMapper {
     public BillResponseDto toResponseDto(@Nullable Bill bill) {
         if(bill == null) return null;
         return new BillResponseDto(
-                bill.getId().getValue(),
+                bill.getId(),
                 bill.getName().getValue(),
                 bill.getDescription().getValue(),
                 bill.getAmount().getValue(),

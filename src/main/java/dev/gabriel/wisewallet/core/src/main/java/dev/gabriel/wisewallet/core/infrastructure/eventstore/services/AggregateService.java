@@ -3,7 +3,6 @@ package dev.gabriel.wisewallet.core.infrastructure.eventstore.services;
 import dev.gabriel.wisewallet.core.domain.events.DomainEvent;
 import dev.gabriel.wisewallet.core.domain.events.DomainEventWithId;
 import dev.gabriel.wisewallet.core.infrastructure.exceptions.OptimisticConcurrencyControlException;
-import dev.gabriel.wisewallet.core.infrastructure.exceptions.SnapshotNotFoundException;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
 import dev.gabriel.wisewallet.core.domain.models.AggregateFactory;
 import dev.gabriel.wisewallet.core.infrastructure.eventstore.configuration.EventStoreConfiguration;
@@ -33,7 +32,7 @@ public class AggregateService {
 
     public List<DomainEventWithId<DomainEvent>> save(Aggregate aggregate) {
         String aggregateType = aggregate.getAggregateType();
-        UUID aggregateId = aggregate.getId().getValue();
+        UUID aggregateId = aggregate.getId();
 
         aggregateRepository.createIfNotExists(aggregateType, aggregateId);
 
@@ -68,12 +67,21 @@ public class AggregateService {
         }
     }
 
-    private Aggregate loadFromSnapshot(@NonNull UUID aggregateId, @Nullable Long version) {
-        Optional<Aggregate> aggregate = aggregateRepository.getSnapshot(aggregateId, version);
+    private Optional<Aggregate> loadFromSnapshot(@NonNull UUID aggregateId, @Nullable Long version) {
+        return aggregateRepository.getSnapshot(aggregateId, version)
+                .map(aggregate -> {
+                    Long snapshotVersion = aggregate.getVersion();
+                    if(version == null || snapshotVersion < version) {
+                        List<DomainEvent> events = eventRepository
+                                .getEvents(aggregateId, snapshotVersion, version)
+                                .stream()
+                                .map(DomainEventWithId::event)
+                                .toList();
+                        aggregate.loadFromHistory(events);
+                    }
 
-        return aggregate.orElseThrow(() -> new SnapshotNotFoundException(
-                "Snapshot was not found."
-        ));
+                    return aggregate;
+                });
     }
 
     private Aggregate loadFromEventStream(String aggregateType, UUID aggregateId, @Nullable Long version) {
@@ -85,7 +93,7 @@ public class AggregateService {
 
         if(events.isEmpty()) return null;
 
-        Aggregate aggregate = aggregateFactory.create(aggregateType, aggregateId);
+        Aggregate aggregate = aggregateFactory.create(aggregateType, aggregateId, 0L);
         aggregate.loadFromHistory(events);
 
         return aggregate;
@@ -96,11 +104,9 @@ public class AggregateService {
         Aggregate aggregate = null;
 
         if(snapshottingConfiguration.enabled()) {
-            try {
-                aggregate = loadFromSnapshot(aggregateId, version);
-            }catch(SnapshotNotFoundException e) {
-                return loadFromEventStream(aggregateType, aggregateId, version);
-            }
+            aggregate = loadFromSnapshot(aggregateId, version).orElseGet(() -> {
+                return this.loadFromEventStream(aggregateType, aggregateId, version);
+            });
         }else {
             aggregate = loadFromEventStream(aggregateType, aggregateId, version);
         }

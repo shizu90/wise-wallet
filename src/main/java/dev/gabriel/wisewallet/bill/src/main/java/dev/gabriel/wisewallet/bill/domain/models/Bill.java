@@ -22,7 +22,7 @@ public class Bill extends Aggregate {
 
     @JsonCreator
     public Bill(UUID id, Long version) {
-        super(BillId.create(id), version);
+        super(id, version);
     }
 
     private Bill(UUID id,
@@ -67,7 +67,7 @@ public class Bill extends Aggregate {
         BillName.validate(name);
 
         applyChange(new BillRenamedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 name
         ));
@@ -77,7 +77,7 @@ public class Bill extends Aggregate {
         BillDescription.validate(description);
 
         applyChange(new BillDescriptionChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 description
         ));
@@ -85,7 +85,7 @@ public class Bill extends Aggregate {
 
     public void updateAmount(BigDecimal amount) {
         applyChange(new BillAmountUpdatedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 amount
         ));
@@ -93,7 +93,7 @@ public class Bill extends Aggregate {
 
     public void changeCurrencyCode(String currencyCode) {
         applyChange(new BillCurrencyCodeChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 currencyCode
         ));
@@ -101,7 +101,7 @@ public class Bill extends Aggregate {
 
     public void changeType(BillType type) {
         applyChange(new BillTypeChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 type
         ));
@@ -109,7 +109,7 @@ public class Bill extends Aggregate {
 
     public void changeWallet(UUID walletId) {
         applyChange(new BillWalletChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 walletId
         ));
@@ -117,7 +117,7 @@ public class Bill extends Aggregate {
 
     public void changeCategory(UUID categoryId) {
         applyChange(new BillCategoryChangedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 categoryId
         ));
@@ -125,17 +125,17 @@ public class Bill extends Aggregate {
 
     public void delete() {
         if(isDeleted)
-            throw new BillAlreadyDeletedException("Bill %s already deleted.".formatted(id.getValue()));
+            throw new BillAlreadyDeletedException("Bill %s already deleted.".formatted(id));
 
         applyChange(new BillDeletedEvent(
-                id.getValue(),
+                id,
                 getNextVersion()
         ));
     }
 
     @SuppressWarnings("unused")
     private void apply(BillCreatedEvent event) {
-        this.id = BillId.create(event.getAggregateId());
+        this.id = event.getAggregateId();
         this.name = BillName.create(event.getName());
         this.description = BillDescription.create(event.getDescription());
         this.amount = Currency.create(event.getAmount(), event.getCurrencyCode());
@@ -183,11 +183,6 @@ public class Bill extends Aggregate {
     @SuppressWarnings("unused")
     private void apply(BillDeletedEvent event) {
         this.isDeleted = true;
-    }
-
-    @Override
-    public BillId getId() {
-        return (BillId) this.id;
     }
 
     @Override

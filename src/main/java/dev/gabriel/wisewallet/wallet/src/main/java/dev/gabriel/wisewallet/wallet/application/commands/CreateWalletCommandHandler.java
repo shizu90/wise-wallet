@@ -13,8 +13,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CreateWalletCommandHandler implements CommandHandler<CreateWalletCommand> {
@@ -31,7 +29,7 @@ public class CreateWalletCommandHandler implements CommandHandler<CreateWalletCo
             throw new ReachedMaxWalletsException("User %s reached max number of wallets.".formatted(command.getUserId()));
 
         Wallet wallet = Wallet.create(
-                UUID.randomUUID(),
+                command.getAggregateId(),
                 command.getName(),
                 command.getDescription(),
                 command.getBalance(),

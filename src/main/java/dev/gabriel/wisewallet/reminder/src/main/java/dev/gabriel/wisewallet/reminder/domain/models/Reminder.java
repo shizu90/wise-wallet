@@ -25,7 +25,7 @@ public class Reminder extends Aggregate {
 
     @JsonCreator
     public Reminder(UUID id, Long version) {
-        super(ReminderId.create(id), version);
+        super(id, version);
     }
 
     private Reminder(UUID id,
@@ -65,61 +65,61 @@ public class Reminder extends Aggregate {
     public void rename(String name) {
         ReminderName.validate(name);
 
-        applyChange(new ReminderRenamedEvent(id.getValue(), getNextVersion(), name));
+        applyChange(new ReminderRenamedEvent(id, getNextVersion(), name));
     }
 
     public void changeDescription(String description) {
         ReminderDescription.validate(description);
 
-        applyChange(new ReminderDescriptionChangedEvent(id.getValue(), getNextVersion(), description));
+        applyChange(new ReminderDescriptionChangedEvent(id, getNextVersion(), description));
     }
 
     public void changeRecurrence(Long recurrence) {
         ReminderRecurrence.validate(recurrence);
 
-        applyChange(new ReminderRecurrenceChangedEvent(id.getValue(), getNextVersion(), recurrence));
+        applyChange(new ReminderRecurrenceChangedEvent(id, getNextVersion(), recurrence));
     }
 
     public void changeMaxRuns(Long maxRuns) {
         ReminderRun.validate(maxRuns);
 
-        applyChange(new ReminderMaxRunsChangedEvent(id.getValue(), getNextVersion(), maxRuns));
+        applyChange(new ReminderMaxRunsChangedEvent(id, getNextVersion(), maxRuns));
     }
 
     public void start() {
         if(!started)
-            applyChange(new ReminderStartedEvent(id.getValue(), getNextVersion()));
+            applyChange(new ReminderStartedEvent(id, getNextVersion()));
     }
 
     public void stop() {
         if(started)
-            applyChange(new ReminderStoppedEvent(id.getValue(), getNextVersion()));
+            applyChange(new ReminderStoppedEvent(id, getNextVersion()));
     }
 
     public void reset() {
         if(currentRuns.getValue() != 0L)
-            applyChange(new ReminderResetEvent(id.getValue(), getNextVersion()));
+            applyChange(new ReminderResetEvent(id, getNextVersion()));
     }
 
     public void execute(long n) {
         if(!started)
-            throw new ReminderNotStartedException("Reminder %s not started".formatted(id.getValue()));
+            throw new ReminderNotStartedException("Reminder %s not started".formatted(id));
 
         if(currentRuns.equals(maxRuns))
-            throw new ReminderReachedMaxRunsException("Reminder %s reached max runs of %s.".formatted(id.getValue(), maxRuns.getValue()));
+            throw new ReminderReachedMaxRunsException("Reminder %s reached max runs of %s.".formatted(id, maxRuns.getValue()));
 
         if(n == 0L) return;
 
         if((currentRuns.getValue() + n) < maxRuns.getValue()) {
             applyChange(new ReminderExecutedEvent(
-                    id.getValue(),
+                    id,
                     getNextVersion(),
                     currentRuns.getValue() + n,
                     LocalDate.now())
             );
         }else {
             applyChange(new ReminderExecutedEvent(
-                    id.getValue(),
+                    id,
                     getNextVersion(),
                     maxRuns.getValue(),
                     LocalDate.now())
@@ -133,14 +133,14 @@ public class Reminder extends Aggregate {
 
     public void delete() {
         if(isDeleted)
-            throw new ReminderAlreadyDeletedException("Reminder %s already deleted.".formatted(id.getValue()));
+            throw new ReminderAlreadyDeletedException("Reminder %s already deleted.".formatted(id));
 
-        applyChange(new ReminderDeletedEvent(id.getValue(), getNextVersion()));
+        applyChange(new ReminderDeletedEvent(id, getNextVersion()));
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderCreatedEvent event) {
-        this.id = ReminderId.create(event.getAggregateId());
+        this.id = event.getAggregateId();
         this.name = ReminderName.create(event.getName());
         this.description = ReminderDescription.create(event.getDescription());
         this.currentRuns = ReminderRun.create(0L);
@@ -196,11 +196,6 @@ public class Reminder extends Aggregate {
     @SuppressWarnings("unused")
     private void apply(ReminderDeletedEvent event) {
         this.isDeleted = true;
-    }
-
-    @Override
-    public ReminderId getId() {
-        return (ReminderId) this.id;
     }
 
     @Override

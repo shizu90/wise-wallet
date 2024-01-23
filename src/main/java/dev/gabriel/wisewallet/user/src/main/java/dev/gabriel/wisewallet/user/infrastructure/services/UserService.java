@@ -30,6 +30,7 @@ public class UserService {
     public UserResponseDto newUser(UserRequestDto request) {
         User user = (User) commandBus.execute(
                 new CreateUserCommand(
+                        UUID.randomUUID(),
                         request.name(),
                         request.email(),
                         request.password(),

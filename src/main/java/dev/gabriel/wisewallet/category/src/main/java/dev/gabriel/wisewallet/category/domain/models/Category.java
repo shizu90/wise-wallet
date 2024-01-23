@@ -18,7 +18,7 @@ public class Category extends Aggregate {
 
     @JsonCreator
     public Category(UUID id, Long version) {
-        super(CategoryId.create(id), version);
+        super(id, version);
     }
 
     private Category(UUID id, String name, UUID userId) {
@@ -41,7 +41,7 @@ public class Category extends Aggregate {
         CategoryName.validate(name);
 
         applyChange(new CategoryRenamedEvent(
-                id.getValue(),
+                id,
                 getNextVersion(),
                 name
         ));
@@ -49,17 +49,17 @@ public class Category extends Aggregate {
 
     public void delete() {
         if(isDeleted)
-            throw new CategoryAlreadyDeletedException("Category %s already deleted.".formatted(id.getValue()));
+            throw new CategoryAlreadyDeletedException("Category %s already deleted.".formatted(id));
 
         applyChange(new CategoryDeletedEvent(
-                id.getValue(),
+                id,
                 getNextVersion()
         ));
     }
 
     @SuppressWarnings("unused")
     private void apply(CategoryCreatedEvent event) {
-        this.id = CategoryId.create(event.getAggregateId());
+        this.id = event.getAggregateId();
         this.name = CategoryName.create(event.getName());
         this.userId = event.getUserId();
         this.isDeleted = false;
@@ -73,11 +73,6 @@ public class Category extends Aggregate {
     @SuppressWarnings("unused")
     private void apply(CategoryDeletedEvent event) {
         this.isDeleted = true;
-    }
-
-    @Override
-    public CategoryId getId() {
-        return (CategoryId) this.id;
     }
 
     @Override

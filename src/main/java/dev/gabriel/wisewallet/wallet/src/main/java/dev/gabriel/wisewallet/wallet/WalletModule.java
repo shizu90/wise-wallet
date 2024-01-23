@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @ComponentScan(value = "dev.gabriel.wisewallet.core")
+@ComponentScan(value = "dev.gabriel.wisewallet.currency")
 @ComponentScan
 @EntityScan
 @EnableMongoRepositories

@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class ReminderEventHandler implements SyncEventHandler {
+public class ReminderSyncEventHandler implements SyncEventHandler {
     private final ReminderProjectionRepository projectionRepository;
 
     @Override
     public void handleEvents(Aggregate aggregate) {
         Reminder reminder = (Reminder) aggregate;
         ReminderProjection reminderProjection = ReminderProjection.create(
-                reminder.getId().getValue(),
+                reminder.getId(),
                 reminder.getName().getValue(),
                 reminder.getDescription().getValue(),
                 reminder.getRecurrence().getValue(),

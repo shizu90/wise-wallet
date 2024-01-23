@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class WalletEventHandler implements SyncEventHandler {
+public class WalletSyncEventHandler implements SyncEventHandler {
     private final WalletProjectionRepository projectionRepository;
 
     @Override
     public void handleEvents(Aggregate aggregate) {
         Wallet wallet = (Wallet) aggregate;
         WalletProjection walletProjection = WalletProjection.create(
-                wallet.getId().getValue(),
+                wallet.getId(),
                 wallet.getName().getValue(),
                 wallet.getDescription().getValue(),
                 wallet.getBalance().getValue(),
