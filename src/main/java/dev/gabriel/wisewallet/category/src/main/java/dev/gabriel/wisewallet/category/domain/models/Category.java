@@ -8,12 +8,15 @@ import dev.gabriel.wisewallet.category.domain.exceptions.CategoryAlreadyDeletedE
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
 import lombok.Getter;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Getter
 public class Category extends Aggregate {
     private CategoryName name;
     private UUID userId;
+    private Instant createdAt;
+    private Instant updatedAt;
     private Boolean isDeleted;
 
     @JsonCreator
@@ -62,17 +65,21 @@ public class Category extends Aggregate {
         this.id = event.getAggregateId();
         this.name = CategoryName.create(event.getName());
         this.userId = event.getUserId();
+        this.createdAt = Instant.now();
+        this.updatedAt = null;
         this.isDeleted = false;
     }
 
     @SuppressWarnings("unused")
     private void apply(CategoryRenamedEvent event) {
         this.name = CategoryName.create(event.getName());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(CategoryDeletedEvent event) {
         this.isDeleted = true;
+        this.updatedAt = Instant.now();
     }
 
     @Override

@@ -3,6 +3,7 @@ package dev.gabriel.wisewallet.bill.presentation.dtos;
 import dev.gabriel.wisewallet.bill.domain.models.BillType;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.UUID;
 
 public record BillResponseDto(
@@ -13,5 +14,7 @@ public record BillResponseDto(
         String currencyCode,
         BillType type,
         UUID walletId,
-        UUID categoryId
+        UUID categoryId,
+        Instant createdAt,
+        Instant updatedAt
 ) {}

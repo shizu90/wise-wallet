@@ -1,13 +1,13 @@
 package dev.gabriel.wisewallet.wallet.presentation.dtos;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.gabriel.wisewallet.wallet.domain.models.WalletType;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.UUID;
 
 public record WalletResponseDto(
-        @JsonProperty("walletId") UUID id,
+        UUID id,
         String name,
         String description,
         BigDecimal balance,
@@ -15,5 +15,7 @@ public record WalletResponseDto(
         String currencyCode,
         Boolean main,
         WalletType type,
-        UUID userId
+        UUID userId,
+        Instant createdAt,
+        Instant updatedAt
 ) {}

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -23,6 +24,8 @@ public class ReminderProjection {
     private Boolean started;
     private LocalDate lastRun;
     private UUID userId;
+    private Instant createdAt;
+    private Instant updatedAt;
     private Boolean isDeleted;
 
     public static ReminderProjection create(UUID id,
@@ -34,8 +37,23 @@ public class ReminderProjection {
                                             Boolean started,
                                             LocalDate lastRun,
                                             UUID userId,
+                                            Instant createdAt,
+                                            Instant updatedAt,
                                             Boolean isDeleted
     ) {
-        return new ReminderProjection(id, name, description, recurrence, maxRuns, currentRuns, started, lastRun, userId, isDeleted);
+        return new ReminderProjection(
+                id,
+                name,
+                description,
+                recurrence,
+                maxRuns,
+                currentRuns,
+                started,
+                lastRun,
+                userId,
+                createdAt,
+                updatedAt,
+                isDeleted
+        );
     }
 }

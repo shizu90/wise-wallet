@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NonNull;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.UUID;
 
 @Getter
@@ -20,6 +21,8 @@ public class Wallet extends Aggregate {
     private Boolean main;
     private WalletType type;
     private UUID userId;
+    private Instant createdAt;
+    private Instant updatedAt;
     private Boolean isDeleted;
 
     @JsonCreator
@@ -137,42 +140,51 @@ public class Wallet extends Aggregate {
         this.main = event.getMain();
         this.type = event.getType();
         this.userId = event.getUserId();
+        this.createdAt = Instant.now();
+        this.updatedAt = null;
         this.isDeleted = false;
     }
 
     @SuppressWarnings("unused")
     private void apply(WalletRenamedEvent event) {
         this.name = WalletName.create(event.getName());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(WalletDescriptionChangedEvent event) {
         this.description = WalletDescription.create(event.getDescription());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(WalletBalanceUpdatedEvent event) {
         this.balance = Currency.create(event.getBalance(), balance.getCurrencyCode());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(WalletCurrencyCodeChangedEvent event) {
         this.balance = Currency.create(balance.getValue(), event.getCurrencyCode());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(WalletTypeChangedEvent event) {
         this.type = event.getType();
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(WalletMainToggledEvent event) {
         this.main = event.getMain();
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(WalletDeletedEvent event) {
         this.isDeleted = true;
+        this.updatedAt = Instant.now();
     }
 
     @Override

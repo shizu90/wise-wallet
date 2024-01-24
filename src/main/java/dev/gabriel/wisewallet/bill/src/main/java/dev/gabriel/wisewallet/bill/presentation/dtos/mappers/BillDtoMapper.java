@@ -20,7 +20,9 @@ public class BillDtoMapper {
                 bill.getAmount().getCurrencyCode(),
                 bill.getType(),
                 bill.getWalletId(),
-                bill.getCategoryId()
+                bill.getCategoryId(),
+                bill.getCreatedAt(),
+                bill.getUpdatedAt()
         );
     }
 
@@ -34,7 +36,9 @@ public class BillDtoMapper {
                 billProjection.getCurrencyCode(),
                 billProjection.getType(),
                 billProjection.getWalletId(),
-                billProjection.getCategoryId()
+                billProjection.getCategoryId(),
+                billProjection.getCreatedAt(),
+                billProjection.getUpdatedAt()
         );
     }
 

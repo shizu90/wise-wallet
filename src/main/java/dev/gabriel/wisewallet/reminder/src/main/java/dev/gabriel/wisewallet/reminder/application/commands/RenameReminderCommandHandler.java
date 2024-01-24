@@ -23,10 +23,11 @@ public class RenameReminderCommandHandler implements CommandHandler<RenameRemind
         Reminder reminder = reminderRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new ReminderNotFoundException("Reminder %s was not found.".formatted(command.getAggregateId())));
 
-        if(checkUniqueReminderName.exists(command.getName(), reminder.getUserId()))
-            throw new ReminderAlreadyExistsException("Reminder with name %s already exists.".formatted(command.getName()));
-
         if(reminder.getName().getValue().equals(command.getName())) return reminder;
+
+        if(checkUniqueReminderName.exists(command.getName(), reminder.getUserId())) {
+            throw new ReminderAlreadyExistsException("Reminder with name %s already exists.".formatted(command.getName()));
+        }
 
         reminder.rename(command.getName());
 

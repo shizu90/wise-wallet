@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.UUID;
 
 @Document(collection = "Wallets")
@@ -24,6 +25,8 @@ public class WalletProjection {
     private Boolean main;
     private WalletType type;
     private UUID userId;
+    private Instant createdAt;
+    private Instant updatedAt;
     private Boolean isDeleted;
 
     public static WalletProjection create(UUID id,
@@ -35,8 +38,23 @@ public class WalletProjection {
                                           Boolean main,
                                           WalletType type,
                                           UUID userId,
+                                          Instant createdAt,
+                                          Instant updatedAt,
                                           Boolean isDeleted
     ) {
-        return new WalletProjection(id, name, description, balance, initialBalance, currencyCode, main, type, userId, isDeleted);
+        return new WalletProjection(
+                id,
+                name,
+                description,
+                balance,
+                initialBalance,
+                currencyCode,
+                main,
+                type,
+                userId,
+                createdAt,
+                updatedAt,
+                isDeleted
+        );
     }
 }

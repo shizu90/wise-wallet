@@ -21,7 +21,9 @@ public class ReminderDtoMapper {
                 reminder.getCurrentRuns().getValue(),
                 reminder.getLastRun(),
                 reminder.getStarted(),
-                reminder.getUserId()
+                reminder.getUserId(),
+                reminder.getCreatedAt(),
+                reminder.getUpdatedAt()
         );
     }
 
@@ -36,7 +38,9 @@ public class ReminderDtoMapper {
                 reminderProjection.getCurrentRuns(),
                 reminderProjection.getLastRun(),
                 reminderProjection.getStarted(),
-                reminderProjection.getUserId()
+                reminderProjection.getUserId(),
+                reminderProjection.getCreatedAt(),
+                reminderProjection.getUpdatedAt()
         );
     }
 

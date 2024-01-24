@@ -31,6 +31,8 @@ public class ReminderSyncEventHandler implements SyncEventHandler {
                 reminder.getStarted(),
                 reminder.getLastRun(),
                 reminder.getUserId(),
+                reminder.getCreatedAt(),
+                reminder.getUpdatedAt(),
                 reminder.getIsDeleted()
         );
 

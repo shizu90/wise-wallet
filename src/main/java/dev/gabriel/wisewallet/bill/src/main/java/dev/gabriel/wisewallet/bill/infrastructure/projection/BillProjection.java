@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.UUID;
 
 @Document(collection = "Bills")
@@ -23,6 +24,8 @@ public class BillProjection {
     private BillType type;
     private UUID walletId;
     private UUID categoryId;
+    private Instant createdAt;
+    private Instant updatedAt;
     private Boolean isDeleted;
 
     public static BillProjection create(UUID id,
@@ -33,8 +36,22 @@ public class BillProjection {
                                         BillType type,
                                         UUID walletId,
                                         UUID categoryId,
+                                        Instant createdAt,
+                                        Instant updatedAt,
                                         Boolean isDeleted
     ) {
-        return new BillProjection(id, name, description, amount, currencyCode, type, walletId, categoryId, isDeleted);
+        return new BillProjection(
+                id,
+                name,
+                description,
+                amount,
+                currencyCode,
+                type,
+                walletId,
+                categoryId,
+                createdAt,
+                updatedAt,
+                isDeleted
+        );
     }
 }

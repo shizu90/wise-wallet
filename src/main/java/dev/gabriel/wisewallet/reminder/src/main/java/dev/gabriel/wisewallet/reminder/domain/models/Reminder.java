@@ -8,7 +8,10 @@ import dev.gabriel.wisewallet.reminder.domain.exceptions.ReminderNotStartedExcep
 import dev.gabriel.wisewallet.reminder.domain.exceptions.ReminderReachedMaxRunsException;
 import lombok.Getter;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 @Getter
@@ -21,6 +24,8 @@ public class Reminder extends Aggregate {
     private Boolean started;
     private LocalDate lastRun;
     private UUID userId;
+    private Instant createdAt;
+    private Instant updatedAt;
     private Boolean isDeleted;
 
     @JsonCreator
@@ -128,7 +133,9 @@ public class Reminder extends Aggregate {
     }
 
     public LocalDate getNextReminderDate() {
-        return lastRun.plusDays(recurrence.getValue());
+        return lastRun != null ?
+                lastRun.plusDays(recurrence.getValue()) :
+                LocalDate.ofInstant(createdAt.plus(recurrence.getValue(), ChronoUnit.DAYS), ZoneId.of("America/Sao_Paulo"));
     }
 
     public void delete() {
@@ -149,53 +156,64 @@ public class Reminder extends Aggregate {
         this.userId = event.getUserId();
         this.started = false;
         this.lastRun = null;
+        this.createdAt = Instant.now();
+        this.updatedAt = null;
         this.isDeleted = false;
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderRenamedEvent event) {
         this.name = ReminderName.create(event.getName());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderDescriptionChangedEvent event) {
         this.description = ReminderDescription.create(event.getDescription());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderRecurrenceChangedEvent event) {
         this.recurrence = ReminderRecurrence.create(event.getRecurrence());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderMaxRunsChangedEvent event) {
         this.maxRuns = ReminderRun.create(event.getMaxRuns());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderStartedEvent event) {
         this.started = true;
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderStoppedEvent event) {
         this.started = false;
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderResetEvent event) {
         this.currentRuns = ReminderRun.create(0L);
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderExecutedEvent event) {
         this.currentRuns = ReminderRun.create(event.getCurrentRuns());
         this.lastRun = event.getLastRun();
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(ReminderDeletedEvent event) {
         this.isDeleted = true;
+        this.updatedAt = Instant.now();
     }
 
     @Override

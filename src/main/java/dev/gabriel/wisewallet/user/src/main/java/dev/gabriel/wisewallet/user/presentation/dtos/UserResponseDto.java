@@ -1,12 +1,13 @@
 package dev.gabriel.wisewallet.user.presentation.dtos;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import java.time.Instant;
 import java.util.UUID;
 
 public record UserResponseDto(
-        @JsonProperty("userId") UUID id,
-        @JsonProperty("username") String name,
-        @JsonProperty("email") String email,
-        @JsonProperty("configuration") UserConfigurationDto configuration
+        UUID id,
+        String name,
+        String email,
+        UserConfigurationDto configuration,
+        Instant createdAt,
+        Instant updatedAt
 ) {}

@@ -12,12 +12,24 @@ import org.springframework.stereotype.Component;
 public class CategoryDtoMapper {
     public CategoryResponseDto toResponseDto(@Nullable Category category) {
         if(category == null) return null;
-        return new CategoryResponseDto(category.getId(), category.getName().getValue(), category.getUserId());
+        return new CategoryResponseDto(
+                category.getId(),
+                category.getName().getValue(),
+                category.getUserId(),
+                category.getCreatedAt(),
+                category.getUpdatedAt()
+        );
     }
 
     public CategoryResponseDto toResponseDto(@Nullable CategoryProjection categoryProjection) {
         if(categoryProjection == null) return null;
-        return new CategoryResponseDto(categoryProjection.getId(), categoryProjection.getName(), categoryProjection.getUserId());
+        return new CategoryResponseDto(
+                categoryProjection.getId(),
+                categoryProjection.getName(),
+                categoryProjection.getUserId(),
+                categoryProjection.getCreatedAt(),
+                categoryProjection.getUpdatedAt()
+        );
     }
 
     public CategoryListResponseDto toResponseDto(@Nullable Page<CategoryProjection> categoryProjectionList) {

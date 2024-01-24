@@ -18,7 +18,9 @@ public class UserDtoMapper {
                 new UserConfigurationDto(
                         user.getConfiguration().getDefaultCurrencyCode(),
                         user.getConfiguration().getDefaultLanguage()
-                )
+                ),
+                user.getCreatedAt(),
+                user.getUpdatedAt()
         );
     }
 
@@ -31,7 +33,9 @@ public class UserDtoMapper {
                 new UserConfigurationDto(
                         userProjection.getConfiguration().getDefaultCurrencyCode(),
                         userProjection.getConfiguration().getDefaultLanguage()
-                )
+                ),
+                userProjection.getCreatedAt(),
+                userProjection.getUpdatedAt()
         );
     }
 }

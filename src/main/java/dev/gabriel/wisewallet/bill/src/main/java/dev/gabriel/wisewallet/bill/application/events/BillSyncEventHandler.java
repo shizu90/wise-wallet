@@ -30,6 +30,8 @@ public class BillSyncEventHandler implements SyncEventHandler {
                 bill.getType(),
                 bill.getWalletId(),
                 bill.getCategoryId(),
+                bill.getCreatedAt(),
+                bill.getUpdatedAt(),
                 bill.getIsDeleted()
         );
 

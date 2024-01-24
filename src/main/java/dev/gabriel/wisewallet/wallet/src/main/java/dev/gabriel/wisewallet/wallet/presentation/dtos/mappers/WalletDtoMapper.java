@@ -21,7 +21,9 @@ public class WalletDtoMapper {
                 wallet.getBalance().getCurrencyCode(),
                 wallet.getMain(),
                 wallet.getType(),
-                wallet.getUserId()
+                wallet.getUserId(),
+                wallet.getCreatedAt(),
+                wallet.getUpdatedAt()
         );
     }
 
@@ -36,7 +38,9 @@ public class WalletDtoMapper {
                 walletProjection.getCurrencyCode(),
                 walletProjection.getMain(),
                 walletProjection.getType(),
-                walletProjection.getUserId()
+                walletProjection.getUserId(),
+                walletProjection.getCreatedAt(),
+                walletProjection.getUpdatedAt()
         );
     }
 

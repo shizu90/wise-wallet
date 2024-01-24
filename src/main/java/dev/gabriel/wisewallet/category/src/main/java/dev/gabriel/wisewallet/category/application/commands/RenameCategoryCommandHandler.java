@@ -23,6 +23,8 @@ public class RenameCategoryCommandHandler implements CommandHandler<RenameCatego
         Category category = categoryRepository.load(command.getAggregateId()).orElseThrow(() ->
                 new CategoryNotFoundException("Category %s was not found.".formatted(command.getAggregateId())));
 
+        if(command.getName().equals(category.getName().getValue())) return category;
+
         if(checkUniqueCategoryName.exists(command.getName(), category.getUserId()))
             throw new CategoryAlreadyExistsException("Category with name %s already exists.".formatted(command.getName()));
 

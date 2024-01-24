@@ -7,6 +7,7 @@ import dev.gabriel.wisewallet.user.domain.events.*;
 import lombok.Getter;
 import lombok.NonNull;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Getter
@@ -15,6 +16,8 @@ public class User extends Aggregate {
     private Email email;
     private Password password;
     private UserConfiguration configuration;
+    private Instant createdAt;
+    private Instant updatedAt;
     private Boolean isDeleted;
 
     @JsonCreator
@@ -117,32 +120,39 @@ public class User extends Aggregate {
         this.email = Email.create(event.getEmail());
         this.password = Password.create(event.getPassword());
         this.configuration = UserConfiguration.create(event.getDefaultCurrencyCode(), event.getDefaultLanguage());
+        this.createdAt = Instant.now();
+        this.updatedAt = null;
         this.isDeleted = false;
     }
 
     @SuppressWarnings("unused")
     private void apply(UserRenamedEvent event) {
         this.name = Username.create(event.getName());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(UserEmailChangedEvent event) {
         this.email = Email.create(event.getEmail());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(UserPasswordChangedEvent event) {
         this.password = Password.create(event.getPassword());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(UserConfigurationChangedEvent event) {
         this.configuration = UserConfiguration.create(event.getDefaultCurrencyCode(), event.getDefaultLanguage());
+        this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(UserDeletedEvent event) {
         this.isDeleted = true;
+        this.updatedAt = Instant.now();
     }
 
     @Override

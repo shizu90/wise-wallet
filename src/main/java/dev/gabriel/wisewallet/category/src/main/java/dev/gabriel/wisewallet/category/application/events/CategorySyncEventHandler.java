@@ -25,6 +25,8 @@ public class CategorySyncEventHandler implements SyncEventHandler {
                         category.getId(),
                         category.getName().getValue(),
                         category.getUserId(),
+                        category.getCreatedAt(),
+                        category.getUpdatedAt(),
                         category.getIsDeleted()
         );
 

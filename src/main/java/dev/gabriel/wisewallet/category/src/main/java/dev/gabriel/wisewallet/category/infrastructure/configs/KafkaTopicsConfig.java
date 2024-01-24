@@ -1,4 +1,4 @@
-package dev.gabriel.wisewallet.user.infrastructure.configs;
+package dev.gabriel.wisewallet.category.infrastructure.configs;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -15,7 +15,7 @@ public class KafkaTopicsConfig {
     private final Environment env;
 
     @Bean
-    public NewTopic userIntegrationEventsTopic() {
+    public NewTopic categoryIntegrationEventsTopic() {
         return TopicBuilder
                 .name(env.getProperty("kafka.topics.name"))
                 .partitions(10)
