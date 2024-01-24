@@ -10,8 +10,8 @@ import lombok.RequiredArgsConstructor;
 import java.util.Arrays;
 import java.util.List;
 
-@Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@JsonCreator))
+@Getter
 public class WalletName extends ValueObject {
     private final String value;
 
@@ -20,8 +20,8 @@ public class WalletName extends ValueObject {
     }
 
     public static void validate(String value) {
-        if(value == null || value.length() > 255) {
-            throw new WalletValidationException("Wallet validation failed on name field: name must have less than 255 characters.");
+        if(value == null || value.length() > 256) {
+            throw new WalletValidationException("Wallet validation failed on name field: name must have between 1 and 256 characters.");
         }
     }
 

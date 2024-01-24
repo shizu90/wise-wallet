@@ -7,6 +7,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface WalletRepository extends DomainRepository {
-    Optional<Wallet> load(UUID walletId);
+    Optional<Wallet> load(UUID id);
     void saveChanges(Wallet wallet);
 }

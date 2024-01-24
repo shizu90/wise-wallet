@@ -21,7 +21,7 @@ public class WalletDescription extends ValueObject {
 
     public static void validate(String value) {
         if(value == null || value.length() > 1510) {
-            throw new WalletValidationException("Wallet validation failed on description field: description must have less than 1510 characters.");
+            throw new WalletValidationException("Wallet validation failed on description field: description must have between 1 and 1510 characters.");
         }
     }
 

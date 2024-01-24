@@ -10,8 +10,8 @@ import lombok.RequiredArgsConstructor;
 import java.util.Arrays;
 import java.util.List;
 
-@Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@JsonCreator))
+@Getter
 public class ReminderName extends ValueObject {
     private final String value;
 
