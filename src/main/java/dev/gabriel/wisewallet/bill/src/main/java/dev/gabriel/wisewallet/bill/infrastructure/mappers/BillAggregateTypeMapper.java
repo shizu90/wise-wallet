@@ -6,6 +6,7 @@ import dev.gabriel.wisewallet.core.infrastructure.eventstore.mappers.AggregateTy
 import org.springframework.stereotype.Component;
 
 @Component
+@SuppressWarnings("unused")
 public class BillAggregateTypeMapper implements AggregateTypeMapper {
     @Override
     public Class<Bill> getClassByAggregateType(String aggregateType) {

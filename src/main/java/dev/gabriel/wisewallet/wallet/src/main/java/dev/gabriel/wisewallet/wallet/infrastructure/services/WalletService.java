@@ -52,7 +52,6 @@ public class WalletService {
                     walletRequestDto.description(),
                     walletRequestDto.balance(),
                     walletRequestDto.currencyCode(),
-                    walletRequestDto.main(),
                     walletRequestDto.type(),
                     walletRequestDto.userId()
                 ));
@@ -83,14 +82,6 @@ public class WalletService {
                     new ChangeWalletTypeCommand(
                             request.id(),
                             request.type()
-                    )
-            );
-        }
-        if(!(request.main() == null)) {
-            wallet = (Wallet) commandBus.execute(
-                    new ToggleWalletMainCommand(
-                            request.id(),
-                            request.main()
                     )
             );
         }

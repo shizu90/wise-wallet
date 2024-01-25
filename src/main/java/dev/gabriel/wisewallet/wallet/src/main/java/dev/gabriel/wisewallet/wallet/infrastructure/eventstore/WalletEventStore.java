@@ -19,7 +19,7 @@ public class WalletEventStore implements WalletRepository {
     @Override
     public Optional<Wallet> load(UUID walletId) {
         Wallet wallet = (Wallet) aggregateService.load(AggregateType.WALLET.toString(), walletId, null);
-        return Optional.of(wallet);
+        return Optional.ofNullable(wallet);
     }
 
     @Override

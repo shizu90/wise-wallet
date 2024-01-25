@@ -12,7 +12,6 @@ public class CreateWalletCommand extends WalletCommand {
     private final String description;
     private final BigDecimal balance;
     private final String currencyCode;
-    private final Boolean main;
     private final WalletType type;
     private final UUID userId;
 
@@ -21,7 +20,6 @@ public class CreateWalletCommand extends WalletCommand {
                                String description,
                                BigDecimal balance,
                                String currencyCode,
-                               Boolean main,
                                WalletType type,
                                UUID userId
     ) {
@@ -30,7 +28,6 @@ public class CreateWalletCommand extends WalletCommand {
         this.description = description;
         this.balance = balance;
         this.currencyCode = currencyCode;
-        this.main = main;
         this.type = type;
         this.userId = userId;
     }

@@ -19,7 +19,7 @@ public class CategoryEventStore implements CategoryRepository {
     @Override
     public Optional<Category> load(UUID id) {
         Category category = (Category) aggregateService.load(AggregateType.CATEGORY.toString(), id, null);
-        return Optional.of(category);
+        return Optional.ofNullable(category);
     }
 
     @Override

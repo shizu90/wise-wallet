@@ -22,7 +22,6 @@ public class WalletProjection {
     private BigDecimal balance;
     private BigDecimal initialBalance;
     private String currencyCode;
-    private Boolean main;
     private WalletType type;
     private UUID userId;
     private Instant createdAt;
@@ -35,7 +34,6 @@ public class WalletProjection {
                                           BigDecimal balance,
                                           BigDecimal initialBalance,
                                           String currencyCode,
-                                          Boolean main,
                                           WalletType type,
                                           UUID userId,
                                           Instant createdAt,
@@ -49,7 +47,6 @@ public class WalletProjection {
                 balance,
                 initialBalance,
                 currencyCode,
-                main,
                 type,
                 userId,
                 createdAt,

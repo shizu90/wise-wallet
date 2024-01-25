@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -14,20 +15,23 @@ import java.util.UUID;
 @Getter
 public class BudgetItem extends ValueObject {
     private final UUID billId;
-    private final UUID budgetId;
+    private final String name;
+    private final BigDecimal amount;
+    private final String currencyCode;
+    private final String type;
 
-    public static BudgetItem create(UUID billId, UUID budgetId) {
-        return new BudgetItem(billId, budgetId);
+    public static BudgetItem create(UUID billId, String name, BigDecimal amount, String currencyCode, String type) {
+        return new BudgetItem(billId, name, amount, currencyCode, type);
     }
 
-    public static void validate(UUID billId, UUID budgetId) {
-        if(billId == null || budgetId == null) {
-            throw new BudgetValidationException("Budget validation failed on item field: an item must have a bill id and a budget id.");
+    public static void validate(UUID billId, String name, String currencyCode, BigDecimal amount, String type) {
+        if(billId == null || name == null || amount == null || currencyCode == null || type == null) {
+            throw new BudgetValidationException("Budget validation failed on item field: not a valid item.");
         }
     }
 
     @Override
     public List<Object> getAtomicValues() {
-        return Arrays.asList(new Object[] {billId, budgetId});
+        return Arrays.asList(new Object[] {billId});
     }
 }

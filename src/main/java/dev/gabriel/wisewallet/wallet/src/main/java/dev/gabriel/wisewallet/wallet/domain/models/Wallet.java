@@ -18,7 +18,6 @@ public class Wallet extends Aggregate {
     private WalletDescription description;
     private Currency balance;
     private Currency initialBalance;
-    private Boolean main;
     private WalletType type;
     private UUID userId;
     private Instant createdAt;
@@ -35,7 +34,6 @@ public class Wallet extends Aggregate {
                    String description,
                    BigDecimal balance,
                    String currencyCode,
-                   Boolean main,
                    WalletType type,
                    UUID userId
     ) {
@@ -48,7 +46,6 @@ public class Wallet extends Aggregate {
                 description,
                 balance,
                 currencyCode,
-                main,
                 type,
                 userId
         ));
@@ -59,14 +56,13 @@ public class Wallet extends Aggregate {
                                 String description,
                                 BigDecimal balance,
                                 String currencyCode,
-                                Boolean main,
                                 WalletType type,
                                 UUID userId
     ) {
         WalletName.validate(name);
         WalletDescription.validate(description);
 
-        return new Wallet(id, name, description, balance, currencyCode, main, type, userId);
+        return new Wallet(id, name, description, balance, currencyCode, type, userId);
     }
 
     public void rename(String name) {
@@ -113,14 +109,6 @@ public class Wallet extends Aggregate {
         ));
     }
 
-    public void toggleMain(Boolean main) {
-        applyChange(new WalletMainToggledEvent(
-                id,
-                getNextVersion(),
-                main
-        ));
-    }
-
     public void delete() {
         if(isDeleted)
             throw new WalletAlreadyDeletedException("Wallet %s already deleted.".formatted(id));
@@ -137,7 +125,6 @@ public class Wallet extends Aggregate {
         this.description = WalletDescription.create(event.getDescription());
         this.balance = Currency.create(event.getBalance(), event.getCurrencyCode());
         this.initialBalance = balance;
-        this.main = event.getMain();
         this.type = event.getType();
         this.userId = event.getUserId();
         this.createdAt = Instant.now();
@@ -172,12 +159,6 @@ public class Wallet extends Aggregate {
     @SuppressWarnings("unused")
     private void apply(WalletTypeChangedEvent event) {
         this.type = event.getType();
-        this.updatedAt = Instant.now();
-    }
-
-    @SuppressWarnings("unused")
-    private void apply(WalletMainToggledEvent event) {
-        this.main = event.getMain();
         this.updatedAt = Instant.now();
     }
 

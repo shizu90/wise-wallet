@@ -18,7 +18,6 @@ public class WalletTests {
                 "Description",
                 BigDecimal.valueOf(3000.0),
                 "BRL",
-                true,
                 WalletType.DEBIT_CARD,
                 UUID.randomUUID()
         );
@@ -36,7 +35,6 @@ public class WalletTests {
                 "Description",
                 BigDecimal.valueOf(3000.0),
                 "BRL",
-                true,
                 WalletType.DEBIT_CARD,
                 UUID.randomUUID()
         );
@@ -56,7 +54,6 @@ public class WalletTests {
                 "Description",
                 BigDecimal.valueOf(3000.0),
                 "BRL",
-                true,
                 WalletType.DEBIT_CARD,
                 UUID.randomUUID()
         );
@@ -76,7 +73,6 @@ public class WalletTests {
                 "Description",
                 BigDecimal.valueOf(3000.0),
                 "BRL",
-                true,
                 WalletType.DEBIT_CARD,
                 UUID.randomUUID()
         );
@@ -96,7 +92,6 @@ public class WalletTests {
                 "Description",
                 BigDecimal.valueOf(3000.0),
                 "BRL",
-                true,
                 WalletType.DEBIT_CARD,
                 UUID.randomUUID()
         );
@@ -108,26 +103,6 @@ public class WalletTests {
     }
 
     @Test
-    @DisplayName("Should toggle wallet main successfully.")
-    void toggleMain() {
-        Wallet wallet = Wallet.create(
-                UUID.randomUUID(),
-                "Name",
-                "Description",
-                BigDecimal.valueOf(3000.0),
-                "BRL",
-                true,
-                WalletType.DEBIT_CARD,
-                UUID.randomUUID()
-        );
-        wallet.toggleMain(false);
-
-        Assertions.assertEquals(2L, wallet.getVersion());
-        Assertions.assertInstanceOf(WalletMainToggledEvent.class, wallet.getChanges().get(1));
-        Assertions.assertFalse(wallet.getMain());
-    }
-
-    @Test
     @DisplayName("Should change wallet type successfully.")
     void changeType() {
         Wallet wallet = Wallet.create(
@@ -136,7 +111,6 @@ public class WalletTests {
                 "Description",
                 BigDecimal.valueOf(3000.0),
                 "BRL",
-                true,
                 WalletType.DEBIT_CARD,
                 UUID.randomUUID()
         );
@@ -156,7 +130,6 @@ public class WalletTests {
                 "Description",
                 BigDecimal.valueOf(3000.0),
                 "BRL",
-                true,
                 WalletType.DEBIT_CARD,
                 UUID.randomUUID()
         );

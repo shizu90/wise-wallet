@@ -11,7 +11,6 @@ public record WalletRequestDto(
         String description,
         BigDecimal balance,
         String currencyCode,
-        Boolean main,
         WalletType type,
         UUID userId
 ) {}

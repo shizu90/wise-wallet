@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Getter
@@ -74,25 +75,27 @@ public class Budget extends Aggregate {
         applyChange(new BudgetCurrencyCodeChangedEvent(id, getNextVersion(), currencyCode));
     }
 
-    public void addItem(UUID billId, BigDecimal amount) {
-        boolean isPresent = items.stream().anyMatch(i -> i.getBillId().equals(billId));
+    public void addItem(UUID billId, String name, BigDecimal amount, String currencyCode, String type) {
+        Optional<BudgetItem> existentBudgetItem = items.stream().filter(i -> i.getBillId().equals(billId)).findFirst();
 
         if(items.size() == 16)
             throw new BudgetReachedMaxItemsException("Budget %s reached max items.".formatted(id));
 
-        if(isPresent)
+        if(existentBudgetItem.isPresent())
             throw new BudgetItemAlreadyPresentException("Bill %s already present in budget %s.".formatted(billId, id));
 
-        applyChange(new BudgetItemAddedEvent(id, getNextVersion(), billId, amount));
+        applyChange(new BudgetItemAddedEvent(id, getNextVersion(), billId, name, amount, currencyCode, type));
     }
 
-    public void removeItem(UUID billId, BigDecimal amount) {
-        boolean isPresent = items.stream().anyMatch(i -> i.getBillId().equals(billId));
+    public BudgetItem removeItem(UUID billId) {
+        Optional<BudgetItem> existentBudgetItem = items.stream().filter(i -> i.getBillId().equals(billId)).findFirst();
 
-        if(!isPresent)
+        if(existentBudgetItem.isEmpty())
             throw new BudgetItemNotPresentException("Bill %s not present in budget %s.".formatted(billId, id));
 
-        applyChange(new BudgetItemRemovedEvent(id, getNextVersion(), billId, amount));
+        applyChange(new BudgetItemRemovedEvent(id, getNextVersion(), billId));
+
+        return existentBudgetItem.get();
     }
 
     public void delete() {
@@ -109,6 +112,7 @@ public class Budget extends Aggregate {
         this.description = BudgetDescription.create(event.getDescription());
         this.amount = Currency.create(BigDecimal.ZERO, event.getCurrencyCode());
         this.items = new ArrayList<>();
+        this.userId = event.getUserId();
         this.createdAt = Instant.now();
         this.updatedAt = null;
         this.isDeleted = false;
@@ -134,15 +138,13 @@ public class Budget extends Aggregate {
 
     @SuppressWarnings("unused")
     private void apply(BudgetItemAddedEvent event) {
-        this.items.add(BudgetItem.create(event.getBillId(), id));
-        this.amount = Currency.create(amount.getValue().add(event.getAmount()), amount.getCurrencyCode());
+        this.items.add(BudgetItem.create(event.getBillId(), event.getName(), event.getAmount(), event.getCurrencyCode(), event.getType()));
         this.updatedAt = Instant.now();
     }
 
     @SuppressWarnings("unused")
     private void apply(BudgetItemRemovedEvent event) {
-        this.items.remove(BudgetItem.create(event.getBillId(), id));
-        this.amount = Currency.create(amount.getValue().subtract(event.getAmount()), amount.getCurrencyCode());
+        this.items.removeIf(i -> i.getBillId().equals(event.getBillId()));
         this.updatedAt = Instant.now();
     }
 

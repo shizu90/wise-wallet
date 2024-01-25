@@ -14,12 +14,12 @@ import org.springframework.kafka.config.TopicBuilder;
 public class KafkaTopicsConfig {
     private final Environment env;
 
-    @Bean
+    /*@Bean
     public NewTopic billIntegrationEventsTopic() {
         return TopicBuilder
                 .name(env.getProperty("kafka.topics.name"))
                 .partitions(10)
                 .replicas(1)
                 .build();
-    }
+    }*/
 }

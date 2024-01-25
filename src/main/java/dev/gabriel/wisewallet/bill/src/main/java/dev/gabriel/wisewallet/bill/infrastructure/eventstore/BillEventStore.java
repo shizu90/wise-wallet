@@ -19,7 +19,7 @@ public class BillEventStore implements BillRepository {
     @Override
     public Optional<Bill> load(UUID id) {
         Bill bill = (Bill) aggregateService.load(AggregateType.BILL.toString(), id, null);
-        return Optional.of(bill);
+        return Optional.ofNullable(bill);
     }
 
     @Override

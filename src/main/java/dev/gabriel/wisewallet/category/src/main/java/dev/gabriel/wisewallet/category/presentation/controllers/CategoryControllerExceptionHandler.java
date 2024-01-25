@@ -9,13 +9,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.Instant;
 
-@RestControllerAdvice
 @SuppressWarnings("unused")
+@RestControllerAdvice
 public class CategoryControllerExceptionHandler {
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Validation failed.")
     @ExceptionHandler(CategoryValidationException.class)
     public ResponseEntity<ControllerException> validationFailed(CategoryValidationException e, HttpServletRequest request) {
         String error = "Validation failed.";
@@ -24,6 +26,7 @@ public class CategoryControllerExceptionHandler {
         return ResponseEntity.status(status).body(exception);
     }
 
+    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "Already deleted.")
     @ExceptionHandler(CategoryAlreadyDeletedException.class)
     public ResponseEntity<ControllerException> alreadyDeleted(CategoryAlreadyDeletedException e, HttpServletRequest request) {
         String error = "Already deleted.";
@@ -32,6 +35,7 @@ public class CategoryControllerExceptionHandler {
         return ResponseEntity.status(status).body(exception);
     }
 
+    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "Already exists.")
     @ExceptionHandler(CategoryAlreadyExistsException.class)
     public ResponseEntity<ControllerException> alreadyExists(CategoryAlreadyExistsException e, HttpServletRequest request) {
         String error = "Already exists.";
@@ -40,6 +44,7 @@ public class CategoryControllerExceptionHandler {
         return ResponseEntity.status(status).body(exception);
     }
 
+    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Not found.")
     @ExceptionHandler(CategoryNotFoundException.class)
     public ResponseEntity<ControllerException> notFound(CategoryNotFoundException e, HttpServletRequest request) {
         String error = "Not found.";

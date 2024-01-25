@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.Instant;
@@ -16,6 +17,7 @@ import java.time.Instant;
 @SuppressWarnings("unused")
 @RestControllerAdvice
 public class UserControllerExceptionHandler {
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Validation failed.")
     @ExceptionHandler(UserValidationException.class)
     public ResponseEntity<ControllerException> validationFailed(UserValidationException e, HttpServletRequest request) {
         String error = "Validation failed.";
@@ -24,6 +26,7 @@ public class UserControllerExceptionHandler {
         return ResponseEntity.status(status).body(exception);
     }
 
+    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "Already deleted.")
     @ExceptionHandler(UserAlreadyDeletedException.class)
     public ResponseEntity<ControllerException> alreadyDeleted(UserAlreadyDeletedException e, HttpServletRequest request) {
         String error = "Already deleted.";
@@ -32,6 +35,7 @@ public class UserControllerExceptionHandler {
         return ResponseEntity.status(status).body(exception);
     }
 
+    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "Already exists.")
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<ControllerException> alreadyExists(UserAlreadyExistsException e, HttpServletRequest request) {
         String error = "Already exists.";
@@ -40,6 +44,7 @@ public class UserControllerExceptionHandler {
         return ResponseEntity.status(status).body(exception);
     }
 
+    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Not found.")
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ControllerException> notFound(UserNotFoundException e, HttpServletRequest request) {
         String error = "Not found.";

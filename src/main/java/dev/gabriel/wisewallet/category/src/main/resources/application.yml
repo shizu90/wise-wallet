@@ -1,3 +1,6 @@
+server:
+  port: 8084
+
 spring:
   datasource:
     urL: jdbc:postgresql://localhost:5432/wise_wallet?useUnicode=yes&characterEncoding=UTF-8

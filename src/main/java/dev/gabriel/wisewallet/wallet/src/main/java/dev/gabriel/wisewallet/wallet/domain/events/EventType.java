@@ -13,7 +13,6 @@ public enum EventType {
     WALLET_BALANCE_UPDATED(WalletBalanceUpdatedEvent.class),
     WALLET_CURRENCY_CODE_CHANGED(WalletCurrencyCodeChangedEvent.class),
     WALLET_TYPE_CHANGED(WalletTypeChangedEvent.class),
-    WALLET_MAIN_TOGGLED(WalletMainToggledEvent.class),
     WALLET_DELETED(WalletDeletedEvent.class);
 
     private final Class<? extends WalletEvent> type;

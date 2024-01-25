@@ -19,7 +19,7 @@ public class ReminderEventStore implements ReminderRepository {
     @Override
     public Optional<Reminder> load(UUID id) {
         Reminder reminder = (Reminder) aggregateService.load(AggregateType.REMINDER.toString(), id, null);
-        return Optional.of(reminder);
+        return Optional.ofNullable(reminder);
     }
 
     @Override

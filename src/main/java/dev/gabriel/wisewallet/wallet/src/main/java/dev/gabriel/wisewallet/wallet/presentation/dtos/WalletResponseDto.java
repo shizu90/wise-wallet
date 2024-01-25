@@ -13,7 +13,6 @@ public record WalletResponseDto(
         BigDecimal balance,
         BigDecimal initialBalance,
         String currencyCode,
-        Boolean main,
         WalletType type,
         UUID userId,
         Instant createdAt,

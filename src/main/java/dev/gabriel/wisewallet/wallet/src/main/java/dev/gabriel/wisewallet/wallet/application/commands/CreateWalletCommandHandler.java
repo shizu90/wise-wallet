@@ -34,7 +34,6 @@ public class CreateWalletCommandHandler implements CommandHandler<CreateWalletCo
                 command.getDescription(),
                 command.getBalance(),
                 command.getCurrencyCode(),
-                command.getMain(),
                 command.getType(),
                 command.getUserId()
         );

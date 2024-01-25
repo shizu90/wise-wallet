@@ -9,12 +9,10 @@ import java.util.UUID;
 @Getter
 public class BudgetItemRemovedEvent extends BudgetEvent {
     private final UUID billId;
-    private final BigDecimal amount;
 
-    public BudgetItemRemovedEvent(UUID id, Long version, UUID billId, BigDecimal amount) {
+    public BudgetItemRemovedEvent(UUID id, Long version, UUID billId) {
         super(id, version);
         this.billId = billId;
-        this.amount = amount;
     }
 
     @Override

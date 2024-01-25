@@ -6,6 +6,7 @@ import dev.gabriel.wisewallet.core.infrastructure.eventstore.mappers.EventTypeMa
 import org.springframework.stereotype.Component;
 
 @Component
+@SuppressWarnings("unused")
 public class BillEvenTypeMapper implements EventTypeMapper {
     @Override
     public Class<? extends BillEvent> getClassByEventType(String eventType) {
