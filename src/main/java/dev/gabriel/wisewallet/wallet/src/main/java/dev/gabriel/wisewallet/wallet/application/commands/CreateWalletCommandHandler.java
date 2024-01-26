@@ -17,12 +17,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CreateWalletCommandHandler implements CommandHandler<CreateWalletCommand> {
     private final WalletRepository walletRepository;
-    private final CheckUniqueWalletName checkUniqueWalletNameService;
+    private final CheckUniqueWalletName checkUniqueWalletName;
     private final CheckUserWallets checkUserWallets;
 
     @Override
     public Wallet handle(@NonNull CreateWalletCommand command) {
-        if(checkUniqueWalletNameService.exists(command.getUserId(), command.getName()) >= 1)
+        if(checkUniqueWalletName.exists(command.getName(), command.getUserId()))
             throw new WalletAlreadyExistsException("Wallet with name %s already exists.".formatted(command.getName()));
 
         if(checkUserWallets.getSize(command.getUserId()) == 10)

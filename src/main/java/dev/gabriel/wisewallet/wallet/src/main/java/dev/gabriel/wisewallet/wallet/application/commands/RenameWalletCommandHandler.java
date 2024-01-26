@@ -25,7 +25,7 @@ public class RenameWalletCommandHandler implements CommandHandler<RenameWalletCo
 
         if(wallet.getName().getValue().equals(command.getName())) return wallet;
 
-        if(checkUniqueWalletName.exists(wallet.getUserId(), command.getName()) >= 1)
+        if(checkUniqueWalletName.exists(command.getName(), wallet.getUserId()))
             throw new WalletAlreadyExistsException("Wallet with name %s already exists.".formatted(command.getName()));
 
         wallet.rename(command.getName());

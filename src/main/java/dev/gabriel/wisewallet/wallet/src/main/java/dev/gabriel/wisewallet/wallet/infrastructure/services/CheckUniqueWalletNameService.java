@@ -14,7 +14,7 @@ public class CheckUniqueWalletNameService implements CheckUniqueWalletName {
     private final WalletProjectionRepository walletProjectionRepository;
 
     @Override
-    public long exists(UUID userId, String name) {
-        return walletProjectionRepository.findByUserIdAndName(userId, name).size();
+    public boolean exists(String name, UUID userId) {
+        return !walletProjectionRepository.findByUserIdAndName(userId, name).isEmpty();
     }
 }

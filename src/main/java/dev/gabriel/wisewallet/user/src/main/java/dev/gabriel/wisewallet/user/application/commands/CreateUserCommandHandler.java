@@ -1,6 +1,7 @@
 package dev.gabriel.wisewallet.user.application.commands;
 
 import dev.gabriel.wisewallet.user.domain.commands.CreateUserCommand;
+import dev.gabriel.wisewallet.user.domain.services.CheckUniqueEmail;
 import dev.gabriel.wisewallet.user.infrastructure.services.CheckUniqueEmailService;
 import dev.gabriel.wisewallet.core.application.CommandHandler;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserAlreadyExistsException;
@@ -15,11 +16,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CreateUserCommandHandler implements CommandHandler<CreateUserCommand> {
     private final UserRepository userEventStore;
-    private final CheckUniqueEmailService checkUniqueEmailService;
+    private final CheckUniqueEmail checkUniqueEmail;
 
     @Override
     public User handle(@NonNull CreateUserCommand command) {
-        if(checkUniqueEmailService.exists(command.getEmail()) >= 1)
+        if(checkUniqueEmail.exists(command.getEmail()))
             throw new UserAlreadyExistsException("User with email %s already exists.".formatted(command.getEmail()));
 
         User user = User.create(

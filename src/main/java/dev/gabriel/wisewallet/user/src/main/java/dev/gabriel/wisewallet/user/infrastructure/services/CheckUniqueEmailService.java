@@ -12,7 +12,7 @@ public class CheckUniqueEmailService implements CheckUniqueEmail {
     private final UserProjectionRepository userProjectionRepository;
 
     @Override
-    public long exists(String email) {
-        return userProjectionRepository.findByEmail(email).size();
+    public boolean exists(String email) {
+        return !userProjectionRepository.findByEmail(email).isEmpty();
     }
 }

@@ -25,7 +25,7 @@ public class ChangeUserEmailCommandHandler implements CommandHandler<ChangeUserE
 
         if(command.getEmail().equals(user.getEmail().getValue())) return user;
 
-        if(checkUniqueEmail.exists(command.getEmail()) >= 1)
+        if(checkUniqueEmail.exists(command.getEmail()))
             throw new UserAlreadyExistsException("User with %s already exists.".formatted(command.getEmail()));
 
         user.changeEmail(command.getEmail());
