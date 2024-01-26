@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 8086
 
 spring:
   datasource:
@@ -14,10 +14,10 @@ spring:
 
 event-store:
   snapshotting:
-    REMINDER:
+    BUDGET:
       enabled: true
       nth-event: 8
 
 kafka:
   topics:
-    name: reminder-events
+    name: budget-events

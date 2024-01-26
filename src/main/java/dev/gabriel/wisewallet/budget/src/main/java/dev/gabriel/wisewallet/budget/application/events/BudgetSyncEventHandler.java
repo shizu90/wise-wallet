@@ -1,10 +1,12 @@
 package dev.gabriel.wisewallet.budget.application.events;
 
+import dev.gabriel.wisewallet.budget.domain.models.AggregateType;
 import dev.gabriel.wisewallet.budget.domain.models.Budget;
 import dev.gabriel.wisewallet.budget.infrastructure.projection.BudgetProjection;
 import dev.gabriel.wisewallet.budget.infrastructure.projection.BudgetProjectionRepository;
 import dev.gabriel.wisewallet.core.application.SyncEventHandler;
 import dev.gabriel.wisewallet.core.domain.models.Aggregate;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,5 +36,11 @@ public class BudgetSyncEventHandler implements SyncEventHandler {
         );
 
         projectionRepository.save(budgetProjection);
+    }
+
+    @Override
+    @NonNull
+    public String getAggregateType() {
+        return AggregateType.BUDGET.toString();
     }
 }

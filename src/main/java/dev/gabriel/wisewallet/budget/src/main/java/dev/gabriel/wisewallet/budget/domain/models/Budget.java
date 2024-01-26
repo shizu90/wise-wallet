@@ -131,6 +131,11 @@ public class Budget extends Aggregate {
     }
 
     @SuppressWarnings("unused")
+    private void apply(BudgetAmountUpdatedEvent event) {
+        this.amount = Currency.create(event.getAmount(), amount.getCurrencyCode());
+    }
+
+    @SuppressWarnings("unused")
     private void apply(BudgetCurrencyCodeChangedEvent event) {
         this.amount = Currency.create(amount.getValue(), event.getCurrencyCode());
         this.updatedAt = Instant.now();
