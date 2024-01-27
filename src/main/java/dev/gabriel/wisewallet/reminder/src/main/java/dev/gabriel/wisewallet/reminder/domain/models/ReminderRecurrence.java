@@ -14,14 +14,12 @@ import java.util.List;
 @Getter
 public class ReminderRecurrence extends ValueObject {
     private final Long value;
-
     public static ReminderRecurrence create(Long value) {
         return new ReminderRecurrence(value);
     }
-
     public static void validate(Long value) {
-        if(value == null || value <= 0) {
-            throw new ReminderValidationException("Reminder validation failed on recurrence field: recurrence must be greater than 0.");
+        if(value == null || value == 0) {
+            throw new ReminderValidationException("Reminder validation failed on recurrence field: not a valid recurrence.");
         }
     }
 

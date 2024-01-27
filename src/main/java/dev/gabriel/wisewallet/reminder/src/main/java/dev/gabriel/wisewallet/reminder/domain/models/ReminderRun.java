@@ -20,11 +20,10 @@ public class ReminderRun extends ValueObject {
     }
 
     public static void validate(Long value) {
-        if(value == null || value < 0) {
-            throw new ReminderValidationException("Reminder validation failed on run field: run must be greater or equals to 0.");
+        if(value == null) {
+            throw new ReminderValidationException("Reminder validation failed on run field: not a valid run.");
         }
     }
-
     @Override
     public List<Object> getAtomicValues() {
         return Arrays.asList(new Object[] {value});

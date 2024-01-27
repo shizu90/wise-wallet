@@ -12,6 +12,10 @@ spring:
       port: 27017
       database: wise_wallet
 
+springdoc:
+  swagger-ui:
+    path: "/"
+
 event-store:
   snapshotting:
     BILL:

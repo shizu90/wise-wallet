@@ -35,7 +35,7 @@ public class ReminderService {
 
     public ReminderResponseDto newReminder(ReminderRequestDto request) {
         Reminder reminder = (Reminder) commandBus.execute(new CreateReminderCommand(
-                request.id(),
+                UUID.randomUUID(),
                 request.name(),
                 request.description(),
                 request.recurrence(),

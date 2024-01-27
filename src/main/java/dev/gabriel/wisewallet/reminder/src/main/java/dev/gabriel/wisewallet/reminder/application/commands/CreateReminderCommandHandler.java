@@ -25,7 +25,7 @@ public class CreateReminderCommandHandler implements CommandHandler<CreateRemind
             throw new ReminderAlreadyExistsException("Reminder with name %s already exists.".formatted(command.getName()));
 
         Reminder reminder = Reminder.create(
-                UUID.randomUUID(),
+                command.getAggregateId(),
                 command.getName(),
                 command.getDescription(),
                 command.getRecurrence(),

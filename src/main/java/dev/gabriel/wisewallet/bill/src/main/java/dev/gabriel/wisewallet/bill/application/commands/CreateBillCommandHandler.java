@@ -19,7 +19,7 @@ public class CreateBillCommandHandler implements CommandHandler<CreateBillComman
     @Override
     public Bill handle(@NonNull CreateBillCommand command) {
         Bill bill = Bill.create(
-                UUID.randomUUID(),
+                command.getAggregateId(),
                 command.getName(),
                 command.getDescription(),
                 command.getAmount(),

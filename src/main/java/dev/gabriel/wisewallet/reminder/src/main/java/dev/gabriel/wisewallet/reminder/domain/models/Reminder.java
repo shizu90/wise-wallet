@@ -44,7 +44,6 @@ public class Reminder extends Aggregate {
 
         ReminderName.validate(name);
         ReminderDescription.validate(description);
-        ReminderRun.validate(maxRuns);
         ReminderRecurrence.validate(recurrence);
         applyChange(new ReminderCreatedEvent(
                 id,

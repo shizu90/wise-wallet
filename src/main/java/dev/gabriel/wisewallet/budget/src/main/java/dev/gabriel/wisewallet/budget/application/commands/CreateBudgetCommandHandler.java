@@ -23,7 +23,7 @@ public class CreateBudgetCommandHandler implements CommandHandler<CreateBudgetCo
             throw new BudgetAlreadyExistsException("Budget with name %s already exists.".formatted(command.getName()));
 
         Budget budget = Budget.create(
-                command.getUserId(),
+                command.getAggregateId(),
                 command.getName(),
                 command.getDescription(),
                 command.getCurrencyCode(),

@@ -1,0 +1,27 @@
+server:
+  port: 8087
+
+spring:
+  datasource:
+    urL: jdbc:postgresql://localhost:5432/wise_wallet?useUnicode=yes&characterEncoding=UTF-8
+    username: ${EVENTSTORE_USERNAME}
+    password: ${EVENTSTORE_PASSWORD}
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: wise_wallet
+
+springdoc:
+  swagger-ui:
+    path: "/"
+
+event-store:
+  snapshotting:
+    RECURRING_BILL:
+      enabled: true
+      nth-event: 8
+
+kafka:
+  topics:
+    name: recurringbill-events

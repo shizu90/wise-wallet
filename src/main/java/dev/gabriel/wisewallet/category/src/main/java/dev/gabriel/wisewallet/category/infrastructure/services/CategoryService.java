@@ -38,7 +38,7 @@ public class CategoryService {
 
     public CategoryResponseDto newCategory(CategoryRequestDto request) {
         Category category = (Category) commandBus.execute(new CreateCategoryCommand(
-                request.id(),
+                UUID.randomUUID(),
                 request.name(),
                 request.userId()
         ));

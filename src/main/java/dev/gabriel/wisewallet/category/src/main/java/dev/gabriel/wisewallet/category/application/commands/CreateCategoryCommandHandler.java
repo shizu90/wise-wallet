@@ -24,7 +24,7 @@ public class CreateCategoryCommandHandler implements CommandHandler<CreateCatego
         if(checkUniqueCategoryName.exists(command.getName(), command.getUserId()))
             throw new CategoryAlreadyExistsException("Category with name %s already exists.".formatted(command.getName()));
 
-        Category category = Category.create(UUID.randomUUID(), command.getName(), command.getUserId());
+        Category category = Category.create(command.getAggregateId(), command.getName(), command.getUserId());
 
         categoryRepository.saveChanges(category);
 
