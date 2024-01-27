@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @SuppressWarnings("unused")
 @RestController
-@RequestMapping(value = "/api/users")
+@RequestMapping(value = "/users")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Tag(name = "User endpoints")
 public class UserController {

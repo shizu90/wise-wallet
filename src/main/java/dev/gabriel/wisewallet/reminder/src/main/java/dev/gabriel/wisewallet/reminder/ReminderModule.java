@@ -14,6 +14,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAsync
 public class ReminderModule {
     public static void main(String[] args) {
-        SpringApplication.run(ReminderModule.class);
+        SpringApplication.run(ReminderModule.class, args);
     }
 }

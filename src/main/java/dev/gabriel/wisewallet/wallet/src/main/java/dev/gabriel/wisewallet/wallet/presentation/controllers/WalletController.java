@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @SuppressWarnings("unused")
 @RestController
-@RequestMapping(value = "/api/wallets")
+@RequestMapping(value = "/wallets")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Tag(name = "WiseWallet: Wallet Service")
 public class WalletController {

@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @SuppressWarnings("unused")
 @RestController
-@RequestMapping(value = "/api/categories")
+@RequestMapping(value = "/categories")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Tag(name = "Category endpoints")
 public class CategoryController {

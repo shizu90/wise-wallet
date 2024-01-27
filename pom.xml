@@ -25,6 +25,8 @@
         <module>src/main/java/dev/gabriel/wisewallet/reminder</module>
         <module>src/main/java/dev/gabriel/wisewallet/category</module>
         <module>src/main/java/dev/gabriel/wisewallet/currency</module>
+        <module>src/main/java/dev/gabriel/wisewallet/service-discovery</module>
+        <module>src/main/java/dev/gabriel/wisewallet/api-gateway</module>
     </modules>
 
     <properties>
@@ -39,6 +41,7 @@
         <spring.doc.version>2.1.0</spring.doc.version>
         <spring.mongodb.version>4.2.0</spring.mongodb.version>
         <spring.kafka.version>3.1.1</spring.kafka.version>
+        <spring.cloud.version>2023.0.0</spring.cloud.version>
         <lombok.version>1.18.30</lombok.version>
         <junit.jupiter.api.version>5.10.0</junit.jupiter.api.version>
         <junit.jupiter.engine.version>5.10.0</junit.jupiter.engine.version>
@@ -54,25 +57,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>${spring.mongodb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -95,6 +82,10 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.driver.version}</version>
@@ -103,6 +94,12 @@
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver-sync</artifactId>
             <version>${mongodb.driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -134,5 +131,22 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

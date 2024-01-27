@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @SuppressWarnings("unused")
 @RestController
-@RequestMapping(value = "/api/reminders")
+@RequestMapping(value = "/reminders")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Tag(name = "Reminder endpoints")
 public class ReminderController {

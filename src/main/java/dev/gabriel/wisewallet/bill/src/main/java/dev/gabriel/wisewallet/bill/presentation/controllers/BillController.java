@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @SuppressWarnings("unused")
 @RestController
-@RequestMapping(value = "/api/bills")
+@RequestMapping(value = "/bills")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Tag(name = "Bill endpoints")
 public class BillController {

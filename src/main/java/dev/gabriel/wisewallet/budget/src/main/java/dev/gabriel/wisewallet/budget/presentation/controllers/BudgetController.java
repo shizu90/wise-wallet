@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @SuppressWarnings("unused")
 @RestController
-@RequestMapping(value = "/api/budgets")
+@RequestMapping(value = "/budgets")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Tag(name = "Budget endpoints")
 public class BudgetController {

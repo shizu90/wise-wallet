@@ -11,6 +11,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories
 public class BudgetModule {
     public static void main(String[] args) {
-        SpringApplication.run(BudgetModule.class);
+        SpringApplication.run(BudgetModule.class, args);
     }
 }

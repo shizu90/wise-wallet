@@ -10,33 +10,38 @@
         <relativePath>../../../../../../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>budget</artifactId>
+    <artifactId>service-discovery</artifactId>
+
+    <properties>
+        <jaxb.api.version>2.3.1</jaxb.api.version>
+        <javax.activation.version>1.1.1</javax.activation.version>
+        <jaxb.runtime>4.0.4</jaxb.runtime>
+    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>dev.gabriel.wisewallet</groupId>
-            <artifactId>core</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
         <dependency>
-            <groupId>dev.gabriel.wisewallet</groupId>
-            <artifactId>currency</artifactId>
-            <version>${project.version}</version>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb.api.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${spring.version}</version>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>${javax.activation.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>${spring.mongodb.version}</version>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb.runtime}</version>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>budget</finalName>
+        <finalName>discovery</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

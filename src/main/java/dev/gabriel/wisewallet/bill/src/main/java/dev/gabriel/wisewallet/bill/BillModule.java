@@ -11,6 +11,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories
 public class BillModule {
     public static void main(String[] args) {
-        SpringApplication.run(BillModule.class);
+        SpringApplication.run(BillModule.class, args);
     }
 }
