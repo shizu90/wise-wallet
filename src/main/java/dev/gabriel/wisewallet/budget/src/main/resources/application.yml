@@ -30,7 +30,3 @@ event-store:
     BUDGET:
       enabled: true
       nth-event: 8
-
-kafka:
-  topics:
-    name: budget-events

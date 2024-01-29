@@ -30,7 +30,3 @@ event-store:
     WALLET:
       enabled: true
       nth-event: 8
-
-kafka:
-  topics:
-    name: wallet-events

@@ -30,7 +30,3 @@ event-store:
     USER:
       enabled: true
       nth-event: 8
-
-kafka:
-  topics:
-    name: user-events

@@ -30,7 +30,3 @@ event-store:
     REMINDER:
       enabled: true
       nth-event: 8
-
-kafka:
-  topics:
-    name: reminder-events

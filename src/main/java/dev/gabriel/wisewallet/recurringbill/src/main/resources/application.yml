@@ -21,7 +21,3 @@ event-store:
     RECURRING_BILL:
       enabled: true
       nth-event: 8
-
-kafka:
-  topics:
-    name: recurringbill-events
