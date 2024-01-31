@@ -8,7 +8,7 @@ The main purpose of this project is to study the various
 technologies involving microservices and event sourcing.
 During the development, i learned many features about Java
 and Spring framework, like Java reflection, dependency injection
-with spring, swagger documentation, maven multi-modules and more.
+ with spring, swagger documentation, maven multi-modules and more.
 
 ### Content
 - [1. Key features](#1-key-features)
@@ -30,7 +30,7 @@ with spring, swagger documentation, maven multi-modules and more.
 
 ### 2. Technical guide
 ### 2.1 Clean Architecture
-![Clean Architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg "Clean Architecture")
+<img alt="Clean Arch" src="https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg" height="280px"/>
 
 Clean Architecture is a software architecture proposed by Robert C. Martin.
 The main purpose of this architecture is to protect the business logic
@@ -54,7 +54,7 @@ the current state of entities. Systems implemented with event sourcing stores
 the entire lifeline of an entity, since its creation. In event sourcing,
 versions of an entity is important to identify all the entity states.
 
-![Event sourcing](https://www.baeldung.com/wp-content/uploads/2020/05/Event-Sourcing.jpg "Event sourcing")
+<img alt="Event sourcing" src="https://www.baeldung.com/wp-content/uploads/2020/05/Event-Sourcing.jpg" height="200px"/>
 
 In event sourcing, events are stored in a proper local called event store.
 An event store is a database focused on storing and managing events.
@@ -83,13 +83,12 @@ operations that change the state of the application (commands).
 Instead of using just one database for both operations, in CQRS we
 can separate it into write database and read database.
 
-![CQRS](https://learn.microsoft.com/pt-br/azure/architecture/patterns/_images/command-and-query-responsibility-segregation-cqrs-basic.png "CQRS")
-
+<img alt="CQRS" src="https://learn.microsoft.com/pt-br/azure/architecture/patterns/_images/command-and-query-responsibility-segregation-cqrs-basic.png" height="200px"/>
 
 ### 2. Class diagram
 
-![Class Diagram](./docs/class_diagram.png?raw=true "Class Diagram")
+<img alt="Class diagram" src="docs/class_diagram.png" height="400px"/>
 
 ### 3. System architecture
 
-![System architecture](./docs/arch.png?raw=true "System architecture")
+<img alt="System arch" src="docs/arch.png" height="400px"/>
