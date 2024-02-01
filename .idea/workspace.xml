@@ -5,7 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5b54b27-7f18-42ac-8853-ca1ce0d9d97c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/ChangeRecurringBillCategoryCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/ChangeRecurringBillDescriptionCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/ChangeRecurringBillMaxPeriodsCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/ChangeRecurringBillRecurrenceCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/ChangeRecurringBillTypeCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/ChangeRecurringBillWalletCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/CreateRecurringBillCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/DeleteRecurringBillCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/ExecuteRecurringBillPeriodCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/RecurringBillCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/RenameRecurringBillCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/ResetRecurringBillCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/commands/UpdateRecurringBillAmountCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/EventType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillAmountUpdatedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillCategoryChangedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillCreatedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillCurrencyCodeChangedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillDeletedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillDescriptionChangedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillMaxPeriodsChangedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillPeriodExecutedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillRecurrenceChangedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillRenamedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillResetEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillTypeChangedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/events/RecurringBillWalletChangedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/exceptions/RecurringBillAlreadyDeletedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/models/RecurringBillType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/repositories/RecurringBillRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/models/RecurringBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gabriel/wisewallet/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/models/RecurringBill.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
