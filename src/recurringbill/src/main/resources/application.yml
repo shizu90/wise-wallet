@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: recurring-bill-service
+  datasource:
+    urL: jdbc:postgresql://localhost:5432/wise_wallet?useUnicode=yes&characterEncoding=UTF-8
+    username: ${EVENTSTORE_USERNAME}
+    password: ${EVENTSTORE_PASSWORD}
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: wise_wallet
+
+server:
+  port: 8088
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+springdoc:
+  swagger-ui:
+    path: "/docs"
+
+event-store:
+  snapshotting:
+    RECURRING_BILL:
+      enabled: true
+      nth-event: 8

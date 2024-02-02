@@ -16,17 +16,17 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>src/main/java/dev/gabriel/wisewallet/core</module>
-        <module>src/main/java/dev/gabriel/wisewallet/user</module>
-        <module>src/main/java/dev/gabriel/wisewallet/wallet</module>
-        <module>src/main/java/dev/gabriel/wisewallet/bill</module>
-        <module>src/main/java/dev/gabriel/wisewallet/budget</module>
-        <module>src/main/java/dev/gabriel/wisewallet/recurringbill</module>
-        <module>src/main/java/dev/gabriel/wisewallet/reminder</module>
-        <module>src/main/java/dev/gabriel/wisewallet/category</module>
-        <module>src/main/java/dev/gabriel/wisewallet/currency</module>
-        <module>src/main/java/dev/gabriel/wisewallet/service-discovery</module>
-        <module>src/main/java/dev/gabriel/wisewallet/api-gateway</module>
+        <module>src/core</module>
+        <module>src/user</module>
+        <module>src/wallet</module>
+        <module>src/bill</module>
+        <module>src/budget</module>
+        <module>src/recurringbill</module>
+        <module>src/reminder</module>
+        <module>src/category</module>
+        <module>src/currency</module>
+        <module>src/service-discovery</module>
+        <module>src/api-gateway</module>
     </modules>
 
     <properties>
@@ -42,6 +42,9 @@
         <spring.mongodb.version>4.2.0</spring.mongodb.version>
         <spring.kafka.version>3.1.1</spring.kafka.version>
         <spring.cloud.version>2023.0.0</spring.cloud.version>
+        <spring.cloud.gateway.version>4.1.0</spring.cloud.gateway.version>
+        <spring.cloud.eureka.server.version>4.1.0</spring.cloud.eureka.server.version>
+        <spring.cloud.eureka.client.version>4.1.0</spring.cloud.eureka.client.version>
         <lombok.version>1.18.30</lombok.version>
         <junit.jupiter.api.version>5.10.0</junit.jupiter.api.version>
         <junit.jupiter.engine.version>5.10.0</junit.jupiter.engine.version>
@@ -53,47 +56,16 @@
         <javax.persistence.version>2.2</javax.persistence.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
         <javax.servlet.version>4.0.1</javax.servlet.version>
+        <jaxb.api.version>2.3.1</jaxb.api.version>
+        <javax.activation.version>1.1.1</javax.activation.version>
+        <jaxb.runtime.version>4.0.4</jaxb.runtime.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-            <version>${spring.kafka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${spring.doc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
             <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.driver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver-sync</artifactId>
-            <version>${mongodb.driver.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

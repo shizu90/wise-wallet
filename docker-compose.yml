@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   zookeeper:
@@ -11,6 +11,8 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_SERVER_ID: 1
       ZOOKEEPER_SERVERS: zookeeper:2888:3888
+    networks:
+      - zookeper-compose-network
 
   kafka:
     hostname: kafka
@@ -36,3 +38,32 @@ services:
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
     depends_on:
       - zookeeper
+    networks:
+      - kafka-compose-network
+
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/wisewallet/Docker/Volumes/MongoDB:/data/db
+    networks:
+      - mongo-compose-network
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USERNAME: ${EVENTSTORE_USERNAME}
+      POSTGRES_PASSWORD: ${EVENTSTORE_PASSWORD}
+    ports:
+      - "5432:5432"
+
+networks:
+  mongo-compose-network:
+    driver: bridge
+  zookeeper-compose-network:
+    driver: bridge
+  kafka-compose-network:
+    driver: bridge

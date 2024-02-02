@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**, /v3/api-docs/users
+        - id: wallet-service
+          uri: lb://wallet-service
+          predicates:
+            - Path=/api/wallets/**, /v3/api-docs/wallets
+        - id: reminder-service
+          uri: lb://reminder-service
+          predicates:
+            - Path=/api/reminders/**, /v3/api-docs/reminders
+        - id: category-service
+          uri: lb://category-service
+          predicates:
+            - Path=/api/categories/**, /v3/api-docs/categories
+        - id: bill-service
+          uri: lb://bills-service
+          predicates:
+            - Path=/api/bills/**, /v3/api-docs/bills
+        - id: budget-service
+          uri: lb://budgets
+          predicates:
+            - Path=/api/budgets/**, /v3/api-docs/budgets
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+    fetch-registry: true
+    register-with-eureka: true
