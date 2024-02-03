@@ -24,6 +24,12 @@ public class UserEventStore implements UserRepository {
     }
 
     @Override
+    public Optional<User> load(@NonNull UUID userId, Long version) {
+        User user = (User) aggregateService.load(AggregateType.USER.toString(), userId, version);
+        return Optional.ofNullable(user);
+    }
+
+    @Override
     public void saveChanges(@NonNull User user) {
         aggregateService.save(user);
     }

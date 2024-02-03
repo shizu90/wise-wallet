@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class BillEventSubscriber implements BillAsyncEventHandler {
+public class BillEventConsumer implements BillAsyncEventHandler {
 
 }

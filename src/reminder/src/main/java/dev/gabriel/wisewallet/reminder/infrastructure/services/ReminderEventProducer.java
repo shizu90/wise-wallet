@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class ReminderEventPublisher implements EventPublisher {
+public class ReminderEventProducer implements EventPublisher {
     private final KafkaTemplate<String, DomainEvent> kafkaTemplate;
 
     @Override

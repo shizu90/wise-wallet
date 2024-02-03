@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class ReminderEventSubscriber implements ReminderAsyncEventHandler {
+public class ReminderEventConsumer implements ReminderAsyncEventHandler {
 
 }

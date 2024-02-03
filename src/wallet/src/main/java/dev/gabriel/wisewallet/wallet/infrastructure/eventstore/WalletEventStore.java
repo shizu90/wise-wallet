@@ -4,6 +4,7 @@ import dev.gabriel.wisewallet.core.infrastructure.eventstore.services.AggregateS
 import dev.gabriel.wisewallet.wallet.domain.models.AggregateType;
 import dev.gabriel.wisewallet.wallet.domain.models.Wallet;
 import dev.gabriel.wisewallet.wallet.domain.repositories.WalletRepository;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,13 +18,19 @@ public class WalletEventStore implements WalletRepository {
     private final AggregateService aggregateService;
 
     @Override
-    public Optional<Wallet> load(UUID walletId) {
+    public Optional<Wallet> load(@NonNull UUID walletId) {
         Wallet wallet = (Wallet) aggregateService.load(AggregateType.WALLET.toString(), walletId, null);
         return Optional.ofNullable(wallet);
     }
 
     @Override
-    public void saveChanges(Wallet wallet) {
+    public Optional<Wallet> load(@NonNull UUID walletId, Long version) {
+        Wallet wallet = (Wallet) aggregateService.load(AggregateType.WALLET.toString(), walletId, version);
+        return Optional.ofNullable(wallet);
+    }
+
+    @Override
+    public void saveChanges(@NonNull Wallet wallet) {
         aggregateService.save(wallet);
     }
 }

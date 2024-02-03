@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class BudgetEventSubscriber implements BudgetAsyncEventHandler {
+public class BudgetEventConsumer implements BudgetAsyncEventHandler {
 
 }

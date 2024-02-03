@@ -1,4 +1,4 @@
-package dev.gabriel.wisewallet.budget.infrastructure.services;
+package dev.gabriel.wisewallet.wallet.infrastructure.services;
 
 import dev.gabriel.wisewallet.core.domain.events.DomainEvent;
 import dev.gabriel.wisewallet.core.infrastructure.services.EventPublisher;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class BudgetEventPublisher implements EventPublisher {
+public class WalletEventProducer implements EventPublisher {
     private final KafkaTemplate<String, DomainEvent> kafkaTemplate;
 
     @Override
