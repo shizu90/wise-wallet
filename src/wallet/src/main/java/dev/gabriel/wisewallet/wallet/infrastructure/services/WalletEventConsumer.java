@@ -2,6 +2,7 @@ package dev.gabriel.wisewallet.wallet.infrastructure.services;
 
 import dev.gabriel.wisewallet.bill.domain.events.BillAmountUpdatedEvent;
 import dev.gabriel.wisewallet.bill.domain.events.BillCreatedEvent;
+import dev.gabriel.wisewallet.bill.domain.events.BillDeletedEvent;
 import dev.gabriel.wisewallet.bill.domain.models.Bill;
 import dev.gabriel.wisewallet.bill.domain.models.BillType;
 import dev.gabriel.wisewallet.bill.domain.repositories.BillRepository;
@@ -10,7 +11,6 @@ import dev.gabriel.wisewallet.wallet.application.events.WalletAsyncEventHandler;
 import dev.gabriel.wisewallet.wallet.domain.commands.AddAmountCommand;
 import dev.gabriel.wisewallet.wallet.domain.commands.SubtractAmountCommand;
 import dev.gabriel.wisewallet.wallet.domain.commands.WalletCommand;
-import dev.gabriel.wisewallet.wallet.domain.repositories.WalletRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
 public class WalletEventConsumer implements WalletAsyncEventHandler {
     private final CommandBus<WalletCommand> commandBus;
     private final BillRepository billRepository;
-    private final WalletRepository walletRepository;
 
     @KafkaListener(topics = "BillCreatedEvent")
     @Override
@@ -54,6 +53,30 @@ public class WalletEventConsumer implements WalletAsyncEventHandler {
                 );
                 commandBus.execute(
                         new AddAmountCommand(bill.getWalletId(), event.getAmount(), bill.getAmount().getCurrencyCode())
+                );
+            }
+        }
+
+        ack.acknowledge();
+    }
+
+    @KafkaListener(topics = "BillDeletedEvent")
+    @Override
+    public void handle(BillDeletedEvent event, Acknowledgment ack) {
+        Bill bill = billRepository.load(event.getAggregateId()).orElse(null);
+
+        if(bill != null) {
+            if(bill.getType().equals(BillType.EXPENSE)) {
+                commandBus.execute(
+                        new AddAmountCommand(
+                                bill.getWalletId(), bill.getAmount().getValue(), bill.getAmount().getCurrencyCode()
+                        )
+                );
+            }else {
+                commandBus.execute(
+                        new SubtractAmountCommand(
+                                bill.getWalletId(), bill.getAmount().getValue(), bill.getAmount().getCurrencyCode()
+                        )
                 );
             }
         }

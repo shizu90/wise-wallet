@@ -34,12 +34,13 @@ public class BillController {
     public ResponseEntity<BillListResponseDto> getBills(@NonNull @RequestParam("walletId") UUID walletId,
                                                         @RequestParam(value = "name", required = false) String name,
                                                         @RequestParam(value = "type", required = false) BillType type,
+                                                        @RequestParam(value = "categoryId", required = false) UUID categoryId,
                                                         @RequestParam(value = "page", required = false) Integer page,
                                                         @RequestParam(value = "limit", required = false) Integer limit
     ) {
         return ResponseEntity
                 .ok()
-                .body(billService.getBills(walletId, name, type, page == null ? 0 : page, limit == null ? 4 : limit));
+                .body(billService.getBills(walletId, name, type, categoryId, page == null ? 0 : page, limit == null ? 4 : limit));
     }
 
     @PostMapping

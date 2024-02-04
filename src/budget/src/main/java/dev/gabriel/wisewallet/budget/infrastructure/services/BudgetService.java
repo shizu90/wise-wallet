@@ -28,9 +28,6 @@ public class BudgetService {
     }
 
     public BudgetListResponseDto getBudgets(UUID userId, String name, int page, int limit) {
-        if(name == null)
-            return dtoMapper.toResponseDto(budgetProjectionRepository.findByUserId(userId, PageRequest.of(page, limit)));
-
         return dtoMapper.toResponseDto(budgetProjectionRepository.findByUserIdAndName(userId, name, PageRequest.of(page, limit)));
     }
 

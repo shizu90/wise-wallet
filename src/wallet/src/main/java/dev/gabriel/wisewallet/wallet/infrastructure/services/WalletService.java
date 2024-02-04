@@ -28,12 +28,6 @@ public class WalletService {
     }
 
     public WalletListResponseDto getWallets(UUID userId, String name, WalletType type, int page, int limit) {
-        if(name == null && type == null)
-            return dtoMapper.toResponseDto(walletProjectionRepository.findByUserId(userId, PageRequest.of(page, limit)));
-
-        if(name != null && type != null)
-            return dtoMapper.toResponseDto(walletProjectionRepository.findByUserIdAndNameAndType(userId, name, type, PageRequest.of(page, limit)));
-
         return dtoMapper.toResponseDto(walletProjectionRepository
                                         .findByUserIdAndNameOrType(
                                             userId,

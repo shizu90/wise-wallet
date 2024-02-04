@@ -120,7 +120,7 @@ public class RecurringBill extends Aggregate {
         applyChange(new RecurringBillCategoryChangedEvent(id, getNextVersion(), categoryId));
     }
 
-    private void nextPeriod(long n) {
+    public void nextPeriod(long n) {
         if(currentPeriods.equals(maxPeriods)) {
             throw new RecurringBillReachedMaxPeriodsException("Recurring bill %s reached max periods of %s.".formatted(id, maxPeriods.getValue()));
         }
@@ -132,7 +132,7 @@ public class RecurringBill extends Aggregate {
         applyChange(new RecurringBillPeriodExecutedEvent(id, getNextVersion(), currentPeriods.getValue() + n));
     }
 
-    private void reset() {
+    public void reset() {
         applyChange(new RecurringBillResetEvent(id, getNextVersion()));
     }
 

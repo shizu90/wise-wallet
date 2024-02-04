@@ -5,18 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5b54b27-7f18-42ac-8853-ca1ce0d9d97c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/ChangeRecurringBillCategoryCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/ChangeRecurringBillDescriptionCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/ChangeRecurringBillMaxPeriodsCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/ChangeRecurringBillRecurrenceCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/ChangeRecurringBillTypeCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/CreateRecurringBillCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/DeleteRecurringBillCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/ExecuteRecurringBillCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/RenameRecurringBillCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/ResetRecurringBillCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/commands/UpdateRecurringBillAmountCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/exceptions/RecurringBillAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/exceptions/RecurringBillNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/services/CheckUniqueRecurringBillName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/domain/repositories/BillRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/domain/repositories/BillRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/eventstore/BillEventStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/eventstore/BillEventStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/eventstore/UserEventStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/eventstore/UserEventStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/BillModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/BillModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bill/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/BudgetModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/BudgetModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/budget/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/category/src/main/java/dev/gabriel/wisewallet/category/CategoryModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/src/main/java/dev/gabriel/wisewallet/category/CategoryModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/category/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/category/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/models/RecurringBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/domain/models/RecurringBill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/ReminderModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/ReminderModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reminder/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/UserModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/UserModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/WalletModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/WalletModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/application/events/WalletAsyncEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/application/events/WalletAsyncEventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/domain/repositories/WalletRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/domain/repositories/WalletRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/eventstore/WalletEventStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/eventstore/WalletEventStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventSubscriber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +113,7 @@
       <recent name="dev.gabriel.wisewallet.domain.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ServiceDiscovery">
+  <component name="RunManager" selected="Application.UserModule">
     <configuration name="ApiGateway" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.apigateway.ApiGateway" />
       <module name="api-gateway" />
@@ -149,8 +176,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ApiGateway" />
         <item itemvalue="Application.UserModule" />
+        <item itemvalue="Application.ApiGateway" />
         <item itemvalue="Application.ServiceDiscovery" />
         <item itemvalue="Application.BillModule" />
         <item itemvalue="JUnit.bill in bill" />

@@ -10,6 +10,11 @@ spring:
       host: localhost
       port: 27017
       database: wise_wallet
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+    consumer:
+      bootstrap-servers: localhost:9092
 
 server:
   port: 8084

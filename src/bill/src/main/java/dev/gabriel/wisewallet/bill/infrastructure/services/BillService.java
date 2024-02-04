@@ -27,17 +27,13 @@ public class BillService {
         return dtoMapper.toResponseDto(billProjectionRepository.find(id).orElse(null));
     }
 
-    public BillListResponseDto getBills(UUID walletId, String name, BillType type, int page, int limit) {
-        if(name == null && type == null)
-            return dtoMapper.toResponseDto(billProjectionRepository.findByWalletId(walletId, PageRequest.of(page, limit)));
-        if(name != null && type != null)
-            return dtoMapper.toResponseDto(billProjectionRepository.findByWalletIdAndNameOrType(walletId, name, type, PageRequest.of(page, limit)));
-
+    public BillListResponseDto getBills(UUID walletId, String name, BillType type, UUID categoryId, int page, int limit) {
         return dtoMapper.toResponseDto(billProjectionRepository
-                                        .findByWalletIdAndNameAndType(
+                                        .findByWalletIdAndNameOrTypeOrCategory(
                                                 walletId,
                                                 name == null ? "'" : name,
                                                 type,
+                                                categoryId,
                                                 PageRequest.of(page, limit)));
     }
 

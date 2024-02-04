@@ -16,12 +16,6 @@ public interface BillProjectionRepository extends MongoRepository<BillProjection
     @Query(value = "{$and: [{'id': ?0}, {'isDeleted': false}]}")
     Optional<BillProjection> find(UUID id);
 
-    @Query(value = "{$and: [{'walletId': ?0}, {'isDeleted': false}]}", sort = "{'name': 1}")
-    Page<BillProjection> findByWalletId(UUID walletId, Pageable pageable);
-
-    @Query(value = "{$and: [{'walletId': ?0}, {'isDeleted': false}, {$or: [{'name': {$regex: ?1}}, {'type': ?2}]}]}", sort = "{'name': 1}")
-    Page<BillProjection> findByWalletIdAndNameOrType(UUID walletId, String name, BillType type, Pageable pageable);
-
-    @Query(value = "{$and: [{'walletId': ?0}, {'isDeleted': false}, {$and: [{'name': {$regex: ?1}}, {'type': ?2}]}]}", sort = "{'name': 1}")
-    Page<BillProjection> findByWalletIdAndNameAndType(UUID walletId, String name, BillType type, Pageable pageable);
+    @Query(value = "{$or: [{'walletId': ?0}, {'isDeleted': false}, {$or: [{'name': {$regex: ?1}}, {'type': ?2}, {'categoryId': ?3}]}]}", sort = "{'name': 1}")
+    Page<BillProjection> findByWalletIdAndNameOrTypeOrCategory(UUID walletId, String name, BillType type, UUID categoryId, Pageable pageable);
 }

@@ -15,10 +15,7 @@ public interface CategoryProjectionRepository extends MongoRepository<CategoryPr
     @Query(value = "{$and: [{'id': ?0}, {'isDeleted': false}]}")
     Optional<CategoryProjection> find(UUID id);
 
-    @Query(value = "{$and: [{$or: [{'userId': ?0}, {'userId': null}]}, {'isDeleted': false}]}")
-    Page<CategoryProjection> findByUserId(UUID userId, Pageable pageable);
-
-    @Query(value = "{$and: [{$or: [{'userId': ?0}, {'userId': null}]}, {'name': {$regex: ?1}}]}")
+    @Query(value = "{$or: [{$or: [{'userId': ?0}, {'userId': null}]}, {'name': {$regex: ?1}}]}")
     Page<CategoryProjection> findByUserIdAndName(UUID userId, String name, Pageable pageable);
 
     @Query(value = "{$and: [{$or: [{'userId': ?0}, {'userId': null}]}, {'name': ?1}]}")

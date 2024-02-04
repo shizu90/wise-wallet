@@ -30,9 +30,6 @@ public class CategoryService {
     }
 
     public CategoryListResponseDto getCategories(UUID userId, String name, int page, int limit) {
-        if(name == null)
-            return categoryDtoMapper.toResponseDto(categoryProjectionRepository.findByUserId(userId, PageRequest.of(page, limit)));
-
         return categoryDtoMapper.toResponseDto(categoryProjectionRepository.findByUserIdAndName(userId, name, PageRequest.of(page, limit)));
     }
 
