@@ -20,7 +20,6 @@ public class WalletProjection {
     private String name;
     private String description;
     private BigDecimal balance;
-    private BigDecimal initialBalance;
     private String currencyCode;
     private WalletType type;
     private UUID userId;
@@ -32,7 +31,6 @@ public class WalletProjection {
                                           String name,
                                           String description,
                                           BigDecimal balance,
-                                          BigDecimal initialBalance,
                                           String currencyCode,
                                           WalletType type,
                                           UUID userId,
@@ -45,7 +43,6 @@ public class WalletProjection {
                 name,
                 description,
                 balance,
-                initialBalance,
                 currencyCode,
                 type,
                 userId,

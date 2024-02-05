@@ -80,6 +80,14 @@ public class RecurringBill extends Aggregate {
         return new RecurringBill(id, name, description, amount, currencyCode, recurrence, type, maxPeriods, walletId, categoryId);
     }
 
+    public LocalDate getNextPeriod() {
+        return lastPeriod.plusDays(recurrence.getValue());
+    }
+
+    public Currency getTotalAmount() {
+        return amount.multiply(currentPeriods.getValue());
+    }
+
     public void rename(String name) {
         RecurringBillName.validate(name);
 

@@ -1,8 +1,9 @@
 spring:
   application:
     name: wallet-service
+    version: 1.0.0
   datasource:
-    urL: jdbc:postgresql://localhost:5432/wise_wallet?useUnicode=yes&characterEncoding=UTF-8
+    url: jdbc:postgresql://localhost:5432/wise_wallet?useUnicode=yes&characterEncoding=UTF-8
     username: ${EVENTSTORE_USERNAME}
     password: ${EVENTSTORE_PASSWORD}
   data:
@@ -26,6 +27,12 @@ eureka:
     service-url:
       defaultZone: http://localhost:8081/eureka/
     register-with-eureka: true
+
+springdoc:
+  api-docs:
+    path: /api/wallets/v3/api-docs
+  swagger-ui:
+    path: /api/wallets/swagger-ui.html
 
 event-store:
   snapshotting:

@@ -19,7 +19,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping(value = "/api/wallets")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Tag(name = "WiseWallet: Wallet Service")
+@Tag(name = "Wallet endpoints")
 public class WalletController {
     private final WalletService walletService;
 

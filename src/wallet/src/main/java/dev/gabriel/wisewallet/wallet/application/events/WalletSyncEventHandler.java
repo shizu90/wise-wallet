@@ -26,7 +26,6 @@ public class WalletSyncEventHandler implements SyncEventHandler {
                 wallet.getName().getValue(),
                 wallet.getDescription().getValue(),
                 wallet.getBalance().getValue(),
-                wallet.getInitialBalance().getValue(),
                 wallet.getBalance().getCurrencyCode(),
                 wallet.getType(),
                 wallet.getUserId(),

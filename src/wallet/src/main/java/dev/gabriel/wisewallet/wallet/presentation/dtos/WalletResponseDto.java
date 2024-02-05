@@ -11,7 +11,6 @@ public record WalletResponseDto(
         String name,
         String description,
         BigDecimal balance,
-        BigDecimal initialBalance,
         String currencyCode,
         WalletType type,
         UUID userId,

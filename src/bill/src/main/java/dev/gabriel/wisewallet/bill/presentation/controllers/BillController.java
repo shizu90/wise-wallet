@@ -5,6 +5,7 @@ import dev.gabriel.wisewallet.bill.infrastructure.services.BillService;
 import dev.gabriel.wisewallet.bill.presentation.dtos.BillListResponseDto;
 import dev.gabriel.wisewallet.bill.presentation.dtos.BillRequestDto;
 import dev.gabriel.wisewallet.bill.presentation.dtos.BillResponseDto;
+import dev.gabriel.wisewallet.bill.presentation.dtos.BillTotalAmountResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.NonNull;
@@ -27,6 +28,12 @@ public class BillController {
     @Operation(summary = "Returns a bill by a bill uuid.")
     public ResponseEntity<BillResponseDto> getBill(@PathVariable UUID billId) {
         return ResponseEntity.ok().body(billService.getBill(billId));
+    }
+
+    @GetMapping(value = "/total/{walletId}/{currencyCode}")
+    @Operation(summary = "Returns total incomes and total expenses from specified wallet.")
+    public ResponseEntity<BillTotalAmountResponseDto> getTotalAmount(@PathVariable UUID walletId, @PathVariable String currencyCode) {
+        return ResponseEntity.ok().body(billService.getTotalAmount(walletId, currencyCode));
     }
 
     @GetMapping

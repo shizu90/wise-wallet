@@ -17,7 +17,6 @@ public class Wallet extends Aggregate {
     private WalletName name;
     private WalletDescription description;
     private Currency balance;
-    private Currency initialBalance;
     private WalletType type;
     private UUID userId;
     private Instant createdAt;
@@ -124,7 +123,6 @@ public class Wallet extends Aggregate {
         this.name = WalletName.create(event.getName());
         this.description = WalletDescription.create(event.getDescription());
         this.balance = Currency.create(event.getBalance(), event.getCurrencyCode());
-        this.initialBalance = balance;
         this.type = event.getType();
         this.userId = event.getUserId();
         this.createdAt = Instant.now();
