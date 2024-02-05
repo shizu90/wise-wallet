@@ -17,7 +17,7 @@ public class ChangeReminderRecurrenceCommandHandler implements CommandHandler<Ch
 
     @Override
     public Reminder handle(@NonNull ChangeReminderRecurrenceCommand command) {
-        Reminder reminder = reminderRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Reminder reminder = reminderRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new ReminderNotFoundException("Reminder %s was not found.".formatted(command.getAggregateId())));
 
         if(reminder.getRecurrence().getValue().equals(command.getRecurrence())) return reminder;

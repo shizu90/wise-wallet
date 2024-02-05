@@ -17,7 +17,7 @@ public class DeleteCategoryCommandHandler implements CommandHandler<DeleteCatego
 
     @Override
     public Category handle(@NonNull DeleteCategoryCommand command) {
-        Category category = categoryRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Category category = categoryRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new CategoryNotFoundException("Category %s was not found.".formatted(command.getAggregateId())));
 
         category.delete();

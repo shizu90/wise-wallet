@@ -17,7 +17,7 @@ public class ChangeBillCategoryCommandHandler implements CommandHandler<ChangeBi
 
     @Override
     public Bill handle(@NonNull ChangeBillCategoryCommand command) {
-        Bill bill = billRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Bill bill = billRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BillNotFoundException("Bill %s was not found.".formatted(command.getAggregateId())));
 
         if(command.getCategoryId().equals(bill.getCategoryId())) return bill;

@@ -17,7 +17,7 @@ public class DeleteBillCommandHandler implements CommandHandler<DeleteBillComman
 
     @Override
     public Bill handle(@NonNull DeleteBillCommand command) {
-        Bill bill = billRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Bill bill = billRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BillNotFoundException("Bill %s was not found.".formatted(command.getAggregateId())));
 
         bill.delete();

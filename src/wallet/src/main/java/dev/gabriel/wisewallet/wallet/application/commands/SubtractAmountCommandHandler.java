@@ -20,7 +20,7 @@ public class SubtractAmountCommandHandler implements CommandHandler<SubtractAmou
 
     @Override
     public Wallet handle(SubtractAmountCommand command) {
-        Wallet wallet = walletRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Wallet wallet = walletRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new WalletNotFoundException("Wallet %s was not found.".formatted(command.getAggregateId())));
 
         Currency amountToSubtract = Currency.create(command.getAmount(), command.getCurrencyCode());

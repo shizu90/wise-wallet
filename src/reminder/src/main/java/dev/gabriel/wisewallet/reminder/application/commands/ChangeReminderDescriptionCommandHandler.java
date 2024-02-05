@@ -17,7 +17,7 @@ public class ChangeReminderDescriptionCommandHandler implements CommandHandler<C
 
     @Override
     public Reminder handle(@NonNull ChangeReminderDescriptionCommand command) {
-        Reminder reminder = reminderRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Reminder reminder = reminderRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new ReminderNotFoundException("Reminder %s was not found.".formatted(command.getAggregateId())));
 
         if(reminder.getDescription().getValue().equals(command.getDescription())) return reminder;

@@ -63,7 +63,7 @@ public class WalletEventConsumer implements WalletAsyncEventHandler {
     @KafkaListener(topics = "BillDeletedEvent")
     @Override
     public void handle(BillDeletedEvent event, Acknowledgment ack) {
-        Bill bill = billRepository.load(event.getAggregateId()).orElse(null);
+        Bill bill = billRepository.load(event.getAggregateId(), null).orElse(null);
 
         if(bill != null) {
             if(bill.getType().equals(BillType.EXPENSE)) {

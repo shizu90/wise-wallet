@@ -17,7 +17,7 @@ public class ChangeReminderMaxRunsCommandHandler implements CommandHandler<Chang
 
     @Override
     public Reminder handle(@NonNull ChangeReminderMaxRunsCommand command) {
-        Reminder reminder = reminderRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Reminder reminder = reminderRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new ReminderNotFoundException("Reminder %s was not found.".formatted(command.getAggregateId())));
 
         if(reminder.getMaxRuns().getValue().equals(command.getMaxRuns())) return reminder;

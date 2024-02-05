@@ -21,7 +21,7 @@ public class RemoveBudgetItemCommandHandler implements CommandHandler<RemoveBudg
 
     @Override
     public Budget handle(RemoveBudgetItemCommand command) {
-        Budget budget = budgetRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Budget budget = budgetRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BudgetNotFoundException("Budget %s was not found.".formatted(command.getAggregateId())));
 
         BudgetItem removedItem = budget.removeItem(command.getBillId());

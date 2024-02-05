@@ -20,7 +20,7 @@ public class RenameWalletCommandHandler implements CommandHandler<RenameWalletCo
 
     @Override
     public Wallet handle(@NonNull RenameWalletCommand command) {
-        Wallet wallet = walletRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Wallet wallet = walletRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new WalletNotFoundException("Wallet %s was not found.".formatted(command.getAggregateId())));
 
         if(wallet.getName().getValue().equals(command.getName())) return wallet;

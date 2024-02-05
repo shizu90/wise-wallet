@@ -4,6 +4,7 @@ import dev.gabriel.wisewallet.category.domain.models.AggregateType;
 import dev.gabriel.wisewallet.category.domain.models.Category;
 import dev.gabriel.wisewallet.category.domain.repositories.CategoryRepository;
 import dev.gabriel.wisewallet.core.infrastructure.eventstore.services.AggregateService;
+import jakarta.annotation.Nullable;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,7 @@ public class CategoryEventStore implements CategoryRepository {
     private final AggregateService aggregateService;
 
     @Override
-    public Optional<Category> load(@NonNull UUID id) {
-        Category category = (Category) aggregateService.load(AggregateType.CATEGORY.toString(), id, null);
-        return Optional.ofNullable(category);
-    }
-
-    @Override
-    public Optional<Category> load(@NonNull UUID id, Long version) {
+    public Optional<Category> load(@NonNull UUID id, @Nullable Long version) {
         Category category = (Category) aggregateService.load(AggregateType.CATEGORY.toString(), id, version);
         return Optional.ofNullable(category);
     }

@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,5 +18,14 @@ public interface BillProjectionRepository extends MongoRepository<BillProjection
     Optional<BillProjection> find(UUID id);
 
     @Query(value = "{$or: [{'walletId': ?0}, {'isDeleted': false}, {$or: [{'name': {$regex: ?1}}, {'type': ?2}, {'categoryId': ?3}]}]}", sort = "{'name': 1}")
-    Page<BillProjection> findByWalletIdAndNameOrTypeOrCategory(UUID walletId, String name, BillType type, UUID categoryId, Pageable pageable);
+    Page<BillProjection> find(UUID walletId, String name, BillType type, UUID categoryId, Pageable pageable);
+
+    @Query(value = "{$and: [{'categoryId': ?0}]}")
+    List<BillProjection> findByCategoryId(UUID categoryId);
+
+    @Query(value = "{$and: [{'walletId': ?0}, {'isDeleted': false}]}")
+    List<BillProjection> findByWalletId(UUID walletId);
+
+    @Query(value = "{$and: [{'name': ?0}, {'walletId': ?1}, {'isDeleted': false}]}")
+    List<BillProjection> findByNameAndWalletId(String name, UUID walletId);
 }

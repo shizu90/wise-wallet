@@ -24,6 +24,16 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>dev.gabriel.wisewallet</groupId>
+            <artifactId>wallet</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.gabriel.wisewallet</groupId>
+            <artifactId>category</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.version}</version>

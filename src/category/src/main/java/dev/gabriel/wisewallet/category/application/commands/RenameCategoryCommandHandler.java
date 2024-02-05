@@ -20,7 +20,7 @@ public class RenameCategoryCommandHandler implements CommandHandler<RenameCatego
 
     @Override
     public Category handle(@NonNull RenameCategoryCommand command) {
-        Category category = categoryRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Category category = categoryRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new CategoryNotFoundException("Category %s was not found.".formatted(command.getAggregateId())));
 
         if(command.getName().equals(category.getName().getValue())) return category;

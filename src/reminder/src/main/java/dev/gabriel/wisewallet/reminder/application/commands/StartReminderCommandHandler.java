@@ -17,7 +17,7 @@ public class StartReminderCommandHandler implements CommandHandler<StartReminder
 
     @Override
     public Reminder handle(@NonNull StartReminderCommand command) {
-        Reminder reminder = reminderRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Reminder reminder = reminderRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new ReminderNotFoundException("Reminder %s was not found.".formatted(command.getAggregateId())));
 
         if(reminder.getStarted().equals(true)) return reminder;

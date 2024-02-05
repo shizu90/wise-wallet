@@ -20,7 +20,7 @@ public class RenameReminderCommandHandler implements CommandHandler<RenameRemind
 
     @Override
     public Reminder handle(@NonNull RenameReminderCommand command) {
-        Reminder reminder = reminderRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Reminder reminder = reminderRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new ReminderNotFoundException("Reminder %s was not found.".formatted(command.getAggregateId())));
 
         if(reminder.getName().getValue().equals(command.getName())) return reminder;

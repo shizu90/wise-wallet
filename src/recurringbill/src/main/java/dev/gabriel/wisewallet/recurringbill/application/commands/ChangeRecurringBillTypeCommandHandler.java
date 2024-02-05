@@ -17,7 +17,7 @@ public class ChangeRecurringBillTypeCommandHandler implements CommandHandler<Cha
 
     @Override
     public RecurringBill handle(@NonNull ChangeRecurringBillTypeCommand command) {
-        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId()).orElseThrow(() ->
+        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new RecurringBillNotFoundException("Recurring bill %s was not found.".formatted(command.getAggregateId())));
 
         if(command.getType().equals(recurringBill.getType())) return recurringBill;

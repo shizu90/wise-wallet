@@ -17,7 +17,7 @@ public class ChangeRecurringBillMaxPeriodsCommandHandler implements CommandHandl
 
     @Override
     public RecurringBill handle(@NonNull ChangeRecurringBillMaxPeriodsCommand command) {
-        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId()).orElseThrow(() ->
+        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new RecurringBillNotFoundException("Recurring bill %s was not found.".formatted(command.getAggregateId())));
 
         if (command.getMaxPeriods().equals(recurringBill.getMaxPeriods().getValue())) return recurringBill;

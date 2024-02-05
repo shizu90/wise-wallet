@@ -17,7 +17,7 @@ public class DeleteBudgetCommandHandler implements CommandHandler<DeleteBudgetCo
 
     @Override
     public Budget handle(DeleteBudgetCommand command) {
-        Budget budget = budgetRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Budget budget = budgetRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BudgetNotFoundException("Budget %s was not found.".formatted(command.getAggregateId())));
 
         budget.delete();

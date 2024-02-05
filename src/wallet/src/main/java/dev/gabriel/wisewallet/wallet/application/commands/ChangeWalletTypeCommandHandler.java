@@ -17,7 +17,7 @@ public class ChangeWalletTypeCommandHandler implements CommandHandler<ChangeWall
 
     @Override
     public Wallet handle(@NonNull ChangeWalletTypeCommand command) {
-        Wallet wallet = walletRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Wallet wallet = walletRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new WalletNotFoundException("Wallet %s was not found.".formatted(command.getAggregateId())));
 
         if(wallet.getType().equals(command.getType())) return wallet;

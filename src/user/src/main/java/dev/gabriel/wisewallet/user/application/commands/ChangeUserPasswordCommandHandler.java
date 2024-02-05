@@ -17,7 +17,7 @@ public class ChangeUserPasswordCommandHandler implements CommandHandler<ChangeUs
 
     @Override
     public User handle(@NonNull ChangeUserPasswordCommand command) {
-        User user = userEventStore.load(command.getAggregateId()).orElseThrow(() ->
+        User user = userEventStore.load(command.getAggregateId(), null).orElseThrow(() ->
                 new UserNotFoundException("User %s was not found.".formatted(command.getAggregateId())));
 
         if(command.getPassword().equals(user.getPassword().getValue())) return user;

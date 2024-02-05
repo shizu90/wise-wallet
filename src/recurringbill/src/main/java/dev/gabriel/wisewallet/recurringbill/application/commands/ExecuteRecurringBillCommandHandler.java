@@ -18,7 +18,7 @@ public class ExecuteRecurringBillCommandHandler implements CommandHandler<Execut
     @Override
     @NonNull
     public RecurringBill handle(@NonNull ExecuteRecurringBillPeriodCommand command) {
-        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId()).orElseThrow(() ->
+        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new RecurringBillNotFoundException("Recurring bill %s was not found.".formatted(command.getAggregateId())));
 
         recurringBill.nextPeriod(command.getNumberOfPeriods());

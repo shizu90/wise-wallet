@@ -29,7 +29,7 @@ public class BillService {
 
     public BillListResponseDto getBills(UUID walletId, String name, BillType type, UUID categoryId, int page, int limit) {
         return dtoMapper.toResponseDto(billProjectionRepository
-                                        .findByWalletIdAndNameOrTypeOrCategory(
+                                        .find(
                                                 walletId,
                                                 name == null ? "'" : name,
                                                 type,

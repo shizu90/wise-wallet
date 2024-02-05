@@ -20,7 +20,7 @@ public class RenameRecurringBillCommandHandler implements CommandHandler<RenameR
 
     @Override
     public RecurringBill handle(@NonNull RenameRecurringBillCommand command) {
-        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId()).orElseThrow(() ->
+        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new RecurringBillNotFoundException("Recurring bill %s was not found.".formatted(command.getAggregateId())));
 
         if(command.getName().equals(recurringBill.getName().getValue())) return recurringBill;

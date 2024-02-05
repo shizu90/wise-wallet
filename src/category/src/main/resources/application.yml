@@ -1,6 +1,7 @@
 spring:
   application:
     name: category-service
+    version: 1.0.0
   datasource:
     urL: jdbc:postgresql://localhost:5432/wise_wallet?useUnicode=yes&characterEncoding=UTF-8
     username: ${EVENTSTORE_USERNAME}

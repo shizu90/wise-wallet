@@ -19,7 +19,7 @@ public class UpdateBillAmountCommandHandler implements CommandHandler<UpdateBill
 
     @Override
     public Bill handle(@NonNull UpdateBillAmountCommand command) {
-        Bill bill = billRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Bill bill = billRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BillNotFoundException("Bill %s was not found.".formatted(command.getAggregateId())));
 
         int changes = bill.getChanges().size();

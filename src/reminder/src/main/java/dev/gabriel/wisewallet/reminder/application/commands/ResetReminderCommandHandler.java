@@ -17,7 +17,7 @@ public class ResetReminderCommandHandler implements CommandHandler<ResetReminder
 
     @Override
     public Reminder handle(@NonNull ResetReminderCommand command) {
-        Reminder reminder = reminderRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Reminder reminder = reminderRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new ReminderNotFoundException("Reminder %s was not found.".formatted(command.getAggregateId())));
 
         if(reminder.getCurrentRuns().getValue().equals(0L)) return reminder;

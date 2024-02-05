@@ -19,7 +19,7 @@ public class UpdateRecurringBillAmountCommandHandler implements CommandHandler<U
 
     @Override
     public RecurringBill handle(@NonNull UpdateRecurringBillAmountCommand command) {
-        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId()).orElseThrow(() ->
+        RecurringBill recurringBill = recurringBillRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new RecurringBillNotFoundException("Recurring bill %s was not found.".formatted(command.getAggregateId())));
 
         int changes = recurringBill.getChanges().size();

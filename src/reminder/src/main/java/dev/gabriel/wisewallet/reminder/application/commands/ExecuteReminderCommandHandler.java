@@ -17,7 +17,7 @@ public class ExecuteReminderCommandHandler implements CommandHandler<ExecuteRemi
 
     @Override
     public Reminder handle(@NonNull ExecuteReminderCommand command) {
-        Reminder reminder = reminderRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Reminder reminder = reminderRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new ReminderNotFoundException("Reminder %s was not found.".formatted(command.getAggregateId())));
 
         reminder.execute(command.getNumberOfTimes());

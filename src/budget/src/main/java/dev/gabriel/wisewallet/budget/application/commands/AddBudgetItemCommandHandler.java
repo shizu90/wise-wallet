@@ -20,7 +20,7 @@ public class AddBudgetItemCommandHandler implements CommandHandler<AddBudgetItem
 
     @Override
     public Budget handle(AddBudgetItemCommand command) {
-        Budget budget = budgetRepository.load(command.getAggregateId()).orElseThrow(() ->
+        Budget budget = budgetRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BudgetNotFoundException("Budget %s was not found.".formatted(command.getAggregateId())));
 
         budget.addItem(command.getBillId(), command.getName(), command.getAmount(), command.getCurrencyCode(), command.getType());
