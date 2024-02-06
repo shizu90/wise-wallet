@@ -29,11 +29,7 @@ public class WalletService {
 
     public WalletListResponseDto getWallets(UUID userId, String name, WalletType type, int page, int limit) {
         return dtoMapper.toResponseDto(walletProjectionRepository
-                                        .findByUserIdAndNameOrType(
-                                            userId,
-                                            name == null ? "'" : name,
-                                            type,
-                                            PageRequest.of(page, limit)));
+                                        .find(userId, name, type, PageRequest.of(page, limit)));
     }
 
     public WalletResponseDto newWallet(WalletRequestDto walletRequestDto) {

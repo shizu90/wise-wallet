@@ -27,7 +27,7 @@ public class ReminderService {
     }
 
     public ReminderListResponseDto getReminders(UUID userId, String name, int page, int limit) {
-        return reminderDtoMapper.toResponseDto(reminderProjectionRepository.findByUserIdAndName(userId, name, PageRequest.of(page, limit)));
+        return reminderDtoMapper.toResponseDto(reminderProjectionRepository.find(userId, name, PageRequest.of(page, limit)));
     }
 
     public ReminderResponseDto newReminder(ReminderRequestDto request) {

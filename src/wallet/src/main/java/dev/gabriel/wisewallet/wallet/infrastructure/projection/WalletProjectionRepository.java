@@ -17,9 +17,13 @@ public interface WalletProjectionRepository extends MongoRepository<WalletProjec
     Optional<WalletProjection> find(UUID walletId);
 
     @Query(value = """
-        {$and: [{'userId': ?0}, {'isDeleted': false}, {$or: [{'name': {$regex: ?1}}, {'type': ?2}]}]}
-    """)
-    Page<WalletProjection> findByUserIdAndNameOrType(UUID userId, String name, WalletType type, Pageable pageable);
+        {$or: [
+            {'userId': ?0, 'name': {$regex: ?1}, 'isDeleted': false},
+            {'userId': ?0, 'type': ?2, 'isDeleted': false},
+            {'userId': ?0, 'isDeleted': false}
+        ]}
+    """, sort = "{'name': 1}")
+    Page<WalletProjection> find(UUID userId, String name, WalletType type, Pageable pageable);
 
     @Query(value = "{$and: [{'userId': ?0}, {'name': ?1}, {'isDeleted': false}]}")
     List<WalletProjection> findByUserIdAndName(UUID userId, String name);

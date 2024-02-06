@@ -15,8 +15,13 @@ public interface ReminderProjectionRepository extends MongoRepository<ReminderPr
     @Query(value = "{$and: [{'id': ?0}, {'isDeleted': false}]}")
     Optional<ReminderProjection> find(UUID id);
 
-    @Query(value = "{$or: [{'userId': ?0}, {'isDeleted': false}, {'name': {$regex: ?1}}]}", sort = "{'name': 1}")
-    Page<ReminderProjection> findByUserIdAndName(UUID userId, String name, Pageable pageable);
+    @Query(value = """
+        {$or: [
+            {'userId': ?0, 'name': {$regex: ?1}, 'isDeleted': false},
+            {'userId': ?0, 'isDeleted': false}
+        ]}
+    """, sort = "{'name': 1}")
+    Page<ReminderProjection> find(UUID userId, String name, Pageable pageable);
 
     @Query(value = "{$and: [{'userId': ?0}, {'name': ?1}, {'isDeleted': false}]}")
     List<ReminderProjection> findByUserIdAndName(UUID userId, String name);

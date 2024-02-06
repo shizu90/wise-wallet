@@ -58,12 +58,7 @@ public class BillService {
 
     public BillListResponseDto getBills(UUID walletId, String name, BillType type, UUID categoryId, int page, int limit) {
         return dtoMapper.toResponseDto(billProjectionRepository
-                                        .find(
-                                                walletId,
-                                                name == null ? "'" : name,
-                                                type,
-                                                categoryId,
-                                                PageRequest.of(page, limit)));
+                                        .find(walletId, name, type, categoryId, PageRequest.of(page, limit)));
     }
 
     public BillResponseDto newBill(BillRequestDto request) {

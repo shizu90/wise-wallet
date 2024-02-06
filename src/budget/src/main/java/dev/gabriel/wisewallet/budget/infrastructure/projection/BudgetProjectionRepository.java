@@ -15,6 +15,14 @@ public interface BudgetProjectionRepository extends MongoRepository<BudgetProjec
     @Query(value = "{$and: [{'id': ?0}, {'isDeleted': false}]}")
     Optional<BudgetProjection> find(UUID id);
 
+    @Query(value = """
+        {$or: [
+            {'userId': ?0, 'isDeleted': false, 'name': {$regex: ?1}},
+            {'userId': ?0, 'isDeleted': false}
+        ]}
+    """, sort = "{'name': 1}")
+    Page<BudgetProjection> find(UUID userId, String name, Pageable pageable);
+
     @Query(value = "{$or: [{'userId': ?0}, {'name': {$regex: ?1}}, {'isDeleted': false}]}")
     Page<BudgetProjection> findByUserIdAndName(UUID userId, String name, Pageable pageable);
 }

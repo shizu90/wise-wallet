@@ -17,7 +17,14 @@ public interface BillProjectionRepository extends MongoRepository<BillProjection
     @Query(value = "{$and: [{'id': ?0}, {'isDeleted': false}]}")
     Optional<BillProjection> find(UUID id);
 
-    @Query(value = "{$or: [{'walletId': ?0}, {'isDeleted': false}, {$or: [{'name': {$regex: ?1}}, {'type': ?2}, {'categoryId': ?3}]}]}", sort = "{'name': 1}")
+    @Query(value = """
+        {$or: [
+            {'walletId': ?0, 'name': {$regex: ?1}, 'isDeleted': false},
+            {'walletId': ?0, 'type': ?2, 'isDeleted': false},
+            {'walletId': ?0, 'categoryId': ?3, 'isDeleted': false},
+            {'walletId': ?0, 'isDeleted': false}
+        ]}
+    """, sort = "{'name': 1}")
     Page<BillProjection> find(UUID walletId, String name, BillType type, UUID categoryId, Pageable pageable);
 
     @Query(value = "{$and: [{'categoryId': ?0}]}")
