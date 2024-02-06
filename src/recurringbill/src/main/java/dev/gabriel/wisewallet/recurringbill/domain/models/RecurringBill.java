@@ -160,13 +160,13 @@ public class RecurringBill extends Aggregate {
         this.type = event.getType();
         this.recurrence = RecurringBillRecurrence.create(event.getRecurrence());
         this.maxPeriods = RecurringBillPeriod.create(event.getMaxPeriods());
-        this.currentPeriods = RecurringBillPeriod.create(0L);
+        this.currentPeriods = RecurringBillPeriod.create(1L);
         this.lastPeriod = null;
         this.walletId = event.getWalletId();
         this.categoryId = event.getCategoryId();
-        this.isDeleted = false;
         this.createdAt = Instant.now();
         this.updatedAt = null;
+        this.isDeleted = false;
     }
 
     @SuppressWarnings("unused")

@@ -1,6 +1,7 @@
 package dev.gabriel.wisewallet.bill.presentation.controllers;
 
 import dev.gabriel.wisewallet.bill.domain.exceptions.BillAlreadyDeletedException;
+import dev.gabriel.wisewallet.bill.domain.exceptions.BillAlreadyExistsException;
 import dev.gabriel.wisewallet.bill.domain.exceptions.BillNotFoundException;
 import dev.gabriel.wisewallet.bill.domain.exceptions.BillValidationException;
 import dev.gabriel.wisewallet.core.presentation.exceptions.ControllerException;
@@ -29,6 +30,15 @@ public class BillControllerExceptionHandler {
     @ExceptionHandler(BillAlreadyDeletedException.class)
     public ResponseEntity<ControllerException> alreadyDeleted(BillAlreadyDeletedException e, HttpServletRequest request) {
         String error = "Already deleted.";
+        HttpStatus status = HttpStatus.CONFLICT;
+        ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(status).body(exception);
+    }
+
+    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "Already exists")
+    @ExceptionHandler(BillAlreadyExistsException.class)
+    public ResponseEntity<ControllerException> alreadyExists(BillAlreadyExistsException e, HttpServletRequest request) {
+        String error = "Already exists.";
         HttpStatus status = HttpStatus.CONFLICT;
         ControllerException exception = new ControllerException(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(exception);

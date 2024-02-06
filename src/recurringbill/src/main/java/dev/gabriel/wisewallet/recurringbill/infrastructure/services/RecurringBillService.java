@@ -74,6 +74,9 @@ public class RecurringBillService {
             recurringBill = (RecurringBill) commandBus
                     .execute(new ChangeRecurringBillCategoryCommand(request.id(), request.categoryId()));
         }
+        if(request.walletId() != null)
+            recurringBill = (RecurringBill) commandBus
+                    .execute(new ChangeRecurringBillWalletCommand(request.id(), request.walletId()));
 
         return dtoMapper.toResponseDto(recurringBill);
     }
