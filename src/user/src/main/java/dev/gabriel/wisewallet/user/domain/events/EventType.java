@@ -11,7 +11,8 @@ public enum EventType {
     USER_RENAMED(UserRenamedEvent.class),
     USER_EMAIL_CHANGED(UserEmailChangedEvent.class),
     USER_PASSWORD_CHANGED(UserPasswordChangedEvent.class),
-    USER_CONFIGURATION_CHANGED(UserConfigurationChangedEvent.class),
+    USER_DEFAULT_CURRENCY_CODE_CHANGED(UserDefaultCurrencyCodeChangedEvent.class),
+    USER_DEFAULT_LANGUAGE_CHANGED(UserDefaultLanguageChangedEvent.class),
     USER_DELETED(UserDeletedEvent.class);
 
     private final Class<? extends UserEvent> type;

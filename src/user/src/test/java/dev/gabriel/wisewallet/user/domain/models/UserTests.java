@@ -79,8 +79,8 @@ public class UserTests {
     }
 
     @Test
-    @DisplayName(value = "Should change user configuration successfully.")
-    void changeUserConfiguration() {
+    @DisplayName(value = "Should change user default currency code successfully.")
+    void changeUserDefaultCurrencyCode() {
         User user = User.create(
                 UUID.randomUUID(),
                 "Username",
@@ -89,11 +89,28 @@ public class UserTests {
                 "BRL",
                 "PT_BR"
         );
-        user.changeConfiguration("EUR", null);
+        user.changeDefaultCurrencyCode("EUR");
 
         Assertions.assertEquals(2L, user.getVersion());
-        Assertions.assertInstanceOf(UserConfigurationChangedEvent.class, user.getChanges().get(1));
+        Assertions.assertInstanceOf(UserDefaultCurrencyCodeChangedEvent.class, user.getChanges().get(1));
         Assertions.assertEquals("EUR", user.getConfiguration().getDefaultCurrencyCode());
-        Assertions.assertEquals("PT_BR", user.getConfiguration().getDefaultLanguage());
+    }
+
+    @Test
+    @DisplayName(value = "Should change user default language successfully.")
+    void changeUserDefaultLanguage() {
+        User user = User.create(
+                UUID.randomUUID(),
+                "Username",
+                "username@email.com",
+                "username123",
+                "BRL",
+                "PT_BR"
+        );
+        user.changeDefaultLanguage("EN_US");
+
+        Assertions.assertEquals(2L, user.getVersion());
+        Assertions.assertInstanceOf(UserDefaultLanguageChangedEvent.class, user.getChanges().get(1));
+        Assertions.assertEquals("EN_US", user.getConfiguration().getDefaultLanguage());
     }
 }

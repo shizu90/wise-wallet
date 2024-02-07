@@ -42,7 +42,7 @@ public class DeleteCategoryCommandHandlerTests {
         Category category = populate();
         DeleteCategoryCommand command = new DeleteCategoryCommand(category.getId());
 
-        Mockito.when(categoryRepository.load(command.getAggregateId())).thenReturn(Optional.of(category));
+        Mockito.when(categoryRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(category));
 
         Category returnedCategory = deleteCategoryCommandHandler.handle(command);
 

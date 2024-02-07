@@ -16,7 +16,7 @@ public class ChangeBudgetDescriptionCommandHandler implements CommandHandler<Cha
     private final BudgetRepository budgetRepository;
 
     @Override
-    public Budget handle(ChangeBudgetDescriptionCommand command) {
+    public Budget handle(@NonNull ChangeBudgetDescriptionCommand command) {
         Budget budget = budgetRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BudgetNotFoundException("Budget %s was not found.".formatted(command.getAggregateId())));
 

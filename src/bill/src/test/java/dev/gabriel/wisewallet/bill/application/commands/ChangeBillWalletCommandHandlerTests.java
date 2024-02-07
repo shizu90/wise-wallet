@@ -49,7 +49,7 @@ public class ChangeBillWalletCommandHandlerTests {
         Bill bill = populate();
         ChangeBillWalletCommand command = new ChangeBillWalletCommand(bill.getId(), UUID.randomUUID());
 
-        Mockito.when(billRepository.load(command.getAggregateId())).thenReturn(Optional.of(bill));
+        Mockito.when(billRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(bill));
 
         Bill returnedBill = changeBillWalletCommandHandler.handle(command);
 

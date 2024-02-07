@@ -15,6 +15,6 @@ public class CheckUniqueBudgetNameService implements CheckUniqueBudgetName {
 
     @Override
     public boolean exists(String name, UUID userId) {
-        return !budgetProjectionRepository.findByName(userId, name).isEmpty();
+        return !budgetProjectionRepository.findByNameAndUserId(name, userId).isEmpty();
     }
 }

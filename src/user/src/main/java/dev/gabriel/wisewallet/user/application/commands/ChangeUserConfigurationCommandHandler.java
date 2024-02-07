@@ -13,21 +13,25 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ChangeUserConfigurationCommandHandler implements CommandHandler<ChangeUserConfigurationCommand> {
-    private final UserRepository userEventStore;
+    private final UserRepository userRepository;
 
     @Override
     public User handle(@NonNull ChangeUserConfigurationCommand command) {
-        User user = userEventStore.load(command.getAggregateId(), null).orElseThrow(() ->
+        User user = userRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new UserNotFoundException("User %s was not found".formatted(command.getAggregateId())));
 
-        if(command.getDefaultLanguage() != null &&
-           command.getDefaultLanguage().equals(user.getConfiguration().getDefaultLanguage()) &&
-           command.getDefaultCurrencyCode() != null &&
-           command.getDefaultCurrencyCode().equals(user.getConfiguration().getDefaultCurrencyCode())) return user;
+        int changes = user.getChanges().size();
 
-        user.changeConfiguration(command.getDefaultCurrencyCode(), command.getDefaultLanguage());
+        if(!command.getDefaultCurrencyCode().equals(user.getConfiguration().getDefaultCurrencyCode())) {
+            user.changeDefaultCurrencyCode(command.getDefaultCurrencyCode());
+        }
+        if(!command.getDefaultLanguage().equals(user.getConfiguration().getDefaultLanguage())) {
+            user.changeDefaultLanguage(command.getDefaultLanguage());
+        }
 
-        userEventStore.saveChanges(user);
+        if(user.getChanges().size() > changes) {
+            userRepository.saveChanges(user);
+        }
 
         return user;
     }

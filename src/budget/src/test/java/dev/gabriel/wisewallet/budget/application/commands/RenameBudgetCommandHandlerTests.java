@@ -47,7 +47,7 @@ public class RenameBudgetCommandHandlerTests {
         Budget budget = populate();
         RenameBudgetCommand command = new RenameBudgetCommand(budget.getId(), "NewName");
 
-        Mockito.when(budgetRepository.load(command.getAggregateId())).thenReturn(Optional.of(budget));
+        Mockito.when(budgetRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(budget));
         Mockito.when(checkUniqueBudgetName.exists(command.getName(), budget.getUserId())).thenReturn(false);
 
         Budget returnedBudget = renameBudgetCommandHandler.handle(command);

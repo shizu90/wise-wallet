@@ -12,6 +12,8 @@ import dev.gabriel.wisewallet.core.infrastructure.eventstore.repositories.EventR
 import jakarta.annotation.Nullable;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,8 +31,11 @@ public class AggregateService {
     private final EventRepository eventRepository;
     private final EventStoreConfiguration eventStoreConfiguration;
     private final AggregateFactory aggregateFactory;
+    private final Logger logger = LogManager.getLogger(AggregateService.class);
 
     public List<DomainEventWithId<DomainEvent>> save(Aggregate aggregate) {
+        logger.info("Saving aggregate of type %s with version %s.".formatted(aggregate.getAggregateType(), aggregate.getVersion()));
+
         String aggregateType = aggregate.getAggregateType();
         UUID aggregateId = aggregate.getId();
 
@@ -61,9 +66,10 @@ public class AggregateService {
     private void createSnapshot(SnapshottingConfiguration snapshottingConfiguration, Aggregate aggregate) {
         if(snapshottingConfiguration.enabled() &&
            snapshottingConfiguration.nthEvent() > 1 &&
-           aggregate.getVersion() % snapshottingConfiguration.nthEvent() == 0
+           aggregate.getVersion() % snapshottingConfiguration.nthEvent() >= 0
         ) {
-           aggregateRepository.createSnapshot(aggregate);
+            logger.info("Creating snapshot of type %s with version %s.".formatted(aggregate.getAggregateType(), aggregate.getVersion()));
+            aggregateRepository.createSnapshot(aggregate);
         }
     }
 

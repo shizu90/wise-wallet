@@ -44,7 +44,7 @@ public class ChangeBudgetDescriptionCommandHandlerTests {
         Budget budget = populate();
         ChangeBudgetDescriptionCommand command = new ChangeBudgetDescriptionCommand(budget.getId(), "NewDescription");
 
-        Mockito.when(budgetRepository.load(command.getAggregateId())).thenReturn(Optional.of(budget));
+        Mockito.when(budgetRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(budget));
 
         Budget returnedBudget = changeBudgetDescriptionCommandHandler.handle(command);
 

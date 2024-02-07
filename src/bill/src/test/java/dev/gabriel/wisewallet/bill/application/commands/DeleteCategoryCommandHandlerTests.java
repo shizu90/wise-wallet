@@ -49,7 +49,7 @@ public class DeleteCategoryCommandHandlerTests {
         Bill bill = populate();
         DeleteBillCommand command = new DeleteBillCommand(bill.getId());
 
-        Mockito.when(billRepository.load(command.getAggregateId())).thenReturn(Optional.of(bill));
+        Mockito.when(billRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(bill));
 
         Bill returnedBill = deleteBillCommandHandler.handle(command);
 

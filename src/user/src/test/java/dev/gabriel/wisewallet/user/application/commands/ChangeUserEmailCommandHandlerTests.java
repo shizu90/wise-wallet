@@ -48,7 +48,7 @@ public class ChangeUserEmailCommandHandlerTests {
         User user = populate();
         ChangeUserEmailCommand command = new ChangeUserEmailCommand(user.getId(), "newemail@gmail.com");
 
-        Mockito.when(userRepository.load(command.getAggregateId())).thenReturn(Optional.of(user));
+        Mockito.when(userRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(user));
         Mockito.when(checkUniqueEmail.exists(command.getEmail())).thenReturn(false);
 
         User returnedUser = changeUserEmailCommandHandler.handle(command);

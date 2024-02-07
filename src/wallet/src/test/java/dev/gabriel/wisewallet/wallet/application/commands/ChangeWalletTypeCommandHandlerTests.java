@@ -48,7 +48,7 @@ public class ChangeWalletTypeCommandHandlerTests {
         Wallet wallet = populate();
         ChangeWalletTypeCommand command = new ChangeWalletTypeCommand(wallet.getId(), WalletType.CASH);
 
-        Mockito.when(walletRepository.load(command.getAggregateId())).thenReturn(Optional.of(wallet));
+        Mockito.when(walletRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(wallet));
 
         Wallet returnedWallet = changeWalletTypeCommandHandler.handle(command);
 

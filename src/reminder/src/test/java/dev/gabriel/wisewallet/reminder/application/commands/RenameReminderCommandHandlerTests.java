@@ -48,7 +48,7 @@ public class RenameReminderCommandHandlerTests {
         Reminder reminder = populate();
         RenameReminderCommand command = new RenameReminderCommand(reminder.getId(), reminder.getName().getValue());
 
-        Mockito.when(reminderRepository.load(command.getAggregateId())).thenReturn(Optional.of(reminder));
+        Mockito.when(reminderRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(reminder));
         Mockito.when(checkUniqueReminderName.exists(command.getName(), command.getAggregateId())).thenReturn(false);
 
         Reminder returnedReminder = renameReminderCommandHandler.handle(command);

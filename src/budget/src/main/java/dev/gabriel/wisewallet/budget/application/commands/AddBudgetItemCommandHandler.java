@@ -19,7 +19,7 @@ public class AddBudgetItemCommandHandler implements CommandHandler<AddBudgetItem
     private final CurrencyConversion currencyConversion;
 
     @Override
-    public Budget handle(AddBudgetItemCommand command) {
+    public Budget handle(@NonNull AddBudgetItemCommand command) {
         Budget budget = budgetRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BudgetNotFoundException("Budget %s was not found.".formatted(command.getAggregateId())));
 

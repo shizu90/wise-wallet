@@ -19,7 +19,7 @@ public class RenameBudgetCommandHandler implements CommandHandler<RenameBudgetCo
     private final CheckUniqueBudgetName checkUniqueBudgetName;
 
     @Override
-    public Budget handle(RenameBudgetCommand command) {
+    public Budget handle(@NonNull RenameBudgetCommand command) {
         Budget budget = budgetRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BudgetNotFoundException("Budget %s was not found.".formatted(command.getAggregateId())));
 

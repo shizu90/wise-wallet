@@ -46,7 +46,7 @@ public class RemoveBudgetItemCommandHandlerTests {
         RemoveBudgetItemCommand command = new RemoveBudgetItemCommand(budget.getId(), UUID.randomUUID());
         budget.addItem(command.getBillId(), "Name", BigDecimal.valueOf(50.0), "BRL", "EXPENSE");
 
-        Mockito.when(budgetRepository.load(command.getAggregateId())).thenReturn(Optional.of(budget));
+        Mockito.when(budgetRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(budget));
 
         Budget returnedBudget = removeBudgetItemCommandHandler.handle(command);
 

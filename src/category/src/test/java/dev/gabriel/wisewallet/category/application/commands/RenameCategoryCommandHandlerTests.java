@@ -45,7 +45,8 @@ public class RenameCategoryCommandHandlerTests {
         Category category = populate();
         RenameCategoryCommand command = new RenameCategoryCommand(category.getId(), "NewName");
 
-        Mockito.when(categoryRepository.load(command.getAggregateId())).thenReturn(Optional.of(category));
+        Mockito.when(checkUniqueCategoryName.exists(command.getName(), category.getUserId())).thenReturn(false);
+        Mockito.when(categoryRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(category));
 
         Category returnedCategory = renameCategoryCommandHandler.handle(command);
 

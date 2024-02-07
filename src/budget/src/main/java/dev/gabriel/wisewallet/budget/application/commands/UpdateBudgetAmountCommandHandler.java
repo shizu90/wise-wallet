@@ -19,7 +19,7 @@ public class UpdateBudgetAmountCommandHandler implements CommandHandler<UpdateBu
 
     @Override
     @NonNull
-    public Budget handle(UpdateBudgetAmountCommand command) {
+    public Budget handle(@NonNull UpdateBudgetAmountCommand command) {
         Budget budget = budgetRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new BudgetNotFoundException("Budget %s was not found.".formatted(command.getAggregateId())));
 

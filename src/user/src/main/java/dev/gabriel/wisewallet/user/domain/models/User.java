@@ -55,6 +55,8 @@ public class User extends Aggregate {
         Username.validate(name);
         Email.validate(email);
         Password.validate(password);
+        UserConfiguration.validateCurrencyCode(defaultCurrencyCode);
+        UserConfiguration.validateLanguage(defaultLanguage);
 
         return new User(id, name, email, password, defaultCurrencyCode, defaultLanguage);
     }
@@ -89,18 +91,16 @@ public class User extends Aggregate {
         ));
     }
 
-    public void changeConfiguration(String defaultCurrencyCode, String defaultLanguage) {
-        boolean defaultCurrencyCodeIsEmpty = defaultCurrencyCode == null ||
-                defaultCurrencyCode.isEmpty() || defaultCurrencyCode.isBlank();
-        boolean defaultLanguageIsEmpty = defaultLanguage == null ||
-                defaultLanguage.isEmpty() || defaultLanguage.isBlank();
+    public void changeDefaultCurrencyCode(String defaultCurrencyCode) {
+        UserConfiguration.validateCurrencyCode(defaultCurrencyCode);
 
-        applyChange(new UserConfigurationChangedEvent(
-                id,
-                getNextVersion(),
-                defaultCurrencyCodeIsEmpty ? configuration.getDefaultCurrencyCode() : defaultCurrencyCode,
-                defaultLanguageIsEmpty ? configuration.getDefaultLanguage() : defaultLanguage
-        ));
+        applyChange(new UserDefaultCurrencyCodeChangedEvent(id, getNextVersion(), defaultCurrencyCode));
+    }
+
+    public void changeDefaultLanguage(String defaultLanguage) {
+        UserConfiguration.validateLanguage(defaultLanguage);
+
+        applyChange(new UserDefaultLanguageChangedEvent(id, getNextVersion(), defaultLanguage));
     }
 
     public void delete() {
@@ -144,8 +144,14 @@ public class User extends Aggregate {
     }
 
     @SuppressWarnings("unused")
-    private void apply(UserConfigurationChangedEvent event) {
-        this.configuration = UserConfiguration.create(event.getDefaultCurrencyCode(), event.getDefaultLanguage());
+    private void apply(UserDefaultCurrencyCodeChangedEvent event) {
+        this.configuration = UserConfiguration.create(event.getCurrencyCode(), configuration.getDefaultLanguage());
+        this.updatedAt = Instant.now();
+    }
+
+    @SuppressWarnings("unused")
+    private void apply(UserDefaultLanguageChangedEvent event) {
+        this.configuration = UserConfiguration.create(configuration.getDefaultCurrencyCode(), event.getDefaultLanguage());
         this.updatedAt = Instant.now();
     }
 

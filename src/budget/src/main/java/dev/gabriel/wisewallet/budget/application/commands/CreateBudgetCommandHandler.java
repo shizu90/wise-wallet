@@ -18,7 +18,7 @@ public class CreateBudgetCommandHandler implements CommandHandler<CreateBudgetCo
     private final CheckUniqueBudgetName checkUniqueBudgetName;
 
     @Override
-    public Budget handle(CreateBudgetCommand command) {
+    public Budget handle(@NonNull CreateBudgetCommand command) {
         if(checkUniqueBudgetName.exists(command.getName(), command.getUserId()))
             throw new BudgetAlreadyExistsException("Budget with name %s already exists.".formatted(command.getName()));
 

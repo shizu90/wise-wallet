@@ -45,7 +45,7 @@ public class ChangeUserPasswordCommandHandlerTests {
         User user = populate();
         ChangeUserPasswordCommand command = new ChangeUserPasswordCommand(user.getId(), "newpassword123");
 
-        Mockito.when(userRepository.load(command.getAggregateId())).thenReturn(Optional.of(user));
+        Mockito.when(userRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(user));
 
         User returnedUser = changeUserPasswordCommandHandler.handle(command);
 

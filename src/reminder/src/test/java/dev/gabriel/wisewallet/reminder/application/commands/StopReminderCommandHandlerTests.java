@@ -45,7 +45,7 @@ public class StopReminderCommandHandlerTests {
         Reminder reminder = populate();
         StopReminderCommand command = new StopReminderCommand(reminder.getId());
 
-        Mockito.when(reminderRepository.load(command.getAggregateId())).thenReturn(Optional.of(reminder));
+        Mockito.when(reminderRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(reminder));
 
         Reminder returnedReminder = stopReminderCommandHandler.handle(command);
 

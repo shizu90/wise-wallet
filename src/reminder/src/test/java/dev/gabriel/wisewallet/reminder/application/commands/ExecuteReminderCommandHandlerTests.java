@@ -46,7 +46,7 @@ public class ExecuteReminderCommandHandlerTests {
         reminder.start();
         ExecuteReminderCommand command = new ExecuteReminderCommand(reminder.getId(), 1L);
 
-        Mockito.when(reminderRepository.load(command.getAggregateId())).thenReturn(Optional.of(reminder));
+        Mockito.when(reminderRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(reminder));
 
         Reminder returnedReminder = executeReminderCommandHandler.handle(command);
 

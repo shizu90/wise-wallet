@@ -51,7 +51,7 @@ public class RenameWalletCommandHandlerTests {
         Wallet wallet = populate();
         RenameWalletCommand command = new RenameWalletCommand(wallet.getId(), "NewName");
 
-        Mockito.when(walletRepository.load(command.getAggregateId())).thenReturn(Optional.of(wallet));
+        Mockito.when(walletRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(wallet));
         Mockito.when(checkUniqueWalletName.exists(command.getName(), wallet.getUserId())).thenReturn(false);
 
         Wallet returnedWallet = renameWalletCommandHandler.handle(command);

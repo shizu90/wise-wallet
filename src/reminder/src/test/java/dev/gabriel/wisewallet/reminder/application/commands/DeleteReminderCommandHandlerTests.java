@@ -45,7 +45,7 @@ public class DeleteReminderCommandHandlerTests {
         Reminder reminder = populate();
         DeleteReminderCommand command = new DeleteReminderCommand(reminder.getId());
 
-        Mockito.when(reminderRepository.load(command.getAggregateId())).thenReturn(Optional.of(reminder));
+        Mockito.when(reminderRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(reminder));
 
         Reminder returnedReminder = deleteReminderCommandHandler.handle(command);
 

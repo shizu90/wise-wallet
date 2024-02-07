@@ -48,7 +48,7 @@ public class ChangeWalletDescriptionCommandHandlerTests {
         Wallet wallet = populate();
         ChangeWalletDescriptionCommand command = new ChangeWalletDescriptionCommand(wallet.getId(), "NewDescription");
 
-        Mockito.when(walletRepository.load(command.getAggregateId())).thenReturn(Optional.of(wallet));
+        Mockito.when(walletRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(wallet));
 
         Wallet returnedWallet = changeWalletDescriptionCommandHandler.handle(command);
 

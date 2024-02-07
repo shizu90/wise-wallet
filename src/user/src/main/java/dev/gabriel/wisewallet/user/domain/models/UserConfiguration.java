@@ -3,6 +3,7 @@ package dev.gabriel.wisewallet.user.domain.models;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.gabriel.wisewallet.core.domain.models.ValueObject;
+import dev.gabriel.wisewallet.user.domain.exceptions.UserValidationException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,18 @@ public class UserConfiguration extends ValueObject {
 
     public static UserConfiguration create(String defaultCurrencyCode, String defaultLanguage) {
         return new UserConfiguration(defaultCurrencyCode, defaultLanguage);
+    }
+
+    public static void validateCurrencyCode(String defaultCurrencyCode) {
+        if(defaultCurrencyCode == null || defaultCurrencyCode.length() != 3) {
+            throw new UserValidationException("User validation failed on default currency code field: not a valid currency code.");
+        }
+    }
+
+    public static void validateLanguage(String defaultLanguage) {
+        if(defaultLanguage == null) {
+            throw new UserValidationException("User validation failed on default language field: not a valid language code.");
+        }
     }
 
     @JsonIgnore

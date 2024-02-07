@@ -49,7 +49,7 @@ public class ChangeBillTypeCommandHandlerTests {
         Bill bill = populate();
         ChangeBillTypeCommand command = new ChangeBillTypeCommand(bill.getId(), BillType.INCOME);
 
-        Mockito.when(billRepository.load(command.getAggregateId())).thenReturn(Optional.of(bill));
+        Mockito.when(billRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(bill));
 
         Bill returnedBill = changeBillTypeCommandHandler.handle(command);
 

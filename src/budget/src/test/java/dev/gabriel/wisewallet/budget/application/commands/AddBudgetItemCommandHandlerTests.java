@@ -52,7 +52,7 @@ public class AddBudgetItemCommandHandlerTests {
                 "EXPENSE"
         );
 
-        Mockito.when(budgetRepository.load(command.getAggregateId())).thenReturn(Optional.of(budget));
+        Mockito.when(budgetRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(budget));
 
         Budget returnedBudget = addBudgetItemCommandHandler.handle(command);
 

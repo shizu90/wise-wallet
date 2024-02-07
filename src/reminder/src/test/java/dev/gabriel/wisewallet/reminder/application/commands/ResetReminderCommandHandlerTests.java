@@ -45,7 +45,7 @@ public class ResetReminderCommandHandlerTests {
         Reminder reminder = populate();
         ResetReminderCommand command = new ResetReminderCommand(reminder.getId());
 
-        Mockito.when(reminderRepository.load(command.getAggregateId())).thenReturn(Optional.of(reminder));
+        Mockito.when(reminderRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(reminder));
 
         Reminder returnedReminder = resetReminderCommandHandler.handle(command);
 

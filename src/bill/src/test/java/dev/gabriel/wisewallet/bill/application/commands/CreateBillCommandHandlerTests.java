@@ -4,12 +4,14 @@ import dev.gabriel.wisewallet.bill.domain.commands.CreateBillCommand;
 import dev.gabriel.wisewallet.bill.domain.models.Bill;
 import dev.gabriel.wisewallet.bill.domain.models.BillType;
 import dev.gabriel.wisewallet.bill.domain.repositories.BillRepository;
+import dev.gabriel.wisewallet.bill.domain.services.CheckUniqueBillName;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,6 +21,9 @@ import java.util.UUID;
 public class CreateBillCommandHandlerTests {
     @Mock
     private BillRepository billRepository;
+    @Mock
+    private CheckUniqueBillName checkUniqueBillName;
+
     @Autowired
     @InjectMocks
     private CreateBillCommandHandler createBillCommandHandler;
@@ -55,6 +60,8 @@ public class CreateBillCommandHandlerTests {
                 bill.getWalletId(),
                 bill.getCategoryId()
         );
+
+        Mockito.when(checkUniqueBillName.exists(command.getName(), command.getWalletId())).thenReturn(false);
 
         Bill returnedBill = createBillCommandHandler.handle(command);
 

@@ -22,7 +22,7 @@ public class UpdateWalletBalanceCommandHandler implements CommandHandler<UpdateW
         Wallet wallet = walletRepository.load(command.getAggregateId(), null).orElseThrow(() ->
                 new WalletNotFoundException("Wallet %s was not found.".formatted(command.getAggregateId())));
 
-        long changesCount = wallet.getChanges().size();
+        int changes = wallet.getChanges().size();
 
         if(command.getBalance() != null && !command.getBalance().equals(wallet.getBalance().getValue()))
             wallet.updateBalance(command.getBalance());
@@ -32,7 +32,7 @@ public class UpdateWalletBalanceCommandHandler implements CommandHandler<UpdateW
             wallet.updateBalance(currencyConversion.convert(wallet.getBalance(), command.getCurrencyCode()).getValue());
         }
 
-        if(wallet.getChanges().size() != changesCount)
+        if(wallet.getChanges().size() > changes)
             walletRepository.saveChanges(wallet);
 
         return wallet;

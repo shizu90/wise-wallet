@@ -45,7 +45,7 @@ public class ChangeReminderRecurrenceCommandHandlerTests {
         Reminder reminder = populate();
         ChangeReminderRecurrenceCommand command = new ChangeReminderRecurrenceCommand(reminder.getId(), 4L);
 
-        Mockito.when(reminderRepository.load(command.getAggregateId())).thenReturn(Optional.of(reminder));
+        Mockito.when(reminderRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(reminder));
 
         Reminder returnedReminder = changeReminderRecurrenceCommandHandler.handle(command);
 

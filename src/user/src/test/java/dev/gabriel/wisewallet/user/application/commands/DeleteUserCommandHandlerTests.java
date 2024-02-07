@@ -45,7 +45,7 @@ public class DeleteUserCommandHandlerTests {
         User user = populate();
         DeleteUserCommand command = new DeleteUserCommand(user.getId());
 
-        Mockito.when(userRepository.load(command.getAggregateId())).thenReturn(Optional.of(user));
+        Mockito.when(userRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(user));
 
         User returnedUser = deleteUserCommandHandler.handle(command);
 

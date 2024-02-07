@@ -48,7 +48,7 @@ public class UpdateBudgetAmountCommandHandlerTests {
         Budget budget = populate();
         UpdateBudgetAmountCommand command = new UpdateBudgetAmountCommand(budget.getId(), null, "EUR");
 
-        Mockito.when(budgetRepository.load(command.getAggregateId())).thenReturn(Optional.of(budget));
+        Mockito.when(budgetRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(budget));
         Mockito.when(currencyConversion.convert(budget.getAmount(), command.getCurrencyCode())).thenReturn(budget.getAmount());
 
         Budget returnedBudget = updateBudgetAmountCommandHandler.handle(command);
@@ -62,7 +62,7 @@ public class UpdateBudgetAmountCommandHandlerTests {
         Budget budget = populate();
         UpdateBudgetAmountCommand command = new UpdateBudgetAmountCommand(budget.getId(), BigDecimal.valueOf(20.0), null);
 
-        Mockito.when(budgetRepository.load(command.getAggregateId())).thenReturn(Optional.of(budget));
+        Mockito.when(budgetRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(budget));
 
         Budget returnedBudget = updateBudgetAmountCommandHandler.handle(command);
 

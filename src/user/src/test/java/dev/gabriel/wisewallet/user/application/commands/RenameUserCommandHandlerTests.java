@@ -45,7 +45,7 @@ public class RenameUserCommandHandlerTests {
         User user = populate();
         RenameUserCommand command = new RenameUserCommand(user.getId(), "NewName");
 
-        Mockito.when(userRepository.load(command.getAggregateId())).thenReturn(Optional.of(user));
+        Mockito.when(userRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(user));
 
         User returnedUser = renameUserCommandHandler.handle(command);
 

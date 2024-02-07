@@ -45,7 +45,7 @@ public class ChangeReminderDescriptionCommandHandlerTests {
         Reminder reminder = populate();
         ChangeReminderDescriptionCommand command = new ChangeReminderDescriptionCommand(reminder.getId(), reminder.getDescription().getValue());
 
-        Mockito.when(reminderRepository.load(command.getAggregateId())).thenReturn(Optional.of(reminder));
+        Mockito.when(reminderRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(reminder));
 
         Reminder returnedReminder = changeReminderDescriptionCommandHandler.handle(command);
 

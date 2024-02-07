@@ -48,7 +48,7 @@ public class DeleteWalletCommandHandlerTests {
         Wallet wallet = populate();
         DeleteWalletCommand command = new DeleteWalletCommand(wallet.getId());
 
-        Mockito.when(walletRepository.load(command.getAggregateId())).thenReturn(Optional.of(wallet));
+        Mockito.when(walletRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(wallet));
 
         Wallet returnedWallet = deleteWalletCommandHandler.handle(command);
 

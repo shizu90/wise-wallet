@@ -51,7 +51,7 @@ public class UpdateWalletBalanceCommandHandlerTests {
         Wallet wallet = populate();
         UpdateWalletBalanceCommand command = new UpdateWalletBalanceCommand(wallet.getId(), null, "EUR");
 
-        Mockito.when(walletRepository.load(command.getAggregateId())).thenReturn(Optional.of(wallet));
+        Mockito.when(walletRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(wallet));
         Mockito.when(currencyConversion.convert(wallet.getBalance(), command.getCurrencyCode())).thenReturn(wallet.getBalance());
 
         Wallet returnedWallet = updateWalletBalanceCommandHandler.handle(command);
@@ -65,7 +65,7 @@ public class UpdateWalletBalanceCommandHandlerTests {
         Wallet wallet = populate();
         UpdateWalletBalanceCommand command = new UpdateWalletBalanceCommand(wallet.getId(), BigDecimal.valueOf(4000), null);
 
-        Mockito.when(walletRepository.load(command.getAggregateId())).thenReturn(Optional.of(wallet));
+        Mockito.when(walletRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(wallet));
 
         Wallet returnedWallet = updateWalletBalanceCommandHandler.handle(command);
 

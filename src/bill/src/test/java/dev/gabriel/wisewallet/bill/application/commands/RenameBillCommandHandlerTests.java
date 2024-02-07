@@ -4,6 +4,7 @@ import dev.gabriel.wisewallet.bill.domain.commands.RenameBillCommand;
 import dev.gabriel.wisewallet.bill.domain.models.Bill;
 import dev.gabriel.wisewallet.bill.domain.models.BillType;
 import dev.gabriel.wisewallet.bill.domain.repositories.BillRepository;
+import dev.gabriel.wisewallet.bill.domain.services.CheckUniqueBillName;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,6 +22,9 @@ import java.util.UUID;
 public class RenameBillCommandHandlerTests {
     @Mock
     private BillRepository billRepository;
+    @Mock
+    private CheckUniqueBillName checkUniqueBillName;
+
     @Autowired
     @InjectMocks
     private RenameBillCommandHandler renameBillCommandHandler;
@@ -49,7 +53,8 @@ public class RenameBillCommandHandlerTests {
         Bill bill = populate();
         RenameBillCommand command = new RenameBillCommand(bill.getId(), "NewName");
 
-        Mockito.when(billRepository.load(command.getAggregateId())).thenReturn(Optional.of(bill));
+        Mockito.when(checkUniqueBillName.exists(command.getName(), bill.getWalletId())).thenReturn(false);
+        Mockito.when(billRepository.load(command.getAggregateId(), null)).thenReturn(Optional.of(bill));
 
         Bill returnedBill = renameBillCommandHandler.handle(command);
 
