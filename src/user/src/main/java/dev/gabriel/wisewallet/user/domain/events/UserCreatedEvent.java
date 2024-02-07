@@ -1,6 +1,5 @@
 package dev.gabriel.wisewallet.user.domain.events;
 
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
 import lombok.NonNull;

@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserEventProducer implements EventPublisher {
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, DomainEvent> kafkaTemplate;
     private final ObjectMapper objectMapper;
 
     @Override
     @SneakyThrows
     public void publish(String topic, DomainEvent event) {
-        kafkaTemplate.send(topic, objectMapper.writeValueAsString(event));
+        kafkaTemplate.send(topic, event);
     }
 }
