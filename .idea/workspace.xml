@@ -5,20 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5b54b27-7f18-42ac-8853-ca1ce0d9d97c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/infrastructure/configs/DomainEventDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/infrastructure/configs/DomainEventSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/infrastructure/configs/KafkaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/infrastructure/configs/ObjectMapperConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/test/java/dev/gabriel/wisewallet/recurringbill/application/commands/CreateRecurringBillCommandHandlerTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/src/test/java/dev/gabriel/wisewallet/recurringbill/domain/models/RecurringBillTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/application/CommandBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/application/CommandBus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/domain/events/DomainEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/domain/events/DomainEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/events/UserCreatedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/events/UserCreatedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/events/UserDefaultCurrencyCodeChangedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/events/UserDefaultCurrencyCodeChangedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/events/UserDefaultLanguageChangedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/events/UserDefaultLanguageChangedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/events/UserEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/events/UserEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/infrastructure/configs/ObjectMapperConfig.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,19 +49,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "21",
-    "last_opened_file_path": "C:/Users/giraf/projects/expense-manager-api/wise-wallet/src/bill/src/main/resources",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giraf/projects/expense-manager-api/wise-wallet/src/bill/src/main/resources&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\bill\src\main\resources" />
@@ -89,7 +83,7 @@
       <recent name="dev.gabriel.wisewallet.domain.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.UserModule">
+  <component name="RunManager" selected="JUnit.RecurringBillTests">
     <configuration name="ApiGateway" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.apigateway.ApiGateway" />
       <module name="api-gateway" />
@@ -129,6 +123,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RecurringBillTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="recurringbill" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.gabriel.wisewallet.recurringbill.domain.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.gabriel.wisewallet.recurringbill.domain.models" />
+      <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.recurringbill.domain.models.RecurringBillTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="bill in bill" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bill" />
       <option name="TEST_OBJECT" value="directory" />
@@ -137,21 +146,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="budget in budget" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="budget" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/budget/src/test/java/dev/gabriel/wisewallet/budget" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RecurringBillTests" />
         <item itemvalue="Application.UserModule" />
         <item itemvalue="Application.ApiGateway" />
         <item itemvalue="Application.ServiceDiscovery" />
         <item itemvalue="JUnit.bill in bill" />
-        <item itemvalue="JUnit.budget in budget" />
       </list>
     </recent_temporary>
   </component>

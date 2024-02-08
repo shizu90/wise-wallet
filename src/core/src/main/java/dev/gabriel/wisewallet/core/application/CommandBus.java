@@ -7,7 +7,6 @@ import dev.gabriel.wisewallet.core.domain.models.Aggregate;
 import dev.gabriel.wisewallet.core.infrastructure.services.EventPublisher;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import java.util.List;
 @Transactional
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Slf4j
 public class CommandBus<T extends Command> {
     private final List<CommandHandler<T>> commandHandlers;
     private final EventPublisher eventPublisher;
