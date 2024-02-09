@@ -28,4 +28,7 @@ public interface BudgetProjectionRepository extends MongoRepository<BudgetProjec
 
     @Query(value = "{$and: [{'userId': ?1}, {'name': ?0}, {'isDeleted': false}]}")
     List<BudgetProjection> findByNameAndUserId(String name, UUID userId);
+
+    @Query(value = "{'budgets.items': {$elemMatch: {'billId': ?0}}}")
+    List<BudgetProjection> findByBillId(UUID billId);
 }

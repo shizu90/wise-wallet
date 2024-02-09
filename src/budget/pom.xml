@@ -20,6 +20,11 @@
         </dependency>
         <dependency>
             <groupId>dev.gabriel.wisewallet</groupId>
+            <artifactId>bill</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.gabriel.wisewallet</groupId>
             <artifactId>currency</artifactId>
             <version>${project.version}</version>
         </dependency>
