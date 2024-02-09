@@ -9,7 +9,7 @@ import java.time.Instant;
 @AllArgsConstructor
 @Getter
 public class ControllerException {
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING, timezone = "America/Sao_Paulo")
     private Instant timestamp;
     private Integer status;
     private String error;
