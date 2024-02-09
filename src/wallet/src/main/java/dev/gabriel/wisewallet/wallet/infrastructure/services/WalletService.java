@@ -49,7 +49,7 @@ public class WalletService {
 
     public WalletResponseDto updateWalletData(WalletRequestDto request) {
         Wallet wallet = null;
-        if(!(request.name() == null || request.name().isEmpty() || request.name().isBlank())) {
+        if(!(request.name() == null || request.name().isBlank())) {
             wallet = (Wallet) commandBus.execute(
                     new RenameWalletCommand(
                             request.id(),
@@ -57,7 +57,7 @@ public class WalletService {
                     )
             );
         }
-        if(!(request.description() == null || request.description().isEmpty() || request.description().isBlank())) {
+        if(!(request.description() == null || request.description().isBlank())) {
             wallet = (Wallet) commandBus.execute(
                     new ChangeWalletDescriptionCommand(
                             request.id(),
@@ -73,7 +73,7 @@ public class WalletService {
                     )
             );
         }
-        if(!(request.currencyCode() == null || request.currencyCode().isEmpty() || request.currencyCode().isBlank())) {
+        if(!(request.currencyCode() == null || request.currencyCode().isBlank())) {
             wallet = (Wallet) commandBus.execute(
                     new UpdateWalletBalanceCommand(
                             request.id(),

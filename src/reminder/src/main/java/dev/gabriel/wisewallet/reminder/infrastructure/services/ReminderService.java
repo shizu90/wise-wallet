@@ -46,10 +46,10 @@ public class ReminderService {
     public ReminderResponseDto updateReminderData(ReminderRequestDto request) {
         Reminder reminder = null;
 
-        if(!(request.name() == null || request.name().isEmpty() || request.name().isBlank())) {
+        if(!(request.name() == null || request.name().isBlank())) {
             reminder = (Reminder) commandBus.execute(new RenameReminderCommand(request.id(), request.name()));
         }
-        if(!(request.description() == null || request.description().isEmpty() || request.description().isBlank())) {
+        if(!(request.description() == null || request.description().isBlank())) {
             reminder = (Reminder) commandBus.execute(new ChangeReminderDescriptionCommand(request.id(), request.description()));
         }
         if(!(request.recurrence() == null)) {

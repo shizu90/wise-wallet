@@ -6,22 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b5b54b27-7f18-42ac-8853-ca1ce0d9d97c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/application/events/BillAsyncEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/application/events/BillAsyncEventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/application/events/BudgetAsyncEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/application/events/BudgetAsyncEventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/projection/BudgetProjectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/projection/BudgetProjectionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/events/RecurringBillAsyncEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/application/events/RecurringBillAsyncEventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/services/RecurringBillEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/services/RecurringBillEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/application/events/ReminderAsyncEventHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventConsumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/domain/events/DomainEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/domain/events/DomainEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/infrastructure/eventstore/services/AggregateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/src/main/java/dev/gabriel/wisewallet/core/infrastructure/eventstore/services/AggregateService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +78,7 @@
       <recent name="dev.gabriel.wisewallet.domain.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.UserModule">
+  <component name="RunManager" selected="Application.ApiGateway">
     <configuration name="ApiGateway" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.apigateway.ApiGateway" />
       <module name="api-gateway" />
@@ -157,10 +143,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ApiGateway" />
         <item itemvalue="Application.UserModule" />
         <item itemvalue="Application.ServiceDiscovery" />
         <item itemvalue="JUnit.RecurringBillTests" />
-        <item itemvalue="Application.ApiGateway" />
         <item itemvalue="JUnit.bill in bill" />
       </list>
     </recent_temporary>

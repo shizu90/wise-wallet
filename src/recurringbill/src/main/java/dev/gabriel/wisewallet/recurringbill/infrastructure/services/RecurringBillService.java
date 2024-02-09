@@ -3,7 +3,6 @@ package dev.gabriel.wisewallet.recurringbill.infrastructure.services;
 import dev.gabriel.wisewallet.core.application.CommandBus;
 import dev.gabriel.wisewallet.recurringbill.domain.commands.*;
 import dev.gabriel.wisewallet.recurringbill.domain.models.RecurringBill;
-import dev.gabriel.wisewallet.recurringbill.infrastructure.projection.RecurringBillProjection;
 import dev.gabriel.wisewallet.recurringbill.infrastructure.projection.RecurringBillProjectionRepository;
 import dev.gabriel.wisewallet.recurringbill.presentation.dtos.RecurringBillRequestDto;
 import dev.gabriel.wisewallet.recurringbill.presentation.dtos.RecurringBillResponseDto;
@@ -46,37 +45,38 @@ public class RecurringBillService {
 
     public RecurringBillResponseDto updateRecurringBillData(RecurringBillRequestDto request) {
         RecurringBill recurringBill = null;
-        if(request.name() != null) {
+        if(!(request.name() == null || request.name().isBlank())) {
             recurringBill = (RecurringBill) commandBus
                     .execute(new RenameRecurringBillCommand(request.id(), request.name()));
         }
-        if(request.description() != null) {
+        if(!(request.description() == null || request.description().isBlank())) {
             recurringBill = (RecurringBill) commandBus
                     .execute(new ChangeRecurringBillDescriptionCommand(request.id(), request.description()));
         }
-        if(request.amount() != null || request.currencyCode() != null) {
+        if(!(request.amount() == null || request.currencyCode() == null)) {
             recurringBill = (RecurringBill) commandBus
                     .execute(new UpdateRecurringBillAmountCommand(request.id(), request.amount(), request.currencyCode()));
         }
-        if(request.type() != null) {
+        if(!(request.type() == null)) {
             recurringBill = (RecurringBill) commandBus
                     .execute(new ChangeRecurringBillTypeCommand(request.id(), request.type()));
         }
-        if(request.recurrence() != null) {
+        if(!(request.recurrence() == null)) {
             recurringBill = (RecurringBill) commandBus
                     .execute(new ChangeRecurringBillRecurrenceCommand(request.id(), request.recurrence()));
         }
-        if(request.maxPeriods() != null) {
+        if(!(request.maxPeriods() == null)) {
             recurringBill = (RecurringBill) commandBus
                     .execute(new ChangeRecurringBillMaxPeriodsCommand(request.id(), request.maxPeriods()));
         }
-        if(request.categoryId() != null) {
+        if(!(request.categoryId() == null)) {
             recurringBill = (RecurringBill) commandBus
                     .execute(new ChangeRecurringBillCategoryCommand(request.id(), request.categoryId()));
         }
-        if(request.walletId() != null)
+        if(!(request.walletId() == null)) {
             recurringBill = (RecurringBill) commandBus
                     .execute(new ChangeRecurringBillWalletCommand(request.id(), request.walletId()));
+        }
 
         return dtoMapper.toResponseDto(recurringBill);
     }

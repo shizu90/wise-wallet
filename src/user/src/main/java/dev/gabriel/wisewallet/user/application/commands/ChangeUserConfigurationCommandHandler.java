@@ -25,6 +25,7 @@ public class ChangeUserConfigurationCommandHandler implements CommandHandler<Cha
         if(!command.getDefaultCurrencyCode().equals(user.getConfiguration().getDefaultCurrencyCode())) {
             user.changeDefaultCurrencyCode(command.getDefaultCurrencyCode());
         }
+
         if(!command.getDefaultLanguage().equals(user.getConfiguration().getDefaultLanguage())) {
             user.changeDefaultLanguage(command.getDefaultLanguage());
         }

@@ -1,7 +1,6 @@
 package dev.gabriel.wisewallet.user.domain.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.gabriel.wisewallet.core.domain.models.ValueObject;
 import dev.gabriel.wisewallet.user.domain.exceptions.UserValidationException;
 import lombok.AccessLevel;
@@ -31,21 +30,6 @@ public class UserConfiguration extends ValueObject {
         if(defaultLanguage == null) {
             throw new UserValidationException("User validation failed on default language field: not a valid language code.");
         }
-    }
-
-    @JsonIgnore
-    public boolean isNull() {
-        return defaultLanguage == null && defaultCurrencyCode == null;
-    }
-
-    @JsonIgnore
-    public boolean isEmpty() {
-        return defaultLanguage.isEmpty() && defaultCurrencyCode.isEmpty();
-    }
-
-    @JsonIgnore
-    public boolean isBlank() {
-        return defaultLanguage.isBlank() && defaultCurrencyCode.isBlank();
     }
 
     @Override

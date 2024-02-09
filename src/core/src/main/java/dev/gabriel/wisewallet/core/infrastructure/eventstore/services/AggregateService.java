@@ -66,7 +66,7 @@ public class AggregateService {
     private void createSnapshot(SnapshottingConfiguration snapshottingConfiguration, Aggregate aggregate) {
         if(snapshottingConfiguration.enabled() &&
            snapshottingConfiguration.nthEvent() > 1 &&
-           aggregate.getVersion() % snapshottingConfiguration.nthEvent() >= 0
+           aggregate.getVersion() % snapshottingConfiguration.nthEvent() == 0
         ) {
             logger.info("Creating snapshot of type %s with version %s.".formatted(aggregate.getAggregateType(), aggregate.getVersion()));
             aggregateRepository.createSnapshot(aggregate);

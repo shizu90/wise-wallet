@@ -6,7 +6,6 @@ import dev.gabriel.wisewallet.user.presentation.dtos.UserResponseDto;
 import dev.gabriel.wisewallet.core.application.CommandBus;
 import dev.gabriel.wisewallet.user.domain.commands.*;
 import dev.gabriel.wisewallet.user.domain.models.User;
-import dev.gabriel.wisewallet.user.domain.models.UserConfiguration;
 import dev.gabriel.wisewallet.user.presentation.dtos.mappers.UserDtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,21 +41,21 @@ public class UserService {
     public UserResponseDto updateUserData(UserRequestDto request) {
         User user = null;
 
-        if(!(request.name() == null || request.name().isEmpty() || request.name().isBlank())) {
+        if(!(request.name() == null || request.name().isBlank())) {
             user = (User) commandBus.execute(
                     new RenameUserCommand(
                             request.id(),
                             request.name()
                     ));
         }
-        if(!(request.email() == null || request.email().isEmpty() || request.email().isBlank())) {
+        if(!(request.email() == null || request.email().isBlank())) {
             user = (User) commandBus.execute(
                     new ChangeUserEmailCommand(
                             request.id(),
                             request.email()
                     ));
         }
-        if(!(request.password() == null || request.password().isEmpty() || request.password().isBlank())) {
+        if(!(request.password() == null || request.password().isBlank())) {
             user = (User) commandBus.execute(
                     new ChangeUserPasswordCommand(
                             request.id(),
@@ -64,13 +63,14 @@ public class UserService {
                     )
             );
         }
-        UserConfiguration configuration = UserConfiguration.create(request.defaultCurrencyCode(), request.defaultLanguage());
-        if(!(configuration.isNull() || configuration.isBlank() || configuration.isEmpty())) {
+
+        if(!(request.defaultLanguage() == null || request.defaultLanguage().isBlank()) ||
+                !(request.defaultCurrencyCode() == null || request.defaultCurrencyCode().isBlank())) {
             user = (User) commandBus.execute(
                     new ChangeUserConfigurationCommand(
                             request.id(),
-                            configuration.getDefaultCurrencyCode(),
-                            configuration.getDefaultLanguage()
+                            request.defaultCurrencyCode(),
+                            request.defaultLanguage()
                     )
             );
         }

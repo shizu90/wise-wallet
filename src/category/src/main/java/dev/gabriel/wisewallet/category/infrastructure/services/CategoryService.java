@@ -45,7 +45,7 @@ public class CategoryService {
 
     public CategoryResponseDto updateCategoryData(CategoryRequestDto request) {
         Category category = null;
-        if(!(request.name() == null || request.name().isEmpty() || request.name().isBlank())) {
+        if(!(request.name() == null || request.name().isBlank())) {
             category = (Category) commandBus.execute(new RenameCategoryCommand(
                     request.id(),
                     request.name()

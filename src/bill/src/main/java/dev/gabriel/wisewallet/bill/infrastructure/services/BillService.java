@@ -78,38 +78,38 @@ public class BillService {
 
     public BillResponseDto updateBillData(BillRequestDto request) {
         Bill bill = null;
-        if(request.name() != null) {
+        if(!(request.name() == null || request.name().isBlank())) {
             bill = (Bill) commandBus.execute(new RenameBillCommand(
                     request.id(),
                     request.name()
             ));
         }
-        if(request.description() != null) {
+        if(!(request.description() == null || request.description().isBlank())) {
             bill = (Bill) commandBus.execute(new ChangeBillDescriptionCommand(
                     request.id(),
                     request.description()
             ));
         }
-        if(request.amount() != null || request.currencyCode() != null) {
+        if(!(request.amount() == null || request.currencyCode() == null)) {
             bill = (Bill) commandBus.execute(new UpdateBillAmountCommand(
                     request.id(),
                     request.amount(),
                     request.currencyCode()
             ));
         }
-        if(request.type() != null) {
+        if(!(request.type() == null)) {
             bill = (Bill) commandBus.execute(new ChangeBillTypeCommand(
                     request.id(),
                     request.type()
             ));
         }
-        if(request.categoryId() != null) {
+        if(!(request.categoryId() == null)) {
             bill = (Bill) commandBus.execute(new ChangeBillCategoryCommand(
                     request.id(),
                     request.categoryId()
             ));
         }
-        if(request.walletId() != null) {
+        if(!(request.walletId() == null)) {
             bill = (Bill) commandBus.execute(new ChangeBillWalletCommand(
                     request.id(),
                     request.walletId()
