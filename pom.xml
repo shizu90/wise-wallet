@@ -27,6 +27,7 @@
         <module>src/currency</module>
         <module>src/service-discovery</module>
         <module>src/api-gateway</module>
+        <module>src/auth</module>
     </modules>
 
     <properties>
