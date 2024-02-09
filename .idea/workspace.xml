@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5b54b27-7f18-42ac-8853-ca1ce0d9d97c" name="Changes" comment="" />
+    <list default="true" id="b5b54b27-7f18-42ac-8853-ca1ce0d9d97c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/infrastructure/AuthCredentials.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/infrastructure/AuthCredentialsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/security/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/projection/RecurringBillProjection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/projection/RecurringBillProjection.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,8 +25,8 @@
         <option value="Kotlin File" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Dockerfile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -62,8 +71,8 @@
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\reminder\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\user\src\main\resources" />
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src" />
+      <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\user\src\main\resources" />
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet" />
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\main\java\dev\gabriel\wisewallet" />
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\main\java\dev\gabriel\wisewallet\bill\src\main\java\dev\gabriel\wisewallet\bill\presentation\dtos" />

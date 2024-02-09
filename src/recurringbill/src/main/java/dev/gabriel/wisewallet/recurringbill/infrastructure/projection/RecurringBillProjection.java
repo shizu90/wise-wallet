@@ -12,7 +12,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Document(value = "RecurringBills")
+@Document(collection = "RecurringBills")
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Data
 public class RecurringBillProjection {
