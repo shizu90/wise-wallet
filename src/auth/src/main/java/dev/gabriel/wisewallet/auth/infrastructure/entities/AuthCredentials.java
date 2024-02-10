@@ -1,4 +1,4 @@
-package dev.gabriel.wisewallet.auth.infrastructure;
+package dev.gabriel.wisewallet.auth.infrastructure.entities;
 
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
