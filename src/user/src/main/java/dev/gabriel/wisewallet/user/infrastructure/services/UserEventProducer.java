@@ -15,7 +15,12 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserEventProducer implements EventPublisher {
     private final KafkaTemplate<String, DomainEvent> kafkaTemplate;
-    private static final List<EventType> AVAILABLE_TOPICS = List.of(new EventType[]{EventType.USER_DELETED});
+    private static final List<EventType> AVAILABLE_TOPICS = List.of(new EventType[]{
+            EventType.USER_DELETED,
+            EventType.USER_CREATED,
+            EventType.USER_EMAIL_CHANGED,
+            EventType.USER_PASSWORD_CHANGED
+    });
 
     @Override
     @SneakyThrows

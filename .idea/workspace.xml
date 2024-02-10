@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5b54b27-7f18-42ac-8853-ca1ce0d9d97c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/infrastructure/services/AuthAsyncEventHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/domain/services/EncryptPassword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/EncryptPasswordService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/infrastructure/AuthCredentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/infrastructure/entities/AuthCredentials.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/infrastructure/AuthCredentialsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/infrastructure/entities/AuthCredentialsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserEventProducer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

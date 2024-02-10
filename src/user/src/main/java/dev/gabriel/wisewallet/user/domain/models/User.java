@@ -54,7 +54,6 @@ public class User extends Aggregate {
     ) {
         Username.validate(name);
         Email.validate(email);
-        Password.validate(password);
         UserConfiguration.validateCurrencyCode(defaultCurrencyCode);
         UserConfiguration.validateLanguage(defaultLanguage);
 
@@ -82,8 +81,6 @@ public class User extends Aggregate {
     }
 
     public void changePassword(String password) {
-        Password.validate(password);
-
         applyChange(new UserPasswordChangedEvent(
                 id,
                 getNextVersion(),
