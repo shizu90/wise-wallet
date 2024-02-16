@@ -10,12 +10,28 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
+    <groupId>dev.gabriel.wisewallet</groupId>
     <artifactId>user</artifactId>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>application</module>
+        <module>infrastructure</module>
+        <module>domain</module>
+        <module>presentation</module>
+        <module>app</module>
+    </modules>
 
     <dependencies>
         <dependency>
             <groupId>dev.gabriel.wisewallet</groupId>
             <artifactId>core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.gabriel.wisewallet</groupId>
+            <artifactId>config</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -70,26 +86,4 @@
             <version>${spring.doc.version}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>user</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.version}</version>
-                <configuration>
-                    <executable>true</executable>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

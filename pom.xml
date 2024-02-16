@@ -28,6 +28,8 @@
         <module>src/service-discovery</module>
         <module>src/api-gateway</module>
         <module>src/auth</module>
+        <module>src/config</module>
+        <module>src/token</module>
     </modules>
 
     <properties>
@@ -61,7 +63,7 @@
         <javax.activation.version>1.1.1</javax.activation.version>
         <jaxb.runtime.version>4.0.4</jaxb.runtime.version>
         <jackson.datatype.version>2.16.1</jackson.datatype.version>
-        <jwt.version>4.4.0</jwt.version>
+        <jwt.version>0.11.5</jwt.version>
     </properties>
 
     <dependencies>

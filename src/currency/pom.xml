@@ -12,16 +12,10 @@
 
     <artifactId>currency</artifactId>
 
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <dependency>
-            <groupId>dev.gabriel.wisewallet</groupId>
-            <artifactId>core</artifactId>
+            <groupId>dev.gabriel.wisewallet.core</groupId>
+            <artifactId>domain</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

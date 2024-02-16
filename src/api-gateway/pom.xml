@@ -14,6 +14,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>dev.gabriel.wisewallet</groupId>
+            <artifactId>token</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
             <version>${spring.cloud.gateway.version}</version>

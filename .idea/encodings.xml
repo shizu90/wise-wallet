@@ -3,17 +3,66 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/api-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/bill/app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/bill/application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/bill/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/bill/infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/bill/presentation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/bill/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/bill/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/budget/app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/budget/application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/budget/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/budget/infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/budget/presentation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/budget/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/budget/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/category/app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/category/application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/category/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/category/infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/category/presentation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/category/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/category/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/core/application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/core/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/core/infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/core/presentation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/currency/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/recurringbill/app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/recurringbill/application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/recurringbill/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/recurringbill/presentation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/recurringbill/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/recurringbill/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/reminder/app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/reminder/application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/reminder/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/reminder/infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/reminder/presentation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/reminder/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/reminder/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/service-discovery/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/token/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/user/app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/user/application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/user/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/user/infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/user/presentation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/user/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/wallet/app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/wallet/application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/wallet/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/wallet/infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/wallet/presentation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/wallet/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/wallet/src/main/resources" charset="UTF-8" />
   </component>
 </project>

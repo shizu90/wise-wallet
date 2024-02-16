@@ -2,14 +2,9 @@ spring:
   application:
     name: auth-service
     version: 1.0.0
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: wise_wallet
 
 server:
-  port: 8088
+  port: 8089
 
 eureka:
   instance:
@@ -24,3 +19,7 @@ springdoc:
     path: /api/auth/v3/api-docs
   swagger-ui:
     path: /api/auth/swagger-ui.html
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
