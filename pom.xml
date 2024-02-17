@@ -40,22 +40,31 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.plugin.version>3.12.1</maven.compiler.plugin.version>
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
-        <spring.version>3.2.2</spring.version>
-        <spring.doc.version>2.1.0</spring.doc.version>
-        <spring.mongodb.version>4.2.0</spring.mongodb.version>
-        <spring.kafka.version>3.1.1</spring.kafka.version>
-        <spring.cloud.version>2023.0.0</spring.cloud.version>
-        <spring.cloud.gateway.version>4.1.0</spring.cloud.gateway.version>
-        <spring.cloud.eureka.server.version>4.1.0</spring.cloud.eureka.server.version>
-        <spring.cloud.eureka.client.version>4.1.0</spring.cloud.eureka.client.version>
+        <spring.framework.boot.maven.plugin.version>3.2.2</spring.framework.boot.maven.plugin.version>
+        <spring.framework.tx.version>6.1.4</spring.framework.tx.version>
+        <spring.framework.boot.starter.version>3.2.2</spring.framework.boot.starter.version>
+        <spring.framework.boot.starter.log4j2.version>3.2.2</spring.framework.boot.starter.log4j2.version>
+        <spring.framework.data.mongodb.version>4.2.2</spring.framework.data.mongodb.version>
+        <spring.framework.kafka.version>3.1.1</spring.framework.kafka.version>
+        <spring.framework.boot.starter.data.jpa.version>3.2.2</spring.framework.boot.starter.data.jpa.version>
+        <spring.framework.boot.starter.web.version>3.2.2</spring.framework.boot.starter.web.version>
+        <spring.framework.boot.starter.validation.version>3.2.2</spring.framework.boot.starter.validation.version>
+        <spring.framework.cloud.version>2023.0.0</spring.framework.cloud.version>
+        <spring.framework.cloud.gateway.version>4.1.0</spring.framework.cloud.gateway.version>
+        <spring.framework.cloud.netflix.eureka.server.version>4.1.0</spring.framework.cloud.netflix.eureka.server.version>
+        <spring.framework.cloud.netflix.eureka.client.version>4.1.0</spring.framework.cloud.netflix.eureka.client.version>
+        <spring.doc.openapi.version>2.3.0</spring.doc.openapi.version>
+        <postgresql.driver.version>42.6.0</postgresql.driver.version>
+        <mongodb.driver.sync.version>4.11.1</mongodb.driver.sync.version>
+        <jakarta.persistence.api.version>3.2.0-M1</jakarta.persistence.api.version>
+        <jakarta.servlet.api.version>6.1.0-M1</jakarta.servlet.api.version>
         <lombok.version>1.18.30</lombok.version>
         <junit.jupiter.api.version>5.10.0</junit.jupiter.api.version>
         <junit.jupiter.engine.version>5.10.0</junit.jupiter.engine.version>
-        <mockito.version>5.3.1</mockito.version>
-        <assertj.version>3.24.2</assertj.version>
+        <mockito.core.version>5.3.1</mockito.core.version>
+        <mockito.junit.version>5.3.1</mockito.junit.version>
+        <assertj.core.version>3.24.2</assertj.core.version>
         <guava.version>33.0.0-jre</guava.version>
-        <postgresql.driver.version>42.6.0</postgresql.driver.version>
-        <mongodb.driver.version>4.11.0</mongodb.driver.version>
         <javax.persistence.version>2.2</javax.persistence.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
         <javax.servlet.version>4.0.1</javax.servlet.version>
@@ -92,19 +101,19 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
+            <version>${mockito.core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${mockito.version}</version>
+            <version>${mockito.junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
+            <version>${assertj.core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -114,7 +123,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud.version}</version>
+                <version>${spring.framework.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

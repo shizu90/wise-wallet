@@ -5,59 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b830aad3-fa16-4c5c-9158-0bf4c935b9cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/core/infrastructure/src/main/java/dev/gabriel/wisewallet/core/infrastructure/eventstore/services/AggregateFactoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/mappers/BillAggregateTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/mappers/BillAggregateTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/mappers/BillEvenTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/mappers/BillEvenTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/presentation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/mappers/BudgetAggregateTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/mappers/BudgetAggregateTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/mappers/BudgetEventTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/mappers/BudgetEventTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/presentation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/mappers/CategoryAggregateTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/mappers/CategoryAggregateTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/mappers/CategoryEventTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/mappers/CategoryEventTypeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bill/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/category/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/app/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/category/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/presentation/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/application/src/main/java/dev/gabriel/wisewallet/core/application/CommandBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/application/src/main/java/dev/gabriel/wisewallet/core/application/CommandBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/domain/src/main/java/dev/gabriel/wisewallet/core/domain/models/AggregateFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/domain/src/main/java/dev/gabriel/wisewallet/core/domain/models/AggregateFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/currency/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/currency/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/app/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/mappers/RecurringBillAggregateTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/mappers/RecurringBillAggregateTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/mappers/RecurringBillEventTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/mappers/RecurringBillEventTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/presentation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/mappers/ReminderAggregateTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/mappers/ReminderAggregateTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/mappers/ReminderEventTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/mappers/ReminderEventTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/presentation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/mappers/UserAggregateTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/mappers/UserAggregateTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/mappers/UserEventTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/mappers/UserEventTypeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/token/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/token/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/presentation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/app/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wallet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +70,20 @@
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\recurringbill\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ReminderServiceApp">
+  <component name="RunManager" selected="Application.ApiGateway">
+    <configuration name="ApiGateway" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.apigateway.ApiGateway" />
+      <module name="api-gateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.gabriel.wisewallet.apigateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ReminderServiceApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.reminder.ReminderServiceApp" />
       <module name="app (5) (dev.gabriel.wisewallet.reminder)" />
@@ -121,6 +91,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="dev.gabriel.wisewallet.reminder.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceDiscovery" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.servicediscovery.ServiceDiscovery" />
+      <module name="service-discovery" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.gabriel.wisewallet.servicediscovery.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -155,15 +138,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.ApiGateway" />
+      <item itemvalue="Application.ServiceDiscovery" />
       <item itemvalue="Application.ReminderServiceApp" />
       <item itemvalue="Application.UserServiceApp" />
       <item itemvalue="Application.WalletServiceApp" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ReminderServiceApp" />
-        <item itemvalue="Application.UserServiceApp" />
+        <item itemvalue="Application.ApiGateway" />
         <item itemvalue="Application.WalletServiceApp" />
+        <item itemvalue="Application.UserServiceApp" />
+        <item itemvalue="Application.ServiceDiscovery" />
+        <item itemvalue="Application.ReminderServiceApp" />
       </list>
     </recent_temporary>
   </component>

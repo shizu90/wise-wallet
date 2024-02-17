@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-            <version>${spring.cloud.eureka.server.version}</version>
+            <version>${spring.framework.cloud.netflix.eureka.server.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -41,7 +41,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.framework.boot.maven.plugin.version}</version>
                 <configuration>
                     <executable>true</executable>
                 </configuration>

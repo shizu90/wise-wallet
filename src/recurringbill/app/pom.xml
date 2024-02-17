@@ -26,7 +26,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.framework.boot.maven.plugin.version}</version>
                 <configuration>
                     <executable>true</executable>
                 </configuration>

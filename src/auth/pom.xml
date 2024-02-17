@@ -25,12 +25,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring.framework.boot.starter.web.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>${spring.cloud.eureka.client.version}</version>
+            <version>${spring.framework.cloud.netflix.eureka.client.version}</version>
         </dependency>
     </dependencies>
 
@@ -40,7 +40,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.framework.boot.maven.plugin.version}</version>
                 <configuration>
                     <executable>true</executable>
                 </configuration>
