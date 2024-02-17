@@ -12,11 +12,20 @@
 
     <artifactId>currency</artifactId>
 
+    <properties>
+        <spring.framework.context.version>6.1.4</spring.framework.context.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>dev.gabriel.wisewallet.core</groupId>
             <artifactId>domain</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.framework.context.version}</version>
         </dependency>
     </dependencies>
 </project>

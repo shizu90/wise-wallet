@@ -2,7 +2,7 @@ package dev.gabriel.wisewallet.bill.infrastructure.mappers;
 
 import dev.gabriel.wisewallet.bill.domain.models.AggregateType;
 import dev.gabriel.wisewallet.bill.domain.models.Bill;
-import dev.gabriel.wisewallet.core.infrastructure.eventstore.mappers.AggregateTypeMapper;
+import dev.gabriel.wisewallet.core.domain.models.mappers.AggregateTypeMapper;
 import org.springframework.stereotype.Component;
 
 @Component

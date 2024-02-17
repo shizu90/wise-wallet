@@ -1,6 +1,6 @@
 package dev.gabriel.wisewallet.reminder.infrastructure.mappers;
 
-import dev.gabriel.wisewallet.core.infrastructure.eventstore.mappers.AggregateTypeMapper;
+import dev.gabriel.wisewallet.core.domain.models.mappers.AggregateTypeMapper;
 import dev.gabriel.wisewallet.reminder.domain.models.AggregateType;
 import dev.gabriel.wisewallet.reminder.domain.models.Reminder;
 import org.springframework.stereotype.Component;

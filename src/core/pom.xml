@@ -21,15 +21,14 @@
     </modules>
 
     <properties>
-        <spring.framework.context.version>6.1.4</spring.framework.context.version>
         <spring.framework.tx.version>6.1.4</spring.framework.tx.version>
-        <spring.framework.jdbc.version>6.1.4</spring.framework.jdbc.version>
-        <spring.framework.web.version>6.1.4</spring.framework.web.version>
-        <spring.framework.webmvc.version>6.1.4</spring.framework.webmvc.version>
+        <spring.framework.boot.starter.version>3.2.2</spring.framework.boot.starter.version>
         <spring.framework.boot.starter.log4j2.version>3.2.2</spring.framework.boot.starter.log4j2.version>
-        <spring.framework.data.jpa.version>3.2.2</spring.framework.data.jpa.version>
         <spring.framework.data.mongodb.version>4.2.2</spring.framework.data.mongodb.version>
         <spring.framework.kafka.version>3.1.1</spring.framework.kafka.version>
+        <spring.framework.boot.starter.data.jpa.version>3.2.2</spring.framework.boot.starter.data.jpa.version>
+        <spring.framework.boot.starter.web.version>3.2.2</spring.framework.boot.starter.web.version>
+        <spring.framework.boot.starter.validation.version>3.2.2</spring.framework.boot.starter.validation.version>
         <spring.doc.openapi.version>2.3.0</spring.doc.openapi.version>
         <postgresql.driver.version>42.6.0</postgresql.driver.version>
         <mongodb.driver.sync.version>4.11.1</mongodb.driver.sync.version>

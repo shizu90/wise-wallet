@@ -14,7 +14,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>dev.gabriel.wisewallet.core</groupId>
+            <artifactId>application</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>dev.gabriel.wisewallet.budget</groupId>
+            <artifactId>domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.gabriel.wisewallet.bill</groupId>
             <artifactId>domain</artifactId>
             <version>${project.version}</version>
         </dependency>

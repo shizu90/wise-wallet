@@ -11,4 +11,12 @@
 
     <groupId>dev.gabriel.wisewallet.budget</groupId>
     <artifactId>domain</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>dev.gabriel.wisewallet.core</groupId>
+            <artifactId>domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

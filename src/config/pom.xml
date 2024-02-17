@@ -13,8 +13,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>dev.gabriel.wisewallet</groupId>
-            <artifactId>core</artifactId>
+            <groupId>dev.gabriel.wisewallet.core</groupId>
+            <artifactId>domain</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -2,7 +2,7 @@ package dev.gabriel.wisewallet.category.infrastructure.mappers;
 
 import dev.gabriel.wisewallet.category.domain.events.EventType;
 import dev.gabriel.wisewallet.core.domain.events.DomainEvent;
-import dev.gabriel.wisewallet.core.infrastructure.eventstore.mappers.EventTypeMapper;
+import dev.gabriel.wisewallet.core.domain.models.mappers.EventTypeMapper;
 import org.springframework.stereotype.Component;
 
 @Component
