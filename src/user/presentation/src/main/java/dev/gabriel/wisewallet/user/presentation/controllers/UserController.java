@@ -32,6 +32,12 @@ public class UserController {
         return ResponseEntity.ok().body(userService.newUser(request));
     }
 
+    @GetMapping(value = "/validate")
+    @Operation(summary = "Validates user credentials.")
+    public ResponseEntity<Boolean> validateCredentials(@RequestBody UserRequestDto request) {
+        return ResponseEntity.ok().body(userService.validateCredentials(request));
+    }
+
     @PutMapping(value = "/{id}")
     @Operation(summary = "Updates an user.")
     public ResponseEntity<UserResponseDto> updateUserData(@PathVariable UUID id, @RequestBody UserRequestDto request) {

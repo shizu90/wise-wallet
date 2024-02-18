@@ -6,16 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b830aad3-fa16-4c5c-9158-0bf4c935b9cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/app/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/token/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/token/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/app/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/dtos/AuthResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/dtos/AuthResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/services/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/src/main/java/dev/gabriel/wisewallet/auth/services/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/presentation/src/main/java/dev/gabriel/wisewallet/user/presentation/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/presentation/src/main/java/dev/gabriel/wisewallet/user/presentation/controllers/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

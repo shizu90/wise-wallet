@@ -1,5 +1,8 @@
 package dev.gabriel.wisewallet.user.infrastructure.services;
 
+import dev.gabriel.wisewallet.user.domain.exceptions.UserNotFoundException;
+import dev.gabriel.wisewallet.user.domain.services.EncryptPassword;
+import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjection;
 import dev.gabriel.wisewallet.user.infrastructure.projection.UserProjectionRepository;
 import dev.gabriel.wisewallet.user.infrastructure.services.dtos.UserRequestDto;
 import dev.gabriel.wisewallet.user.infrastructure.services.dtos.UserResponseDto;
@@ -19,9 +22,23 @@ public class UserService {
     private final CommandBus<UserCommand> commandBus;
     private final UserProjectionRepository userProjectionRepository;
     private final UserDtoMapper dtoMapper;
+    private final EncryptPassword encryptPassword;
 
     public UserResponseDto getUser(UUID id) {
         return dtoMapper.toResponseDto(userProjectionRepository.find(id).orElse(null));
+    }
+
+    public UserResponseDto getUserByEmail(String email) {
+        return dtoMapper.toResponseDto(userProjectionRepository.findByEmail(email).get(0));
+    }
+
+    public boolean validateCredentials(UserRequestDto request) {
+        UserProjection userProjection = userProjectionRepository.findByEmail(request.email()).get(0);
+
+        if(userProjection == null)
+            throw new UserNotFoundException("User with email %s was not found.".formatted(request.email()));
+
+        return encryptPassword.validate(userProjection.getPassword(), request.password());
     }
 
     public UserResponseDto newUser(UserRequestDto request) {
