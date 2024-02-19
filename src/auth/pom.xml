@@ -18,8 +18,8 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>dev.gabriel.wisewallet</groupId>
-            <artifactId>config</artifactId>
+            <groupId>dev.gabriel.wisewallet.config</groupId>
+            <artifactId>swagger</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

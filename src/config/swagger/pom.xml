@@ -5,14 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>dev.gabriel.wisewallet</groupId>
-        <artifactId>wise-wallet</artifactId>
+        <artifactId>config</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>config</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>swagger</module>
-        <module>kafka</module>
-    </modules>
+    <groupId>dev.gabriel.wisewallet.config</groupId>
+    <artifactId>swagger</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${spring.doc.openapi.version}</version>
+        </dependency>
+    </dependencies>
 </project>
