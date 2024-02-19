@@ -24,7 +24,10 @@
     <file url="file://$PROJECT_DIR$/src/category/presentation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/category/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/category/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/config/kafka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/config/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/config/swagger/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/core/application/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/core/domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/core/infrastructure/src/main/java" charset="UTF-8" />

@@ -1,6 +1,8 @@
-package dev.gabriel.wisewallet.config.kafka;
+package dev.gabriel.wisewallet.user.infrastructure.configs;
 
 import dev.gabriel.wisewallet.core.domain.events.DomainEvent;
+import dev.gabriel.wisewallet.core.infrastructure.configs.DomainEventDeserializer;
+import dev.gabriel.wisewallet.core.infrastructure.configs.DomainEventSerializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

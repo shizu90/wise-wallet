@@ -1,4 +1,4 @@
-package dev.gabriel.wisewallet.config.kafka;
+package dev.gabriel.wisewallet.core.infrastructure.configs;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.gabriel.wisewallet.core.domain.events.DomainEvent;

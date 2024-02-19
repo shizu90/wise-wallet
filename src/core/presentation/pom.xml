@@ -18,10 +18,5 @@
             <artifactId>infrastructure</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${spring.doc.openapi.version}</version>
-        </dependency>
     </dependencies>
 </project>

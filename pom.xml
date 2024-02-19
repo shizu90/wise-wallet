@@ -28,7 +28,6 @@
         <module>src/service-discovery</module>
         <module>src/api-gateway</module>
         <module>src/auth</module>
-        <module>src/config</module>
         <module>src/token</module>
     </modules>
 

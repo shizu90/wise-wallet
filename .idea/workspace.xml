@@ -5,7 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b830aad3-fa16-4c5c-9158-0bf4c935b9cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/configs/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/configs/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/configs/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/configs/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/infrastructure/src/main/java/dev/gabriel/wisewallet/core/infrastructure/configs/DomainEventDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/infrastructure/src/main/java/dev/gabriel/wisewallet/core/infrastructure/configs/DomainEventSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/configs/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/configs/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/configs/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/configs/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/configs/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/configs/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/configs/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/configs/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bill/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bill/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/budget/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/budget/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/category/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/category/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/kafka/src/main/java/dev/gabriel/wisewallet/config/kafka/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/configs/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/swagger/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/swagger/src/main/java/dev/gabriel/wisewallet/config/swagger/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/configs/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/presentation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurringbill/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurringbill/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reminder/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reminder/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/infrastructure/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,30 +70,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/giraf/projects/expense-manager-api/wise-wallet/src/core/infrastructure/src/main/resources&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "21",
+    "last_opened_file_path": "C:/Users/giraf/projects/expense-manager-api/wise-wallet/src/core/infrastructure/src/main/java/dev/gabriel/wisewallet/core/infrastructure/configs"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\core\infrastructure\src\main\java\dev\gabriel\wisewallet\core\infrastructure\configs" />
+      <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\config\swagger\src\main\java\dev\gabriel\wisewallet\config\swagger" />
+      <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\config\kafka\src\main\java\dev\gabriel\wisewallet\config\kafka" />
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\core\infrastructure\src\main\resources" />
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\core\presentation\src\main\java\dev\gabriel\wisewallet\core" />
-      <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\core\infrastructure\src\main\java\dev\gabriel\wisewallet\core" />
-      <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\core\application\src\main\java\dev\gabriel\wisewallet\core\application" />
-      <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\core\domain\src\main\java\dev\gabriel\wisewallet\core\domain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\bill\app" />
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\budget\app" />
       <recent name="C:\Users\giraf\projects\expense-manager-api\wise-wallet\src\recurringbill\app" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dev.gabriel.wisewallet.bill.infrastructure.configs" />
+      <recent name="dev.gabriel.wisewallet.budget.infrastructure.configs" />
+      <recent name="dev.gabriel.wisewallet.category.infrastructure.configs" />
+      <recent name="dev.gabriel.wisewallet.recurringbill.infrastructure.configs" />
+      <recent name="dev.gabriel.wisewallet.reminder.infrastructure.configs" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.ApiGateway">
+  <component name="RunManager" selected="Application.WalletServiceApp">
     <configuration name="ApiGateway" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.apigateway.ApiGateway" />
       <module name="api-gateway" />
@@ -136,10 +176,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ApiGateway" />
         <item itemvalue="Application.WalletServiceApp" />
         <item itemvalue="Application.UserServiceApp" />
         <item itemvalue="Application.ServiceDiscovery" />
+        <item itemvalue="Application.ApiGateway" />
         <item itemvalue="Application.ReminderServiceApp" />
       </list>
     </recent_temporary>
