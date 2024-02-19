@@ -26,6 +26,9 @@ public interface ReminderProjectionRepository extends MongoRepository<ReminderPr
     @Query(value = "{$and: [{'userId': ?0}, {'name': ?1}, {'isDeleted': false}]}")
     List<ReminderProjection> findByUserIdAndName(UUID userId, String name);
 
-    @Query(value = "{'started': true}")
+    @Query(value = "{$and: [{'started': true}, {'isDeleted': false}]}")
     List<ReminderProjection> findStartedReminders();
+
+    @Query(value = "{$and: [{'userId': ?0}, {'isDeleted': false}]}")
+    List<ReminderProjection> findByUserId(UUID userId);
 }
