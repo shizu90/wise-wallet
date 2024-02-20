@@ -12,8 +12,6 @@ import dev.gabriel.wisewallet.core.application.CommandBus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.support.Acknowledgment;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,10 +21,11 @@ import java.util.List;
 public class BudgetEventConsumer implements BudgetAsyncEventHandler {
     private final BudgetProjectionRepository budgetProjectionRepository;
     private final CommandBus<BudgetCommand> commandBus;
+    private static final String GROUP_ID = "budget-consumer";
 
+    @KafkaListener(topics = "BillAmountUpdatedEvent", groupId = GROUP_ID)
     @Override
-    @KafkaListener(topics = "BillAmountUpdatedEvent")
-    public void handle(BillAmountUpdatedEvent event, Acknowledgment ack) {
+    public void handle(BillAmountUpdatedEvent event) {
         List<BudgetProjection> budgets = budgetProjectionRepository.findByBillId(event.getAggregateId());
 
         for(BudgetProjection budget : budgets) {
@@ -47,13 +46,11 @@ public class BudgetEventConsumer implements BudgetAsyncEventHandler {
                 ));
             }
         }
-
-        ack.acknowledge();
     }
 
+    @KafkaListener(topics = "BillCurrencyCodeChangedEvent", groupId = GROUP_ID)
     @Override
-    @KafkaListener(topics = "BillCurrencyCodeChangedEvent")
-    public void handle(BillCurrencyCodeChangedEvent event, Acknowledgment ack) {
+    public void handle(BillCurrencyCodeChangedEvent event) {
         List<BudgetProjection> budgets = budgetProjectionRepository.findByBillId(event.getAggregateId());
 
         for(BudgetProjection budget : budgets) {
@@ -75,13 +72,11 @@ public class BudgetEventConsumer implements BudgetAsyncEventHandler {
                 ));
             }
         }
-
-        ack.acknowledge();
     }
 
+    @KafkaListener(topics = "BillTypeChangedEvent", groupId = GROUP_ID)
     @Override
-    @KafkaListener(topics = "BillTypeChangedEvent")
-    public void handle(BillTypeChangedEvent event, Acknowledgment ack) {
+    public void handle(BillTypeChangedEvent event) {
         List<BudgetProjection> budgets = budgetProjectionRepository.findByBillId(event.getAggregateId());
 
         for(BudgetProjection budget : budgets) {
@@ -103,13 +98,11 @@ public class BudgetEventConsumer implements BudgetAsyncEventHandler {
                 ));
             }
         }
-
-        ack.acknowledge();
     }
 
+    @KafkaListener(topics = "BillRenamedEvent", groupId = GROUP_ID)
     @Override
-    @KafkaListener(topics = "BillRenamedEvent")
-    public void handle(BillRenamedEvent event, Acknowledgment ack) {
+    public void handle(BillRenamedEvent event) {
         List<BudgetProjection> budgets = budgetProjectionRepository.findByBillId(event.getAggregateId());
 
         for(BudgetProjection budget : budgets) {
@@ -131,13 +124,11 @@ public class BudgetEventConsumer implements BudgetAsyncEventHandler {
                 ));
             }
         }
-
-        ack.acknowledge();
     }
 
+    @KafkaListener(topics = "BillDeletedEvent", groupId = GROUP_ID)
     @Override
-    @KafkaListener(topics = "BillDeletedEvent")
-    public void handle(BillDeletedEvent event, Acknowledgment ack) {
+    public void handle(BillDeletedEvent event) {
         List<BudgetProjection> budgets = budgetProjectionRepository.findByBillId(event.getAggregateId());
 
         for(BudgetProjection budget : budgets) {
@@ -149,7 +140,5 @@ public class BudgetEventConsumer implements BudgetAsyncEventHandler {
                             commandBus.execute(new RemoveBudgetItemCommand(budget.getId(), event.getAggregateId()))
                     );
         }
-
-        ack.acknowledge();
     }
 }

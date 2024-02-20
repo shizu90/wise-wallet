@@ -1,7 +1,7 @@
-package dev.gabriel.wisewallet.wallet.application.events;
+package dev.gabriel.wisewallet.category.application.events;
 
 import dev.gabriel.wisewallet.user.domain.events.UserDeletedEvent;
 
-public interface WalletAsyncEventHandler {
+public interface CategoryAsyncEventHandler {
     void handle(UserDeletedEvent event);
 }

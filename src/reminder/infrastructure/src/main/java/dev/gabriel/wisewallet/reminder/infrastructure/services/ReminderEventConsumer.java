@@ -10,7 +10,7 @@ import dev.gabriel.wisewallet.user.domain.events.UserDeletedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.support.Acknowledgment;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,10 +20,11 @@ import java.util.List;
 public class ReminderEventConsumer implements ReminderAsyncEventHandler {
     private final ReminderProjectionRepository reminderProjectionRepository;
     private final CommandBus<ReminderCommand> commandBus;
+    private static final String GROUP_ID = "reminder-consumer";
 
-    @KafkaListener(topics = "UserDeletedEvent")
+    @KafkaListener(topics = "UserDeletedEvent", groupId = GROUP_ID)
     @Override
-    public void handle(UserDeletedEvent event, Acknowledgment ack) {
+    public void handle(@Payload UserDeletedEvent event) {
         List<ReminderProjection> reminders = reminderProjectionRepository.findByUserId(event.getAggregateId());
 
         for(ReminderProjection reminder : reminders) {

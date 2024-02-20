@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b830aad3-fa16-4c5c-9158-0bf4c935b9cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/domain/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/application/src/main/java/dev/gabriel/wisewallet/wallet/application/events/WalletAsyncEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/application/src/main/java/dev/gabriel/wisewallet/wallet/application/events/WalletAsyncEventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,7 @@
       <recent name="dev.gabriel.wisewallet.reminder.infrastructure.configs" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BudgetServiceApp">
+  <component name="RunManager" selected="Application.WalletServiceApp">
     <configuration name="BudgetServiceApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.budget.BudgetServiceApp" />
       <module name="app (2) (dev.gabriel.wisewallet.budget)" />
@@ -144,9 +144,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WalletServiceApp" />
         <item itemvalue="Application.BudgetServiceApp" />
         <item itemvalue="Application.CategoryServiceApp" />
-        <item itemvalue="Application.WalletServiceApp" />
         <item itemvalue="Application.UserServiceApp" />
         <item itemvalue="Application.ServiceDiscovery" />
       </list>

@@ -25,4 +25,7 @@ public interface CategoryProjectionRepository extends MongoRepository<CategoryPr
 
     @Query(value = "{$and: [{$or: [{'userId': ?0}, {'userId': null}]}, {'name': ?1}]}")
     List<CategoryProjection> findByUserIdAndName(UUID userId, String name);
+
+    @Query(value = "{$and: [{'userId': ?0}, {'isDeleted': false}]}")
+    List<CategoryProjection> findByUserId(UUID userId);
 }

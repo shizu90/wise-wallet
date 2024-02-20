@@ -11,7 +11,7 @@ import dev.gabriel.wisewallet.core.application.CommandBus;
 import dev.gabriel.wisewallet.wallet.domain.events.WalletDeletedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.support.Acknowledgment;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,9 +21,11 @@ import java.util.List;
 public class BillEventConsumer implements BillAsyncEventHandler {
     private final BillProjectionRepository billProjectionRepository;
     private final CommandBus<BillCommand> commandBus;
+    private static final String GROUP_ID = "bill-consumer";
 
+    @KafkaListener(topics = "CategoryDeletedEvent", groupId = GROUP_ID)
     @Override
-    public void handle(CategoryDeletedEvent event, Acknowledgment ack) {
+    public void handle(CategoryDeletedEvent event) {
         List<BillProjection> bills = billProjectionRepository.findByCategoryId(event.getAggregateId());
 
         for(BillProjection bill : bills) {
@@ -31,8 +33,9 @@ public class BillEventConsumer implements BillAsyncEventHandler {
         }
     }
 
+    @KafkaListener(topics = "WalletDeletedEvent", groupId = GROUP_ID)
     @Override
-    public void handle(WalletDeletedEvent event, Acknowledgment ack) {
+    public void handle(WalletDeletedEvent event) {
         List<BillProjection> bills = billProjectionRepository.findByWalletId(event.getAggregateId());
 
         for(BillProjection bill : bills) {

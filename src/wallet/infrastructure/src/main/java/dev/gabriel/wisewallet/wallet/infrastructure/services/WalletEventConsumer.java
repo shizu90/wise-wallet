@@ -10,7 +10,7 @@ import dev.gabriel.wisewallet.wallet.infrastructure.projection.WalletProjectionR
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.support.Acknowledgment;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,10 +20,11 @@ import java.util.List;
 public class WalletEventConsumer implements WalletAsyncEventHandler {
     private final WalletProjectionRepository walletProjectionRepository;
     private final CommandBus<WalletCommand> commandBus;
+    private static final String GROUP_ID = "wallet-consumer";
 
-    @KafkaListener(topics = "UserDeletedEvent")
+    @KafkaListener(topics = "UserDeletedEvent", groupId = GROUP_ID)
     @Override
-    public void handle(UserDeletedEvent event, Acknowledgment ack) {
+    public void handle(@Payload UserDeletedEvent event) {
         List<WalletProjection> wallets = walletProjectionRepository.findByUserId(event.getAggregateId());
 
         for(WalletProjection wallet : wallets) {

@@ -11,7 +11,8 @@ import dev.gabriel.wisewallet.recurringbill.infrastructure.projection.RecurringB
 import dev.gabriel.wisewallet.wallet.domain.events.WalletDeletedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.support.Acknowledgment;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,26 +22,25 @@ import java.util.List;
 public class RecurringBillEventConsumer implements RecurringBillAsyncEventHandler {
     private final RecurringBillProjectionRepository recurringBillProjectionRepository;
     private final CommandBus<RecurringBillCommand> commandBus;
+    private static final String GROUP_ID = "recurring-bill-consumer";
 
+    @KafkaListener(topics = "CategoryDeletedEvent", groupId = GROUP_ID)
     @Override
-    public void handle(CategoryDeletedEvent event, Acknowledgment ack) {
+    public void handle(@Payload CategoryDeletedEvent event) {
         List<RecurringBillProjection> recurringBills = recurringBillProjectionRepository.findByCategoryId(event.getAggregateId());
 
         for(RecurringBillProjection recurringBill : recurringBills) {
             commandBus.execute(new ChangeRecurringBillCategoryCommand(recurringBill.getId(), null));
         }
-
-        ack.acknowledge();
     }
 
+    @KafkaListener(topics = "WalletDeletedEvent", groupId = GROUP_ID)
     @Override
-    public void handle(WalletDeletedEvent event, Acknowledgment ack) {
+    public void handle(WalletDeletedEvent event) {
         List<RecurringBillProjection> recurringBills = recurringBillProjectionRepository.findByWalletId(event.getAggregateId());
 
         for(RecurringBillProjection recurringBill : recurringBills) {
             commandBus.execute(new DeleteRecurringBillCommand(recurringBill.getId()));
         }
-
-        ack.acknowledge();
     }
 }
