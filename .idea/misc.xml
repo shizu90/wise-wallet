@@ -9,6 +9,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/src/config/pom.xml" />
         <option value="$PROJECT_DIR$/src/config/swagger/pom.xml" />
       </set>
     </option>
