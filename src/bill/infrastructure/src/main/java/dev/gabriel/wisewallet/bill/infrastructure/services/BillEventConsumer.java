@@ -1,45 +1,33 @@
 package dev.gabriel.wisewallet.bill.infrastructure.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.gabriel.wisewallet.bill.application.events.BillAsyncEventHandler;
-import dev.gabriel.wisewallet.bill.domain.commands.BillCommand;
-import dev.gabriel.wisewallet.bill.domain.commands.ChangeBillCategoryCommand;
-import dev.gabriel.wisewallet.bill.domain.commands.DeleteBillCommand;
-import dev.gabriel.wisewallet.bill.infrastructure.projection.BillProjection;
-import dev.gabriel.wisewallet.bill.infrastructure.projection.BillProjectionRepository;
 import dev.gabriel.wisewallet.category.domain.events.CategoryDeletedEvent;
-import dev.gabriel.wisewallet.core.application.CommandBus;
 import dev.gabriel.wisewallet.wallet.domain.events.WalletDeletedEvent;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+@SuppressWarnings("unused")
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class BillEventConsumer implements BillAsyncEventHandler {
-    private final BillProjectionRepository billProjectionRepository;
-    private final CommandBus<BillCommand> commandBus;
+public class BillEventConsumer {
+    private final BillAsyncEventHandler billAsyncEventHandler;
+    private final ObjectMapper objectMapper;
     private static final String GROUP_ID = "bill-consumer";
 
+    @SneakyThrows
     @KafkaListener(topics = "CategoryDeletedEvent", groupId = GROUP_ID)
-    @Override
-    public void handle(CategoryDeletedEvent event) {
-        List<BillProjection> bills = billProjectionRepository.findByCategoryId(event.getAggregateId());
-
-        for(BillProjection bill : bills) {
-            commandBus.execute(new ChangeBillCategoryCommand(bill.getId(), null));
-        }
+    public void handleCategoryDeletedEvent(@Payload String event) {
+        billAsyncEventHandler.handle(objectMapper.readValue(event, CategoryDeletedEvent.class));
     }
 
+    @SneakyThrows
     @KafkaListener(topics = "WalletDeletedEvent", groupId = GROUP_ID)
-    @Override
-    public void handle(WalletDeletedEvent event) {
-        List<BillProjection> bills = billProjectionRepository.findByWalletId(event.getAggregateId());
-
-        for(BillProjection bill : bills) {
-            commandBus.execute(new DeleteBillCommand(bill.getId()));
-        }
+    public void handleWalletDeletedEvent(@Payload String event) {
+        billAsyncEventHandler.handle(objectMapper.readValue(event, WalletDeletedEvent.class));
     }
 }

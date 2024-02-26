@@ -1,34 +1,27 @@
 package dev.gabriel.wisewallet.wallet.infrastructure.services;
 
-import dev.gabriel.wisewallet.core.application.CommandBus;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.gabriel.wisewallet.user.domain.events.UserDeletedEvent;
 import dev.gabriel.wisewallet.wallet.application.events.WalletAsyncEventHandler;
-import dev.gabriel.wisewallet.wallet.domain.commands.DeleteWalletCommand;
-import dev.gabriel.wisewallet.wallet.domain.commands.WalletCommand;
-import dev.gabriel.wisewallet.wallet.infrastructure.projection.WalletProjection;
-import dev.gabriel.wisewallet.wallet.infrastructure.projection.WalletProjectionRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class WalletEventConsumer implements WalletAsyncEventHandler {
-    private final WalletProjectionRepository walletProjectionRepository;
-    private final CommandBus<WalletCommand> commandBus;
+public class WalletEventConsumer {
+    private final WalletAsyncEventHandler walletAsyncEventHandler;
+    private final ObjectMapper objectMapper;
     private static final String GROUP_ID = "wallet-consumer";
 
+    @SneakyThrows
     @KafkaListener(topics = "UserDeletedEvent", groupId = GROUP_ID)
-    @Override
-    public void handle(@Payload UserDeletedEvent event) {
-        List<WalletProjection> wallets = walletProjectionRepository.findByUserId(event.getAggregateId());
-
-        for(WalletProjection wallet : wallets) {
-            commandBus.execute(new DeleteWalletCommand(wallet.getId()));
-        }
+    public void handle(@Payload String event) {
+        System.out.println(event);
+        UserDeletedEvent userDeletedEvent = objectMapper.readValue(event, UserDeletedEvent.class);
+        walletAsyncEventHandler.handle(userDeletedEvent);
     }
 }

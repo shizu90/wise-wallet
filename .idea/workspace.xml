@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b830aad3-fa16-4c5c-9158-0bf4c935b9cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillAsyncEventHandlerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetAsyncEventHandlerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryAsyncEventHandlerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/services/RecurringBillAsyncEventHandlerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderAsyncEventHandlerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletAsyncEventHandlerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/application/src/main/java/dev/gabriel/wisewallet/wallet/application/events/WalletAsyncEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/application/src/main/java/dev/gabriel/wisewallet/wallet/application/events/WalletAsyncEventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/domain/src/main/java/dev/gabriel/wisewallet/core/domain/events/DomainEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/domain/src/main/java/dev/gabriel/wisewallet/core/domain/events/DomainEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/services/RecurringBillEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/services/RecurringBillEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/configs/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/configs/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/configs/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/configs/KafkaConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,12 +84,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.WalletServiceApp">
-    <configuration name="BudgetServiceApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.budget.BudgetServiceApp" />
-      <module name="app (2) (dev.gabriel.wisewallet.budget)" />
+    <configuration name="ApiGateway" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.apigateway.ApiGateway" />
+      <module name="api-gateway" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dev.gabriel.wisewallet.budget.*" />
+          <option name="PATTERN" value="dev.gabriel.wisewallet.apigateway.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -83,12 +97,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryServiceApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.category.CategoryServiceApp" />
-      <module name="app (3) (dev.gabriel.wisewallet.category)" />
+    <configuration name="BudgetServiceApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dev.gabriel.wisewallet.budget.BudgetServiceApp" />
+      <module name="app (2) (dev.gabriel.wisewallet.budget)" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dev.gabriel.wisewallet.category.*" />
+          <option name="PATTERN" value="dev.gabriel.wisewallet.budget.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,8 +150,8 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.ApiGateway" />
       <item itemvalue="Application.BudgetServiceApp" />
-      <item itemvalue="Application.CategoryServiceApp" />
       <item itemvalue="Application.ServiceDiscovery" />
       <item itemvalue="Application.UserServiceApp" />
       <item itemvalue="Application.WalletServiceApp" />
@@ -145,10 +159,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.WalletServiceApp" />
-        <item itemvalue="Application.BudgetServiceApp" />
-        <item itemvalue="Application.CategoryServiceApp" />
         <item itemvalue="Application.UserServiceApp" />
         <item itemvalue="Application.ServiceDiscovery" />
+        <item itemvalue="Application.ApiGateway" />
+        <item itemvalue="Application.BudgetServiceApp" />
       </list>
     </recent_temporary>
   </component>

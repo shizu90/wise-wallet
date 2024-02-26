@@ -1,11 +1,15 @@
 package dev.gabriel.wisewallet.core.domain.events;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.TimeZone;
 import java.util.UUID;
 
