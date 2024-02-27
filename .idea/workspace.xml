@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b830aad3-fa16-4c5c-9158-0bf4c935b9cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillAsyncEventHandlerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetAsyncEventHandlerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryAsyncEventHandlerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/services/RecurringBillAsyncEventHandlerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderAsyncEventHandlerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletAsyncEventHandlerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bill/infrastructure/src/main/java/dev/gabriel/wisewallet/bill/infrastructure/services/BillEventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/budget/infrastructure/src/main/java/dev/gabriel/wisewallet/budget/infrastructure/services/BudgetEventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/category/infrastructure/src/main/java/dev/gabriel/wisewallet/category/infrastructure/services/CategoryEventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/domain/src/main/java/dev/gabriel/wisewallet/core/domain/events/DomainEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/domain/src/main/java/dev/gabriel/wisewallet/core/domain/events/DomainEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/services/RecurringBillEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurringbill/infrastructure/src/main/java/dev/gabriel/wisewallet/recurringbill/infrastructure/services/RecurringBillEventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminder/infrastructure/src/main/java/dev/gabriel/wisewallet/reminder/infrastructure/services/ReminderEventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/configs/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/infrastructure/src/main/java/dev/gabriel/wisewallet/user/infrastructure/configs/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/configs/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/configs/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wallet/infrastructure/src/main/java/dev/gabriel/wisewallet/wallet/infrastructure/services/WalletEventConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
