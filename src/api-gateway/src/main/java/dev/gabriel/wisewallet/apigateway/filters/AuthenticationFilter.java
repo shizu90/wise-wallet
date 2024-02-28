@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AuthenticationFilter implements GatewayFilter {
     private final RouterValidator routerValidator;
-    private final JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil = new JwtUtil();
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
